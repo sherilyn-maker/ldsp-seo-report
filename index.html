@@ -558,143 +558,334 @@
 </div>
 
 <!-- ============================================================ -->
-<!--  TAB 4: SEARCH CONSOLE (GSC)                                -->
+<!--  TAB 4: SEARCH CONSOLE (GSC) — LIVE DATA                   -->
 <!-- ============================================================ -->
 <div id="tab-gsc" class="tab-pane">
-  <div class="alert alert-warn">
-    <span class="alert-icon">⚠️</span>
-    <span><strong>GSC Access Pending:</strong> Google Search Console data was not available for this report. The analysis below is based on GA4 organic traffic data, site crawl, and competitive keyword research. Share GSC property access (search.google.com/search-console) to include impressions, CTR, and keyword rank data in future reports.</span>
+  <div class="alert alert-success">
+    <span class="alert-icon">✅</span>
+    <span><strong>Live GSC Data:</strong> Google Search Console data pulled directly via API for leakdetectionsp.com · Jan 1 – Apr 30, 2026. Site launched Feb 17, 2026 — January shows zero activity.</span>
   </div>
 
-  <div class="section-title"><span class="icon">🔎</span> Inferred Organic Performance (via GA4)</div>
+  <div class="section-title"><span class="icon">📊</span> Monthly Search Performance — Real GSC Data</div>
   <div class="kpi-grid">
     <div class="kpi-card">
-      <div class="kpi-label">Organic Sessions (Feb)</div>
-      <div class="kpi-value">37</div>
-      <div class="kpi-sub">Month 1 post-launch</div>
+      <div class="kpi-label">January 2026</div>
+      <div class="kpi-value">0</div>
+      <div class="kpi-sub">Clicks · 0 impressions · Site not live</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">February 2026</div>
+      <div class="kpi-value">7</div>
+      <div class="kpi-sub">Clicks · 3,004 impr · 0.23% CTR · pos 16.6</div>
+      <div class="kpi-badge badge-neutral">Launch Month</div>
     </div>
     <div class="kpi-card accent">
-      <div class="kpi-label">Organic Sessions (Mar)</div>
-      <div class="kpi-value">42</div>
-      <div class="kpi-sub">+14% MoM growth</div>
-      <div class="kpi-badge badge-up">▲ +14%</div>
-    </div>
-    <div class="kpi-card warn">
-      <div class="kpi-label">Organic Sessions (Apr)</div>
-      <div class="kpi-value">29</div>
-      <div class="kpi-sub">-31% MoM — investigate</div>
-      <div class="kpi-badge badge-down">▼ -31%</div>
+      <div class="kpi-label">March 2026</div>
+      <div class="kpi-value">9</div>
+      <div class="kpi-sub">Clicks · 6,394 impr · 0.14% CTR · pos 19.6</div>
+      <div class="kpi-badge badge-up">▲ Impr +113%</div>
     </div>
     <div class="kpi-card success">
-      <div class="kpi-label">Organic Engagement Rate</div>
-      <div class="kpi-value">74%</div>
-      <div class="kpi-sub">vs. 40% overall — high intent</div>
+      <div class="kpi-label">April 2026</div>
+      <div class="kpi-value">13</div>
+      <div class="kpi-sub">Clicks · 6,994 impr · 0.19% CTR · pos 19.1</div>
+      <div class="kpi-badge badge-up">▲ Clicks +44%</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Organic Conversions</div>
-      <div class="kpi-value">11</div>
-      <div class="kpi-sub">of 20 total (55% share)</div>
+    <div class="kpi-card danger">
+      <div class="kpi-label">Avg CTR (Overall)</div>
+      <div class="kpi-value">0.18%</div>
+      <div class="kpi-sub">Industry avg for local service: 2–5%</div>
+      <div class="kpi-badge badge-down">⚠ 10× below avg</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Bing Organic</div>
-      <div class="kpi-value">1</div>
-      <div class="kpi-sub">1 session + 1 conversion</div>
+    <div class="kpi-card warn">
+      <div class="kpi-label">Total Impressions</div>
+      <div class="kpi-value">16,392</div>
+      <div class="kpi-sub">At 2% CTR = 328 clicks/month potential</div>
     </div>
   </div>
 
-  <div class="section-title" style="margin-top:8px"><span class="icon">🎯</span> Target Keyword Opportunities (Research-Based)</div>
+  <div class="alert alert-danger">
+    <span class="alert-icon">🚨</span>
+    <span><strong>CTR Crisis:</strong> The site is generating <strong>16,392 impressions</strong> in 2.5 months — Google is showing it to searchers — but only <strong>29 total clicks</strong>. At the industry average of 2% CTR, that should be 328 clicks. The gap between visibility and clicks is the #1 SEO priority. Every title tag and meta description must be rewritten as a compelling call-to-action.</span>
+  </div>
+
+  <div class="chart-grid" style="margin-top:20px">
+    <div class="chart-card">
+      <h3>Monthly Impressions vs. Clicks (GSC)</h3>
+      <div class="chart-wrap">
+        <canvas id="gscTrendChart"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>Device CTR Comparison</h3>
+      <div class="chart-wrap">
+        <canvas id="deviceCtrChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:24px"><span class="icon">🏆</span> Top Queries — Ranked by Impressions (Live GSC Data)</div>
   <div class="table-card">
-    <h3>High-Priority Keywords — Snellville &amp; Gwinnett County Market</h3>
     <table>
-      <thead><tr><th>Keyword</th><th>Intent</th><th>Competition</th><th>Priority</th><th>Target Page</th></tr></thead>
+      <thead><tr><th>Search Query</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Avg Position</th><th>Status / Action</th></tr></thead>
       <tbody>
-        <tr>
-          <td>leak detection snellville ga</td>
-          <td><span class="pill pill-blue">Transactional</span></td>
-          <td><span class="pill pill-orange">Medium</span></td>
-          <td><span class="pill pill-green">Critical</span></td>
-          <td>/leak-detection/</td>
+        <tr style="background:#fff8e1">
+          <td><strong>water leak detection</strong></td><td>1</td><td>820</td><td><span style="color:#c62828;font-weight:700">0.12%</span></td><td><span class="pill pill-green">1.1</span></td>
+          <td><span class="pill pill-red">🚨 Pos #1 — CTR broken</span></td>
         </tr>
         <tr>
-          <td>plumber snellville ga</td>
-          <td><span class="pill pill-blue">Transactional</span></td>
-          <td><span class="pill pill-red">High</span></td>
-          <td><span class="pill pill-green">Critical</span></td>
-          <td>/plumbing/</td>
+          <td>commercial leak detection</td><td>0</td><td>462</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td><span class="pill pill-orange">9.7</span></td>
+          <td><span class="pill pill-red">Create dedicated page</span></td>
         </tr>
         <tr>
-          <td>slab leak repair snellville</td>
-          <td><span class="pill pill-blue">Transactional</span></td>
-          <td><span class="pill pill-orange">Medium</span></td>
-          <td><span class="pill pill-green">Critical</span></td>
-          <td>/slab-leak-repair/</td>
+          <td>leak detection service</td><td>1</td><td>201</td><td><span style="color:#e65100;font-weight:700">0.5%</span></td><td><span class="pill pill-green">3.6</span></td>
+          <td><span class="pill pill-orange">Fix title/meta urgently</span></td>
         </tr>
         <tr>
-          <td>emergency plumber snellville</td>
-          <td><span class="pill pill-red">Urgent</span></td>
-          <td><span class="pill pill-orange">Medium</span></td>
-          <td><span class="pill pill-green">Critical</span></td>
-          <td>/emergency-service/</td>
+          <td>comprehensive leak detection services</td><td>0</td><td>171</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td><span class="pill pill-orange">6.7</span></td>
+          <td><span class="pill pill-orange">Add phrase to homepage H1</span></td>
+        </tr>
+        <tr style="background:#fff8e1">
+          <td><strong>leak detection snellville</strong></td><td>1</td><td>169</td><td><span style="color:#e65100;font-weight:700">0.59%</span></td><td><span class="pill pill-orange">7.8</span></td>
+          <td><span class="pill pill-orange">Core local keyword — push to top 3</span></td>
         </tr>
         <tr>
-          <td>slab leak detection gwinnett county</td>
-          <td><span class="pill pill-blue">Transactional</span></td>
-          <td><span class="pill pill-orange">Medium</span></td>
-          <td><span class="pill pill-orange">High</span></td>
-          <td>/areas-served/gwinnett-county/</td>
+          <td>leak detection company near me</td><td>5</td><td>158</td><td><span style="color:#2e7d32;font-weight:700">3.16%</span></td><td><span class="pill pill-orange">8.2</span></td>
+          <td><span class="pill pill-blue">Good CTR — improve rank to top 5</span></td>
         </tr>
         <tr>
-          <td>water line repair snellville ga</td>
-          <td><span class="pill pill-blue">Transactional</span></td>
-          <td><span class="pill pill-teal">Low-Med</span></td>
-          <td><span class="pill pill-orange">High</span></td>
-          <td>/water-line-repair/</td>
+          <td>leak detection covington</td><td>2</td><td>153</td><td><span style="color:#e65100;font-weight:700">1.31%</span></td><td><span class="pill pill-red">14.5</span></td>
+          <td><span class="pill pill-orange">Optimize Covington city page</span></td>
         </tr>
         <tr>
-          <td>leak detection lawrenceville ga</td>
-          <td><span class="pill pill-blue">Transactional</span></td>
-          <td><span class="pill pill-teal">Low-Med</span></td>
-          <td><span class="pill pill-orange">High</span></td>
-          <td>/areas-served/lawrenceville-ga/</td>
+          <td>leak detection service pros <em>(brand)</em></td><td>3</td><td>135</td><td><span style="color:#2e7d32;font-weight:700">2.22%</span></td><td><span class="pill pill-green">3.0</span></td>
+          <td><span class="pill pill-teal">Brand — healthy</span></td>
         </tr>
         <tr>
-          <td>sewer line repair snellville</td>
-          <td><span class="pill pill-blue">Transactional</span></td>
-          <td><span class="pill pill-teal">Low-Med</span></td>
-          <td><span class="pill pill-orange">High</span></td>
-          <td>/sewer-line-leak-repair/</td>
+          <td>24 hour plumbers near winder ga</td><td>0</td><td>56</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td><span class="pill pill-red">39.8</span></td>
+          <td><span class="pill pill-red">Page 4 — improve Winder page</span></td>
         </tr>
         <tr>
-          <td>how to tell if you have a slab leak</td>
-          <td><span class="pill pill-purple">Informational</span></td>
-          <td><span class="pill pill-teal">Low</span></td>
-          <td><span class="pill pill-blue">Medium</span></td>
-          <td>/blog/slab-leak-signs/</td>
+          <td>burst pipe repair near me</td><td>0</td><td>39</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td><span class="pill pill-orange">10.8</span></td>
+          <td><span class="pill pill-orange">Create burst pipe service page</span></td>
         </tr>
         <tr>
-          <td>non-invasive leak detection atlanta</td>
-          <td><span class="pill pill-blue">Transactional</span></td>
-          <td><span class="pill pill-orange">Medium</span></td>
-          <td><span class="pill pill-blue">Medium</span></td>
-          <td>Homepage or /leak-detection/</td>
+          <td>leak detection pros</td><td>2</td><td>37</td><td><span style="color:#2e7d32;font-weight:700">5.41%</span></td><td><span class="pill pill-red">22.4</span></td>
+          <td><span class="pill pill-blue">Good CTR — push to page 1</span></td>
+        </tr>
+        <tr>
+          <td>leak detection athens</td><td>1</td><td>33</td><td><span style="color:#e65100;font-weight:700">3.03%</span></td><td><span class="pill pill-green">6.0</span></td>
+          <td><span class="pill pill-orange">Optimize Athens city page</span></td>
+        </tr>
+        <tr>
+          <td>leak detection service near me</td><td>1</td><td>33</td><td><span style="color:#e65100;font-weight:700">3.03%</span></td><td><span class="pill pill-red">15.2</span></td>
+          <td><span class="pill pill-orange">Improve rank to top 5</span></td>
+        </tr>
+        <tr style="background:#fff8e1">
+          <td><strong>buford leak detection</strong></td><td>0</td><td>30</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td><span class="pill pill-green">2.8</span></td>
+          <td><span class="pill pill-red">🚨 Pos #3 — 0 clicks, fix CTR</span></td>
+        </tr>
+        <tr>
+          <td>24 hour leak detection</td><td>0</td><td>29</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td><span class="pill pill-orange">9.4</span></td>
+          <td><span class="pill pill-orange">Add "24/7" to emergency page title</span></td>
+        </tr>
+        <tr>
+          <td>pool leak detection company near me</td><td>3</td><td>27</td><td><span style="color:#2e7d32;font-weight:700">11.11%</span></td><td><span class="pill pill-green">4.6</span></td>
+          <td><span class="pill pill-green">✅ Create pool leak detection page!</span></td>
+        </tr>
+        <tr>
+          <td>underground leak detection near me</td><td>1</td><td>26</td><td><span style="color:#e65100;font-weight:700">3.85%</span></td><td><span class="pill pill-green">5.8</span></td>
+          <td><span class="pill pill-blue">Near page 1 — strengthen page</span></td>
+        </tr>
+        <tr>
+          <td>ceiling water leak plumber</td><td>0</td><td>25</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td><span class="pill pill-orange">7.2</span></td>
+          <td><span class="pill pill-orange">Blog post topic</span></td>
+        </tr>
+        <tr style="background:#fff8e1">
+          <td><strong>24 hour plumbing snellville ga</strong></td><td>0</td><td>17</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td><span class="pill pill-green">1.0</span></td>
+          <td><span class="pill pill-red">🚨 Position #1 — 0 clicks!</span></td>
+        </tr>
+        <tr>
+          <td>commercial leak detection cumming</td><td>0</td><td>22</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td><span class="pill pill-red">20.8</span></td>
+          <td><span class="pill pill-orange">Cumming commercial page needed</span></td>
+        </tr>
+        <tr style="background:#fff8e1">
+          <td><strong>24/7 emergency plumbing services</strong></td><td>0</td><td>5</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td><span class="pill pill-green">1.0</span></td>
+          <td><span class="pill pill-red">🚨 Position #1 — 0 clicks!</span></td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="section-title" style="margin-top:20px"><span class="icon">📋</span> GSC Setup Recommendations</div>
+  <div class="section-title" style="margin-top:24px"><span class="icon">📄</span> Top Pages by Impressions — CTR Opportunity Analysis</div>
+  <div class="table-card">
+    <table>
+      <thead><tr><th>Page</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Avg Pos</th><th>Priority Action</th></tr></thead>
+      <tbody>
+        <tr style="background:#fff3e0">
+          <td><strong>/ (Homepage)</strong></td><td>56</td><td>19,194</td><td><span style="color:#e65100;font-weight:700">0.29%</span></td><td>8.6</td>
+          <td><span class="pill pill-red">Biggest opportunity — rewrite meta desc</span></td>
+        </tr>
+        <tr>
+          <td>/leak-detection-in-lawrenceville-ga/</td><td>1</td><td>873</td><td><span style="color:#c62828;font-weight:700">0.11%</span></td><td>23.3</td>
+          <td><span class="pill pill-red">High impr, page 2 — full content upgrade</span></td>
+        </tr>
+        <tr>
+          <td>/areas-served/athens-ga/</td><td>0</td><td>871</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td>40.5</td>
+          <td><span class="pill pill-red">Page 4 — major content rewrite needed</span></td>
+        </tr>
+        <tr>
+          <td>/leak-detection-in-winder-ga/</td><td>1</td><td>773</td><td><span style="color:#c62828;font-weight:700">0.13%</span></td><td>21.0</td>
+          <td><span class="pill pill-red">High impr — strengthen content</span></td>
+        </tr>
+        <tr>
+          <td>/areas-served/covington-ga/</td><td>1</td><td>710</td><td><span style="color:#c62828;font-weight:700">0.14%</span></td><td>34.2</td>
+          <td><span class="pill pill-red">Page 3-4 — needs deep content</span></td>
+        </tr>
+        <tr>
+          <td>/areas-served/covington-ga/emergency-service/</td><td>0</td><td>683</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td>34.8</td>
+          <td><span class="pill pill-red">683 impr, 0 clicks — rewrite title/meta</span></td>
+        </tr>
+        <tr>
+          <td>/areas-served/gainesville-ga/</td><td>0</td><td>653</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td>50.1</td>
+          <td><span class="pill pill-red">Page 5 — deep rewrite + unique content</span></td>
+        </tr>
+        <tr>
+          <td>/areas-served/conyers-ga/</td><td>0</td><td>589</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td>24.2</td>
+          <td><span class="pill pill-orange">Near page 2 — quick wins available</span></td>
+        </tr>
+        <tr>
+          <td>/water-line-repair/</td><td>1</td><td>407</td><td><span style="color:#c62828;font-weight:700">0.25%</span></td><td>40.7</td>
+          <td><span class="pill pill-orange">Broad keyword — better targeting needed</span></td>
+        </tr>
+        <tr>
+          <td>/commercial-leak-detection/</td><td>1</td><td>330</td><td><span style="color:#c62828;font-weight:700">0.30%</span></td><td>39.5</td>
+          <td><span class="pill pill-orange">Page 4 — dedicated commercial page critical</span></td>
+        </tr>
+        <tr>
+          <td>/areas-served/buford-ga/</td><td>0</td><td>289</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td>28.2</td>
+          <td><span class="pill pill-orange">Near page 3 — optimize for Buford terms</span></td>
+        </tr>
+        <tr>
+          <td>/areas-served/cumming-ga/</td><td>0</td><td>283</td><td><span style="color:#c62828;font-weight:700">0%</span></td><td>25.9</td>
+          <td><span class="pill pill-orange">Page 2-3 — improve targeting</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title" style="margin-top:24px"><span class="icon">💡</span> Device CTR Insight</div>
+  <div class="insight-grid">
+    <div class="insight-box success">
+      <h4>📱 Mobile CTR 3.5× Better</h4>
+      <p><strong>Mobile:</strong> 35 clicks / 6,670 impr = <strong>0.52% CTR</strong> at avg position 25.9<br>
+      <strong>Desktop:</strong> 39 clicks / 25,576 impr = <strong>0.15% CTR</strong> at avg position 19.4<br><br>
+      Despite ranking higher on desktop, mobile users click through at 3.5× the rate. Mobile searchers are in urgent need — "near me" searches, emergency calls. Optimize for mobile-first intent: show phone number, "Open 24/7", and "Free Estimate" in meta descriptions.</p>
+    </div>
+    <div class="insight-box danger">
+      <h4>🚨 Position 1 = 0 Clicks Problem</h4>
+      <p>Three queries rank <strong>position #1</strong> but get zero or near-zero clicks:<br>
+      • "water leak detection" → pos 1.1 · 820 impr · 0.12% CTR<br>
+      • "24 hour plumbing snellville ga" → pos 1 · 17 impr · 0% CTR<br>
+      • "24/7 emergency plumbing services" → pos 1 · 5 impr · 0% CTR<br><br>
+      This indicates Google AI Overviews or Local Pack impressions are counted as "position 1" but users get answers without clicking. Fix: Add urgency + phone number to title tags; use FAQ schema to appear within AI answers.</p>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:24px"><span class="icon">📝</span> Content Gap Analysis — Topics to Create (from GSC Data)</div>
+  <div class="table-card">
+    <h3>New Pages &amp; Content Needed — Backed by Real Search Demand</h3>
+    <table>
+      <thead><tr><th>Topic / Page</th><th>Evidence from GSC</th><th>Impressions</th><th>Type</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Pool Leak Detection Page</strong><br><small>/pool-leak-detection/</small></td>
+          <td>"pool leak detection company near me" — 11.1% CTR at pos 4.6! Already getting 3 clicks with no dedicated page</td>
+          <td>27+ (pool queries)</td>
+          <td><span class="pill pill-blue">New Service Page</span></td>
+          <td><span class="pill pill-red">🚨 Critical</span></td>
+        </tr>
+        <tr>
+          <td><strong>Commercial Leak Detection (Upgraded)</strong><br><small>/commercial-leak-detection/</small></td>
+          <td>"commercial leak detection" = 462 impr · 0 clicks; "commercial water leak detection services" = 26 impr; "commercial leak detection cumming" = 22 impr</td>
+          <td>510+</td>
+          <td><span class="pill pill-blue">Page Rewrite</span></td>
+          <td><span class="pill pill-red">🚨 Critical</span></td>
+        </tr>
+        <tr>
+          <td><strong>Burst Pipe Repair Page</strong><br><small>/burst-pipe-repair/</small></td>
+          <td>"burst pipe repair near me" = 39 impr at pos 10.8; "burst pipe repair athens ga" = 2 impr</td>
+          <td>41+</td>
+          <td><span class="pill pill-blue">New Service Page</span></td>
+          <td><span class="pill pill-orange">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>24-Hour Emergency Plumbing Page</strong><br><small>/24-hour-emergency-plumber/</small></td>
+          <td>"24 hour plumbing snellville ga" = pos 1 · 0 clicks; "24 hour leak detection" = 29 impr · 0 clicks; "24/7 emergency plumbing services" = pos 1 · 0 clicks</td>
+          <td>51+</td>
+          <td><span class="pill pill-blue">New Landing Page</span></td>
+          <td><span class="pill pill-orange">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>Ceiling Water Leak Blog Post</strong><br><small>/blog/ceiling-water-leak-what-to-do/</small></td>
+          <td>"ceiling water leak plumber" = 25 impr · 0 clicks · pos 7.2; "ceiling leak repair" = 6 impr</td>
+          <td>31+</td>
+          <td><span class="pill pill-purple">Blog Post</span></td>
+          <td><span class="pill pill-orange">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>Underground Leak Detection Page</strong><br><small>/underground-leak-detection/ or upgrade existing</small></td>
+          <td>"underground leak detection near me" = 26 impr · 3.85% CTR · pos 5.8 — strong CTR already</td>
+          <td>26+</td>
+          <td><span class="pill pill-blue">Page Upgrade</span></td>
+          <td><span class="pill pill-orange">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>Concrete Slab Leak Repair (Upgrade)</strong><br><small>/slab-leak-repair/ + blog</small></td>
+          <td>"concrete slab leak repair" = 12 impr · 0 clicks · pos 12.1; "concrete slab leak repair atlanta" = 4 impr</td>
+          <td>16+</td>
+          <td><span class="pill pill-blue">Page + Blog</span></td>
+          <td><span class="pill pill-blue">Medium</span></td>
+        </tr>
+        <tr>
+          <td><strong>Covington GA City Page (Full Rewrite)</strong><br><small>/areas-served/covington-ga/</small></td>
+          <td>Covington pages = 710 + 683 + 116 + 131 = 1,640 impressions total · near-zero clicks · positions 34-48</td>
+          <td>1,640</td>
+          <td><span class="pill pill-blue">City Page Rewrite</span></td>
+          <td><span class="pill pill-red">🚨 Critical</span></td>
+        </tr>
+        <tr>
+          <td><strong>Lawrenceville GA City Page (Full Rewrite)</strong><br><small>/leak-detection-in-lawrenceville-ga/</small></td>
+          <td>873 impressions · only 1 click · position 23.3 — page 2, very fixable</td>
+          <td>873</td>
+          <td><span class="pill pill-blue">City Page Upgrade</span></td>
+          <td><span class="pill pill-red">🚨 Critical</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title" style="margin-top:24px"><span class="icon">✏</span> Title Tag &amp; Meta Description Rewrites Needed</div>
   <div class="insight-grid">
     <div class="insight-box danger">
-      <h4>🚨 GSC Verification Required</h4>
-      <p>Verify ownership of leakdetectionsp.com in Google Search Console immediately. GSC provides impression data that GA4 cannot — including keywords driving impressions but not clicks (CTR optimization opportunities).</p>
+      <h4>🚨 Homepage — 19,194 Impressions, 0.29% CTR</h4>
+      <p><strong>Current title:</strong> "Local Plumber in Snellville, GA | Top Leak Detection Specialist"<br><br>
+      <strong>Problem:</strong> No urgency, no CTA, no phone, no differentiator for "near me" queries<br><br>
+      <strong>Rewrite:</strong> "Leak Detection &amp; Plumbing in Snellville, GA | Call (678) 325-3153 — Open 24/7"<br><br>
+      <strong>Meta desc:</strong> "Licensed leak detection specialists in Snellville &amp; Gwinnett County. Slab leak, water line, sewer &amp; emergency repairs. Non-invasive methods. Free estimate. Call now!"</p>
+    </div>
+    <div class="insight-box danger">
+      <h4>🚨 "Water Leak Detection" — Pos 1.1, 0.12% CTR</h4>
+      <p>Ranking #1 for 820 monthly impressions but getting 1 click. Likely appearing in Google AI Overview (no click needed). Reformat key content as Q&amp;A schema so LDSP appears <em>inside</em> the AI answer with a direct link rather than below it.</p>
     </div>
     <div class="insight-box warn">
-      <h4>⚠ Sitemap Submission</h4>
-      <p>A sitemap page exists at /sitemap/ (HTML). Submit an XML sitemap (typically /sitemap.xml or /sitemap_index.xml) directly in GSC to ensure all pages are indexed efficiently.</p>
+      <h4>⚠ Covington Emergency Page — 683 Impr, 0 Clicks</h4>
+      <p><strong>Current:</strong> Generic city + service page template<br><br>
+      <strong>Fix:</strong> Rewrite title to "Emergency Plumber in Covington, GA | Same-Day Service — (678) 325-3153". Add unique content: local neighborhood names, response time promise, real job story from Covington.</p>
     </div>
-    <div class="insight-box">
-      <h4>🔍 Core Web Vitals Monitoring</h4>
-      <p>GSC's Core Web Vitals report will identify LCP, INP (formerly FID), and CLS issues by page. Real Time Marketing + Unify360 platform sites may have JavaScript rendering delays — monitor page experience scores monthly.</p>
+    <div class="insight-box warn">
+      <h4>⚠ Buford Page — Pos 2.8, 30 Impr, 0 Clicks</h4>
+      <p>Position 2.8 means this page is nearly top-3 but getting zero clicks. The title/meta is not compelling searchers to click over the competitor above it. Add power words: "Fast", "Same-Day", "Licensed", phone number in meta description.</p>
     </div>
   </div>
 </div>
@@ -1133,110 +1324,264 @@
 <div id="tab-action" class="tab-pane">
   <div class="section-title"><span class="icon">🎯</span> Priority Action Plan — Next 90 Days</div>
 
-  <div class="alert alert-success">
-    <span class="alert-icon">✅</span>
-    <span><strong>Quick Wins Available:</strong> Several high-impact items can be completed within 1–2 weeks that will immediately improve GBP rankings, fix data integrity, and eliminate technical errors dragging down organic performance.</span>
+  <div class="alert alert-info">
+    <span class="alert-icon">📊</span>
+    <span><strong>Data-Backed Priorities:</strong> All actions below are driven by real GSC data (16,392 impressions · 29 clicks · 0.18% CTR) and GA4 analytics. The single biggest lever is fixing CTR — the site is being shown to thousands of searchers but barely getting clicked.</span>
   </div>
 
+  <!-- SECTION: CTR FIXES -->
+  <div class="section-title" style="margin-top:20px"><span class="icon">⚡</span> IMMEDIATE: Fix CTR — You're Ranking But Not Getting Clicked</div>
+  <div class="data-note">Source: GSC live data. These pages have high impressions but critically low CTR. Fixing title tags and meta descriptions is a same-week task that can 5–10× clicks without any rank improvement.</div>
   <div class="action-grid">
     <div class="action-card critical">
       <div class="action-priority">🚨 Critical — This Week</div>
-      <h4>Fix 404 Errors &amp; Broken Links</h4>
-      <p>27+ sessions hitting /not_found. Audit all internal links site-wide; identify broken URLs; implement 301 redirects. Crawl the site with Screaming Frog or Sitebulb to get a complete list.</p>
+      <h4>Rewrite Homepage Title &amp; Meta Description</h4>
+      <p><strong>19,194 impressions · 56 clicks · 0.29% CTR at position 8.6</strong> — This is the biggest single opportunity in the entire site. Every 1% CTR improvement = ~190 more clicks per month.</p>
+      <ul style="margin:8px 0 0 16px;font-size:0.82rem;color:#2c3e50">
+        <li>New title: <em>"Leak Detection &amp; Plumber Snellville GA | Open 24/7 | (678) 325-3153"</em></li>
+        <li>New meta desc: <em>"Licensed leak detection specialists serving Snellville &amp; Gwinnett County. Slab leaks, water line, sewer &amp; emergency repairs. Non-invasive. Free estimate — call now!"</em></li>
+        <li>Add urgency words: "Same-Day", "Licensed", "Free Estimate", "Open 24/7"</li>
+      </ul>
+      <div class="action-meta"><span>On-Page SEO</span><span>Est: 30 min</span><span>Impact: Very High</span></div>
+    </div>
+
+    <div class="action-card critical">
+      <div class="action-priority">🚨 Critical — This Week</div>
+      <h4>Fix "Position #1 — Zero Clicks" Pages</h4>
+      <p>Three pages rank <strong>position #1</strong> in Google but get 0 clicks. This is caused by AI Overviews showing answers without requiring a click.</p>
+      <ul style="margin:8px 0 0 16px;font-size:0.82rem;color:#2c3e50">
+        <li>"water leak detection" → pos 1.1 · 820 impr · 0.12% CTR</li>
+        <li>"24 hour plumbing snellville ga" → pos 1 · 17 impr · 0 clicks</li>
+        <li>"24/7 emergency plumbing services" → pos 1 · 5 impr · 0 clicks</li>
+        <li><strong>Fix:</strong> Add FAQPage JSON-LD schema to these pages so LDSP appears <em>inside</em> the AI Overview as a cited source with a clickable link</li>
+        <li><strong>Fix:</strong> Add phone number directly in the meta description — local searchers click when they see a number</li>
+      </ul>
+      <div class="action-meta"><span>Schema / On-Page</span><span>Est: 2-3 hours</span><span>Impact: Very High</span></div>
+    </div>
+
+    <div class="action-card critical">
+      <div class="action-priority">🚨 Critical — This Week</div>
+      <h4>Rewrite Covington Page Cluster (1,640 Impressions Wasted)</h4>
+      <p>Covington pages collectively generate <strong>1,640 impressions</strong> with near-zero clicks:</p>
+      <ul style="margin:8px 0 0 16px;font-size:0.82rem;color:#2c3e50">
+        <li>/areas-served/covington-ga/ → 710 impr · pos 34.2 · 0.14% CTR</li>
+        <li>/areas-served/covington-ga/emergency-service/ → 683 impr · pos 34.8 · 0 clicks</li>
+        <li>/areas-served/covington-ga/slab-leak-repair/ → 116 impr · pos 48.5</li>
+        <li>/areas-served/covington-ga/sewer-line-leak-detection/ → 131 impr · pos 32.7</li>
+        <li><strong>Fix:</strong> Full content rewrite — unique local details (Newton County references, local landmarks, specific service scenarios), new title tags with "Covington GA" + service, stronger internal links from homepage</li>
+      </ul>
+      <div class="action-meta"><span>Content / On-Page</span><span>Est: 4-6 hours</span><span>Impact: Very High</span></div>
+    </div>
+
+    <div class="action-card critical">
+      <div class="action-priority">🚨 Critical — This Week</div>
+      <h4>Rewrite Lawrenceville City Page (873 Impressions, 1 Click)</h4>
+      <p><strong>/leak-detection-in-lawrenceville-ga/</strong> has 873 impressions at position 23 — it's on the edge of page 2. Push it to page 1 and CTR jumps from 0.11% to 3–5%.</p>
+      <ul style="margin:8px 0 0 16px;font-size:0.82rem;color:#2c3e50">
+        <li>New title: <em>"Leak Detection in Lawrenceville, GA | Licensed &amp; Same-Day | (678) 325-3153"</em></li>
+        <li>Add unique content: Lawrenceville neighborhoods (Sugarloaf, Hamilton Mill), local plumbing challenges, real job story</li>
+        <li>Add FAQ schema: "How fast can you respond to Lawrenceville?" "Do you serve all of Gwinnett County?"</li>
+        <li>Build 3–5 internal links from high-authority pages to this URL</li>
+      </ul>
+      <div class="action-meta"><span>Content / On-Page</span><span>Est: 3-4 hours</span><span>Impact: High</span></div>
+    </div>
+  </div>
+
+  <!-- SECTION: NEW CONTENT TO CREATE -->
+  <div class="section-title" style="margin-top:28px"><span class="icon">📝</span> CONTENT TO CREATE — GSC-Proven Demand</div>
+  <div class="data-note">These topics have real search impressions already — Google is surfacing LDSP for these queries. Creating dedicated, optimized pages will capture the clicks that are currently going to competitors.</div>
+
+  <div class="table-card">
+    <h3>New Content Roadmap — Prioritized by GSC Impression Data</h3>
+    <table>
+      <thead><tr><th>#</th><th>Content to Create</th><th>GSC Signal</th><th>Action</th><th>Est. Traffic Gain</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="rank-num">1</span></td>
+          <td>
+            <strong>Pool Leak Detection Service Page</strong><br>
+            <small>/pool-leak-detection/</small>
+          </td>
+          <td>"pool leak detection company near me" → <strong>11.1% CTR</strong> at pos 4.6 with NO dedicated page<br>"best pool leak detection company near me" → pos 1, 33% CTR</td>
+          <td>Create a full service page targeting pool leak detection in Snellville/Gwinnett. Include: pool types, non-invasive detection methods, repair process, before/after. Add FAQ schema.</td>
+          <td><span class="pill pill-green">High — immediate</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">2</span></td>
+          <td>
+            <strong>Commercial Leak Detection (Full Rewrite)</strong><br>
+            <small>/commercial-leak-detection/</small>
+          </td>
+          <td>462 impr at pos 9.7 (bottom of page 1) · 0 clicks · Also: "commercial water leak detection services" 26 impr, "commercial leak detection near me" 4 impr</td>
+          <td>Current page at pos 39.5 is buried. Dedicate new page to commercial clients: restaurants, offices, apartment complexes, retail. Add testimonial from commercial client. Target "commercial leak detection Snellville/Gwinnett".</td>
+          <td><span class="pill pill-green">High — 462+ impr waiting</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">3</span></td>
+          <td>
+            <strong>24-Hour Emergency Plumber Landing Page</strong><br>
+            <small>/24-hour-emergency-plumber-snellville/</small>
+          </td>
+          <td>"24 hour plumbing snellville ga" → pos 1, 17 impr, 0 clicks<br>"24 hour leak detection" → 29 impr, pos 9.4<br>"24 hour emergency plumbing covington" → 12 impr</td>
+          <td>Create a high-urgency landing page specifically for emergency calls. Large phone CTA above the fold. "We answer 24/7" in H1. Response time guarantee. Serves as a PPC-ready page too.</td>
+          <td><span class="pill pill-orange">Medium — high conversion value</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">4</span></td>
+          <td>
+            <strong>Burst Pipe Repair Page</strong><br>
+            <small>/burst-pipe-repair/</small>
+          </td>
+          <td>"burst pipe repair near me" → 39 impr · pos 10.8 · 0 clicks<br>"burst pipe repair athens ga" → 2 impr</td>
+          <td>Create dedicated burst pipe repair service page. Include emergency response, common causes (freezing temps, age, pressure), repair methods, cost transparency. Interlink with /emergency-service/ and /water-line-repair/.</td>
+          <td><span class="pill pill-orange">Medium</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">5</span></td>
+          <td>
+            <strong>Blog: "Ceiling Water Leak — What to Do"</strong><br>
+            <small>/blog/ceiling-water-leak-what-to-do/</small>
+          </td>
+          <td>"ceiling water leak plumber" → 25 impr · pos 7.2 · 0 clicks<br>"ceiling leak repair" → 6 impr</td>
+          <td>Informational blog post targeting homeowners mid-crisis. H1: "Water Leaking Through Your Ceiling? Here's What to Do Right Now." Include: safety steps, causes (upstairs bathroom, roof), when to call a plumber, CTA at the bottom. Authored by Ian Price or Russell.</td>
+          <td><span class="pill pill-blue">Medium — EEAT signal</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">6</span></td>
+          <td>
+            <strong>Underground Leak Detection Page</strong><br>
+            <small>/underground-leak-detection/</small>
+          </td>
+          <td>"underground leak detection near me" → 26 impr · <strong>3.85% CTR</strong> · pos 5.8 — already converting, no dedicated page</td>
+          <td>Create dedicated page for underground/buried line leak detection: acoustic equipment, thermal imaging, non-invasive approach. Targets homeowners with yard leaks and water companies.</td>
+          <td><span class="pill pill-orange">Medium</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">7</span></td>
+          <td>
+            <strong>Blog: "Signs You Have a Slab Leak"</strong><br>
+            <small>/blog/signs-of-a-slab-leak/</small>
+          </td>
+          <td>"concrete slab leak repair" → 12 impr · pos 12.1<br>"concrete slab leak" → 2 impr · pos 2<br>Slab content overall strong performer</td>
+          <td>Top-of-funnel content for homeowners who suspect but aren't sure. "10 Warning Signs Your Home Has a Slab Leak." Authored by Ian Price (named in 5-star reviews for slab expertise). CTA to /slab-leak-repair/ at bottom.</td>
+          <td><span class="pill pill-blue">Medium — EEAT + long-term</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">8</span></td>
+          <td>
+            <strong>Athens GA City Page (Full Rewrite)</strong><br>
+            <small>/areas-served/athens-ga/</small>
+          </td>
+          <td>871 impressions · pos 40.5 · 0 clicks — page 4, need major improvement<br>Athens emergency service page already getting 46 GA4 views</td>
+          <td>Full content rewrite with: Athens-specific neighborhoods (Five Points, Normaltown, Watkinsville nearby), Clarke County references, service stories from Athens jobs, 5-star reviews from Athens customers.</td>
+          <td><span class="pill pill-orange">High — 871 impr at page 4</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">9</span></td>
+          <td>
+            <strong>Winder GA City Page (Upgrade)</strong><br>
+            <small>/leak-detection-in-winder-ga/ &amp; /areas-served/leak-detection-in-winder-ga/</small>
+          </td>
+          <td>Combined 773 + 78 = 851 impressions · pos 21–34 · only 3 clicks total</td>
+          <td>Two pages targeting Winder — consolidate or differentiate. Upgrade primary page with local content: Barrow County references, specific Winder neighborhoods, 24-hour availability emphasis. Internally link from homepage and areas served hub.</td>
+          <td><span class="pill pill-orange">High — 851 impr, near page 2</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">10</span></td>
+          <td>
+            <strong>Blog: "How Much Does Leak Detection Cost in Georgia?"</strong><br>
+            <small>/blog/leak-detection-cost-georgia/</small>
+          </td>
+          <td>Pricing queries not yet appearing in GSC — proactive content to capture high-intent comparison shoppers before they find competitors</td>
+          <td>Transparent pricing guide: average cost ranges, what affects price, why non-invasive detection saves money vs. jackhammering, comparison to DIY. Positions LDSP as transparent and trustworthy — strong EEAT signal.</td>
+          <td><span class="pill pill-blue">Medium — future demand</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION: TECHNICAL + OTHER -->
+  <div class="section-title" style="margin-top:28px"><span class="icon">🔧</span> TECHNICAL &amp; LOCAL SEO — Foundational Fixes</div>
+  <div class="action-grid">
+    <div class="action-card critical">
+      <div class="action-priority">🚨 Critical — This Week</div>
+      <h4>Fix 404 Errors (27+ Sessions)</h4>
+      <p>GA4 shows 27+ sessions hitting /not_found. Crawl with Screaming Frog, audit all internal links, implement 301 redirects. Broken links waste crawl budget and frustrate users mid-research.</p>
       <div class="action-meta"><span>Technical SEO</span><span>Est: 4-6 hours</span><span>Impact: High</span></div>
     </div>
 
     <div class="action-card critical">
       <div class="action-priority">🚨 Critical — This Week</div>
-      <h4>Fix Phone Number NAP Inconsistency</h4>
-      <p>Facebook page shows (678) 238-5414; website shows (678) 325-3153. NAP inconsistency is a known local ranking factor. Standardize across ALL platforms: GBP, Yelp, Facebook, Angi, Yelp CRM, website.</p>
+      <h4>Fix NAP — 2 Different Phone Numbers</h4>
+      <p>Site shows (678) 325-3153 · Facebook shows (678) 238-5414. Standardize on one number across GBP, Yelp, Facebook, Angi, website header/footer.</p>
       <div class="action-meta"><span>Local SEO</span><span>Est: 2 hours</span><span>Impact: Critical</span></div>
     </div>
 
-    <div class="action-card critical">
-      <div class="action-priority">🚨 Critical — This Week</div>
-      <h4>Set Up GA4 Internal Traffic Filter</h4>
-      <p>Agency/internal traffic is inflating all metrics. In GA4: Admin → Property → Data Filters → Create "Internal Traffic" filter with your office IP range. This will make all future reporting accurate.</p>
+    <div class="action-card high">
+      <div class="action-priority">🔴 High — Week 1-2</div>
+      <h4>GA4 Internal Traffic Filter</h4>
+      <p>67% direct traffic is inflating all metrics with agency/internal visits. GA4 Admin → Data Filters → Internal Traffic → add office IP. Makes all future data meaningful.</p>
       <div class="action-meta"><span>Analytics</span><span>Est: 30 min</span><span>Impact: Data Quality</span></div>
     </div>
 
     <div class="action-card high">
       <div class="action-priority">🔴 High — Week 1-2</div>
-      <h4>Launch Review Generation Campaign</h4>
-      <p>After every completed job, send an SMS/email with a direct Google review link. Target: 2 reviews/week minimum. With 5-star service quality evident from existing reviews, this is achievable quickly. 25 reviews unlocks significantly better map pack visibility.</p>
-      <div class="action-meta"><span>GBP / Reviews</span><span>Ongoing</span><span>Impact: Very High</span></div>
+      <h4>Launch Review Generation System</h4>
+      <p>After every job → SMS with direct Google review link. Target 2/week = 25 reviews in 3 months. Review count is the #1 GBP ranking factor. 5-star service quality is already proven from existing reviews.</p>
+      <div class="action-meta"><span>GBP</span><span>Ongoing</span><span>Impact: Very High</span></div>
     </div>
 
     <div class="action-card high">
       <div class="action-priority">🔴 High — Week 1-2</div>
-      <h4>Optimize GBP Profile Completeness</h4>
-      <p>Add 20+ photos; add all services with descriptions; seed 10 Q&amp;As; respond to all existing reviews with personalized messages; link appointment URL; verify service areas list all 20+ cities.</p>
+      <h4>GBP Profile Completeness Sprint</h4>
+      <p>Upload 20+ job photos; add all 12 services with keyword-rich descriptions; seed 10 Q&amp;As; respond to every review; add appointment booking link; verify all 20+ cities in service area.</p>
       <div class="action-meta"><span>GBP</span><span>Est: 3-4 hours</span><span>Impact: High</span></div>
     </div>
 
     <div class="action-card high">
-      <div class="action-priority">🔴 High — Week 1-2</div>
-      <h4>Verify &amp; Submit GSC + XML Sitemap</h4>
-      <p>Claim Google Search Console property. Submit XML sitemap. Set up Search Performance monitoring. Add property to GA4 data streams for integrated reporting. This is foundational for all SEO tracking.</p>
-      <div class="action-meta"><span>Technical SEO</span><span>Est: 1 hour</span><span>Impact: High</span></div>
-    </div>
-
-    <div class="action-card high">
-      <div class="action-priority">🔴 High — Week 2-4</div>
+      <div class="action-priority">🔴 High — Week 2</div>
       <h4>Noindex Beaver Builder System Pages</h4>
-      <p>Add meta robots noindex to /fl-theme-layout/header/ and any other Beaver Builder template pages. Block via robots.txt as a secondary measure. Wasted crawl budget on system pages slows indexing of real content.</p>
+      <p>/fl-theme-layout/header/ is being indexed (26 pageviews). Add meta noindex + robots.txt rule. Wasted crawl budget delays indexing of real service pages.</p>
       <div class="action-meta"><span>Technical SEO</span><span>Est: 1 hour</span><span>Impact: Medium</span></div>
     </div>
 
     <div class="action-card medium">
       <div class="action-priority">🔵 Medium — Month 1-2</div>
-      <h4>Add Schema Markup to Key Pages</h4>
-      <p>Implement FAQPage schema on slab leak, emergency service, and leak detection pages. Add AggregateRating schema. Add HowTo schema on blog posts. Schema markup can unlock rich results that increase CTR by 20-30%.</p>
+      <h4>Schema Markup Rollout</h4>
+      <p>Add FAQPage schema to: slab leak, emergency service, leak detection pages. Add HowTo schema on blog posts. AggregateRating once reviews come in. Schema markup is the primary fix for the "pos 1 → 0 clicks" AI Overview problem.</p>
       <div class="action-meta"><span>On-Page SEO</span><span>Est: 6-8 hours</span><span>Impact: High</span></div>
     </div>
 
     <div class="action-card medium">
       <div class="action-priority">🔵 Medium — Month 1-2</div>
-      <h4>Local Citation Building Campaign</h4>
-      <p>Submit consistent NAP to: BBB, Thumbtack, Yellow Pages, Nextdoor Business, Gwinnett Chamber, Snellville Chamber. Each citation is a local trust signal. Use BrightLocal or Moz Local for batch submission and ongoing monitoring.</p>
+      <h4>Local Citation Building (50 Citations)</h4>
+      <p>Submit to: BBB, Thumbtack, Yellow Pages, Nextdoor, Gwinnett Chamber, Snellville Chamber. Use BrightLocal for monitoring. Each citation strengthens local pack rankings.</p>
       <div class="action-meta"><span>Local SEO</span><span>Est: 4-6 hours</span><span>Impact: High</span></div>
     </div>
 
     <div class="action-card medium">
       <div class="action-priority">🔵 Medium — Month 2</div>
-      <h4>Optimize /plumbing/ Page for Full Conversions</h4>
-      <p>The new plumbing page is a strategic asset. Optimize H1 to include "Snellville GA plumber", add FAQ section with schema, add LocalBusiness schema, embed Google reviews widget, add before/after job photos, and create supporting blog content.</p>
-      <div class="action-meta"><span>On-Page SEO</span><span>Est: 3-4 hours</span><span>Impact: High</span></div>
-    </div>
-
-    <div class="action-card medium">
-      <div class="action-priority">🔵 Medium — Month 2</div>
-      <h4>Press Release — Business Launch &amp; Community</h4>
-      <p>Distribute press release via PRWeb/EIN Presswire announcing LDSP as Gwinnett County's specialist leak detection and plumbing company. Follow up with local Gwinnett Daily Post pitch. Target: 3+ editorial backlinks from DA 40+ sources.</p>
+      <h4>Press Release — Launch + Community</h4>
+      <p>Distribute via PRWeb/EIN Presswire. Pitch Gwinnett Daily Post. Sponsor a local Snellville event for HOA newsletter coverage. Target: 3+ editorial backlinks from DA 40+ sources.</p>
       <div class="action-meta"><span>PR / Backlinks</span><span>Est: 4 hours</span><span>Impact: Medium-High</span></div>
-    </div>
-
-    <div class="action-card low">
-      <div class="action-priority">🟢 Low — Month 3</div>
-      <h4>Blog Content Calendar (4 Posts/Month)</h4>
-      <p>Create technician-authored blog posts: "How to Tell if You Have a Slab Leak", "What a Sewer Inspection Shows", "Snellville Home Leak Prevention Guide". Staff-written content satisfies EEAT; informational content captures top-of-funnel searchers.</p>
-      <div class="action-meta"><span>Content / EEAT</span><span>Ongoing</span><span>Impact: Long-term</span></div>
     </div>
   </div>
 
-  <div class="section-title" style="margin-top:28px"><span class="icon">📅</span> 90-Day Milestone Targets</div>
+  <div class="section-title" style="margin-top:28px"><span class="icon">📅</span> 90-Day Milestone Targets — GSC Benchmarks</div>
   <div class="table-card">
     <table>
-      <thead><tr><th>Metric</th><th>Current</th><th>30-Day Target</th><th>60-Day Target</th><th>90-Day Target</th></tr></thead>
+      <thead><tr><th>Metric</th><th>Current (Apr 2026)</th><th>30-Day Target</th><th>60-Day Target</th><th>90-Day Target</th></tr></thead>
       <tbody>
-        <tr><td>Google Reviews</td><td>Unknown (est. &lt;10)</td><td>15+</td><td>25+</td><td>40+</td></tr>
-        <tr><td>Organic Sessions/Month</td><td>29–42</td><td>50+</td><td>80+</td><td>120+</td></tr>
-        <tr><td>GBP Profile Completeness</td><td>~60%</td><td>90%</td><td>95%</td><td>100%</td></tr>
-        <tr><td>Citation Count</td><td>~5 known</td><td>20+</td><td>35+</td><td>50+</td></tr>
+        <tr><td>Monthly GSC Clicks</td><td><strong>13</strong></td><td>40+</td><td>80+</td><td>150+</td></tr>
+        <tr><td>Monthly GSC Impressions</td><td><strong>6,994</strong></td><td>9,000+</td><td>12,000+</td><td>18,000+</td></tr>
+        <tr><td>Avg CTR (GSC)</td><td><strong>0.19%</strong></td><td>0.5%+</td><td>1.0%+</td><td>1.5%+</td></tr>
+        <tr><td>Avg Position (GSC)</td><td><strong>19.1</strong></td><td>17.0</td><td>14.0</td><td>11.0</td></tr>
+        <tr><td>Google Reviews</td><td>Est. &lt;10</td><td>15+</td><td>25+</td><td>40+</td></tr>
+        <tr><td>New Pages / Content Published</td><td>0</td><td>3 (pool, commercial, emergency)</td><td>6 (+burst pipe, underground, blog)</td><td>10+</td></tr>
+        <tr><td>City Pages Rewritten</td><td>0</td><td>2 (Covington, Lawrenceville)</td><td>4 (+Athens, Winder)</td><td>8+</td></tr>
         <tr><td>404 Errors</td><td>27+</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>Blog Posts Published</td><td>Unknown</td><td>4</td><td>8</td><td>12</td></tr>
-        <tr><td>Map Pack Appearances</td><td>Some leak detection</td><td>+2 queries</td><td>+5 queries</td><td>Top 3 for 10 core queries</td></tr>
-        <tr><td>Backlinks (new)</td><td>Minimal</td><td>5+</td><td>15+</td><td>30+</td></tr>
+        <tr><td>Schema Pages Live</td><td>0 confirmed</td><td>5+</td><td>12+</td><td>All core pages</td></tr>
+        <tr><td>Citation Count</td><td>~5 known</td><td>20+</td><td>35+</td><td>50+</td></tr>
       </tbody>
     </table>
   </div>
@@ -1245,7 +1590,7 @@
 <!-- FOOTER -->
 <div class="report-footer">
   <strong>Leak Detection Service Pros</strong> · SEO &amp; GBP Performance Report · leakdetectionsp.com · Jan–Apr 2026
-  &nbsp;|&nbsp; Prepared by Real Time Marketing / Unify360 &nbsp;|&nbsp; Data Sources: Google Analytics 4 (Property 525013255), Site Crawl, Google SERP Research
+  &nbsp;|&nbsp; Prepared by Real Time Marketing / Unify360 &nbsp;|&nbsp; Data Sources: Google Analytics 4 (Property 525013255), Google Search Console (Live API), Site Crawl, Google SERP Research
 </div>
 
 <script>
@@ -1269,6 +1614,47 @@ const palette = {
   blue: '#3b82f6',
   gray: '#94a3b8',
 };
+
+// GSC monthly trend
+new Chart(document.getElementById('gscTrendChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+    datasets: [
+      { label: 'Impressions', data: [0, 3004, 6394, 6994], backgroundColor: 'rgba(10,127,165,0.2)', borderColor: palette.brand, borderWidth: 2, type: 'line', yAxisID: 'y1', tension: 0.4, pointRadius: 5 },
+      { label: 'Clicks', data: [0, 7, 9, 13], backgroundColor: palette.accent, yAxisID: 'y', borderRadius: 4 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } },
+    scales: {
+      y: { beginAtZero: true, position: 'left', title: { display: true, text: 'Clicks', font: { size: 10 } }, grid: { color: '#f0f0f0' } },
+      y1: { beginAtZero: true, position: 'right', title: { display: true, text: 'Impressions', font: { size: 10 } }, grid: { display: false } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// Device CTR
+new Chart(document.getElementById('deviceCtrChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Desktop', 'Mobile', 'Tablet'],
+    datasets: [
+      { label: 'CTR %', data: [0.15, 0.52, 0], backgroundColor: [palette.brand, palette.accent, palette.gray], borderRadius: 6 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false },
+      tooltip: { callbacks: { label: ctx => `CTR: ${ctx.parsed.y}%` } } },
+    scales: {
+      y: { beginAtZero: true, ticks: { callback: v => v + '%' }, grid: { color: '#f0f0f0' } },
+      x: { grid: { display: false } }
+    }
+  }
+});
 
 // Monthly sessions by channel
 new Chart(document.getElementById('channelMonthlyChart'), {
