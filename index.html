@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leak Detection Service Pros — SEO & GBP Performance Report</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --brand: #0a7fa5;
+    --brand-dark: #075e7a;
+    --brand-light: #e0f4fa;
+    --accent: #00c2a8;
+    --warn: #f5a623;
+    --danger: #e74c3c;
+    --success: #27ae60;
+    --dark: #1a2332;
+    --mid: #2d3f55;
+    --text: #2c3e50;
+    --muted: #6b7c93;
+    --border: #dde3ec;
+    --bg: #f5f7fb;
+    --card: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; }
+
+  /* HEADER */
+  .report-header {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--mid) 100%);
+    color: #fff;
+    padding: 28px 32px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 3px solid var(--brand);
+  }
+  .report-header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.3px; }
+  .report-header .subtitle { font-size: 0.85rem; color: #a8c0d6; margin-top: 4px; }
+  .report-header .meta { text-align: right; font-size: 0.8rem; color: #a8c0d6; line-height: 1.6; }
+  .report-header .meta strong { color: #fff; }
+
+  /* TAB NAV */
+  .tab-nav {
+    background: var(--dark);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 24px;
+    border-bottom: 2px solid var(--brand);
+  }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    background: none;
+    border: none;
+    color: #8da4bf;
+    padding: 14px 18px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .tab-btn:hover { color: #fff; }
+  .tab-btn.active { color: #fff; border-bottom-color: var(--accent); }
+
+  /* CONTENT */
+  .tab-pane { display: none; padding: 28px 32px; }
+  .tab-pane.active { display: block; }
+
+  /* SECTION HEADERS */
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--brand-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .icon { color: var(--brand); }
+
+  /* KPI CARDS */
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 28px; }
+  .kpi-card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 18px 16px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--brand);
+  }
+  .kpi-card.accent::before { background: var(--accent); }
+  .kpi-card.warn::before { background: var(--warn); }
+  .kpi-card.success::before { background: var(--success); }
+  .kpi-card.danger::before { background: var(--danger); }
+  .kpi-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 6px; }
+  .kpi-value { font-size: 1.9rem; font-weight: 800; color: var(--dark); line-height: 1; }
+  .kpi-sub { font-size: 0.75rem; color: var(--muted); margin-top: 5px; }
+  .kpi-badge { display: inline-flex; align-items: center; gap: 3px; font-size: 0.72rem; font-weight: 700; padding: 2px 7px; border-radius: 20px; margin-top: 6px; }
+  .badge-up { background: #e8f5e9; color: #2e7d32; }
+  .badge-down { background: #ffebee; color: #c62828; }
+  .badge-neutral { background: #e3f2fd; color: #1565c0; }
+  .badge-warn { background: #fff8e1; color: #e65100; }
+
+  /* CHARTS */
+  .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 28px; }
+  .chart-card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .chart-card h3 { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); margin-bottom: 14px; }
+  .chart-wrap { position: relative; height: 220px; }
+  .chart-wrap-tall { position: relative; height: 280px; }
+
+  /* TABLES */
+  .table-card {
+    background: var(--card);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .table-card h3 { font-size: 0.85rem; font-weight: 700; padding: 14px 18px; background: var(--bg); border-bottom: 1px solid var(--border); color: var(--dark); }
+  table { width: 100%; border-collapse: collapse; }
+  th { background: var(--dark); color: #fff; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; padding: 10px 14px; text-align: left; font-weight: 600; }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 0.84rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8f9fb; }
+  tr:hover td { background: var(--brand-light); }
+  .rank-num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--brand); color: #fff; font-size: 0.7rem; font-weight: 700; }
+  .pill { display: inline-block; padding: 3px 9px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; }
+  .pill-green { background: #e8f5e9; color: #2e7d32; }
+  .pill-blue { background: #e3f2fd; color: #1565c0; }
+  .pill-orange { background: #fff3e0; color: #e65100; }
+  .pill-red { background: #ffebee; color: #c62828; }
+  .pill-gray { background: #f5f5f5; color: #555; }
+  .pill-teal { background: #e0f2f1; color: #00695c; }
+  .pill-purple { background: #f3e5f5; color: #6a1b9a; }
+
+  /* INSIGHT BOXES */
+  .insight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .insight-box {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--brand);
+  }
+  .insight-box.warn { border-left-color: var(--warn); }
+  .insight-box.danger { border-left-color: var(--danger); }
+  .insight-box.success { border-left-color: var(--success); }
+  .insight-box h4 { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 8px; }
+  .insight-box p { font-size: 0.84rem; color: var(--text); line-height: 1.6; }
+  .insight-box ul { margin: 8px 0 0 14px; }
+  .insight-box ul li { font-size: 0.83rem; color: var(--text); margin-bottom: 4px; line-height: 1.5; }
+
+  /* ALERT BANNERS */
+  .alert { padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 0.84rem; display: flex; align-items: flex-start; gap: 10px; }
+  .alert-info { background: #e3f2fd; border: 1px solid #90caf9; color: #1565c0; }
+  .alert-warn { background: #fff8e1; border: 1px solid #ffcc02; color: #e65100; }
+  .alert-danger { background: #ffebee; border: 1px solid #ef9a9a; color: #b71c1c; }
+  .alert-success { background: #e8f5e9; border: 1px solid #a5d6a7; color: #1b5e20; }
+  .alert-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+  /* PRIORITY ACTION ITEMS */
+  .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .action-card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--brand);
+  }
+  .action-card.critical { border-top-color: var(--danger); }
+  .action-card.high { border-top-color: var(--warn); }
+  .action-card.medium { border-top-color: var(--brand); }
+  .action-card.low { border-top-color: var(--success); }
+  .action-priority { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .action-card.critical .action-priority { color: var(--danger); }
+  .action-card.high .action-priority { color: var(--warn); }
+  .action-card.medium .action-priority { color: var(--brand); }
+  .action-card.low .action-priority { color: var(--success); }
+  .action-card h4 { font-size: 0.92rem; font-weight: 700; margin-bottom: 8px; color: var(--dark); }
+  .action-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+  .action-meta { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+  .action-meta span { font-size: 0.72rem; padding: 3px 8px; border-radius: 4px; background: var(--bg); color: var(--muted); border: 1px solid var(--border); }
+
+  /* COMPETITOR TABLE */
+  .comp-rank { font-size: 1.1rem; font-weight: 800; color: var(--muted); }
+  .comp-rank.top { color: var(--warn); }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.84rem; }
+  .checklist li:last-child { border-bottom: none; }
+  .check-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; flex-shrink: 0; margin-top: 1px; font-weight: 700; }
+  .check-pass { background: #e8f5e9; color: #2e7d32; }
+  .check-fail { background: #ffebee; color: #c62828; }
+  .check-warn { background: #fff8e1; color: #e65100; }
+  .check-info { background: #e3f2fd; color: #1565c0; }
+
+  /* SCORE CIRCLE */
+  .score-circle { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; width: 90px; height: 90px; border-radius: 50%; border: 5px solid; font-size: 1.5rem; font-weight: 800; }
+  .score-a { border-color: var(--success); color: var(--success); }
+  .score-b { border-color: var(--brand); color: var(--brand); }
+  .score-c { border-color: var(--warn); color: var(--warn); }
+  .score-d { border-color: var(--danger); color: var(--danger); }
+  .score-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; margin-top: 2px; }
+
+  /* TRAFFIC FUNNEL */
+  .funnel-wrap { padding: 10px 0; }
+  .funnel-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .funnel-label { width: 130px; font-size: 0.8rem; font-weight: 600; color: var(--muted); text-align: right; flex-shrink: 0; }
+  .funnel-bar-wrap { flex: 1; background: #e8ecf1; border-radius: 4px; height: 26px; overflow: hidden; }
+  .funnel-bar { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 10px; font-size: 0.76rem; font-weight: 700; color: #fff; white-space: nowrap; transition: width 0.6s ease; }
+  .funnel-num { width: 80px; font-size: 0.84rem; font-weight: 700; color: var(--dark); }
+
+  /* FOOTER */
+  .report-footer { background: var(--dark); color: #8da4bf; text-align: center; padding: 16px; font-size: 0.76rem; margin-top: 20px; }
+  .report-footer a { color: var(--accent); text-decoration: none; }
+
+  /* DATA NOTE */
+  .data-note { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 10px 14px; font-size: 0.78rem; color: #795548; margin-bottom: 16px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .report-header { flex-direction: column; gap: 12px; }
+    .report-header .meta { text-align: left; }
+    .tab-pane { padding: 20px 16px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="report-header">
+  <div>
+    <h1>🔍 Leak Detection Service Pros</h1>
+    <div class="subtitle">SEO &amp; Google Business Profile Performance Report · Jan–Apr 2026</div>
+  </div>
+  <div class="meta">
+    <div><strong>Website:</strong> leakdetectionsp.com</div>
+    <div><strong>Location:</strong> Snellville, GA 30078</div>
+    <div><strong>Report Period:</strong> Jan 1 – Apr 30, 2026</div>
+    <div><strong>Generated:</strong> May 27, 2026</div>
+  </div>
+</div>
+
+<!-- TAB NAV -->
+<nav class="tab-nav">
+  <button class="tab-btn active" data-tab="tab-exec">📊 Executive Summary</button>
+  <button class="tab-btn" data-tab="tab-coreupdate">🛡 Core Update Audit</button>
+  <button class="tab-btn" data-tab="tab-gbp">📍 GBP Performance</button>
+  <button class="tab-btn" data-tab="tab-gsc">🔎 Search Console</button>
+  <button class="tab-btn" data-tab="tab-ga4">📈 Website Analytics</button>
+  <button class="tab-btn" data-tab="tab-onpage">📝 On-Page SEO</button>
+  <button class="tab-btn" data-tab="tab-localseо">📌 Local SEO</button>
+  <button class="tab-btn" data-tab="tab-competitors">⚔ Competitors</button>
+  <button class="tab-btn" data-tab="tab-action">🎯 Action Plan</button>
+</nav>
+
+<!-- ============================================================ -->
+<!--  TAB 1: EXECUTIVE SUMMARY                                    -->
+<!-- ============================================================ -->
+<div id="tab-exec" class="tab-pane active">
+  <div class="alert alert-info">
+    <span class="alert-icon">ℹ️</span>
+    <span><strong>New Website Launch:</strong> LeakDetectionSP.com went live in February 2026. All GA4 data reflects approximately 2.5 months of tracking (Feb 17 – Apr 30, 2026). GBP listing appears to be active; CallRail tracking data is pending client integration.</span>
+  </div>
+
+  <div class="section-title"><span class="icon">📊</span> Key Performance Snapshot — Launch Through Apr 30, 2026</div>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Website Sessions</div>
+      <div class="kpi-value">491</div>
+      <div class="kpi-sub">Feb–Apr 2026 (site launched Feb 17)</div>
+      <div class="kpi-badge badge-neutral">▲ New Site</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Total Users</div>
+      <div class="kpi-value">333</div>
+      <div class="kpi-sub">Unique visitors</div>
+    </div>
+    <div class="kpi-card accent">
+      <div class="kpi-label">Page Views</div>
+      <div class="kpi-value">2,051</div>
+      <div class="kpi-sub">4.2 pages/session avg</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Organic Sessions</div>
+      <div class="kpi-value">108</div>
+      <div class="kpi-sub">22% of total traffic</div>
+      <div class="kpi-badge badge-up">▲ Growing</div>
+    </div>
+    <div class="kpi-card warn">
+      <div class="kpi-label">Engagement Rate</div>
+      <div class="kpi-value">40%</div>
+      <div class="kpi-sub">Overall; Organic = 74%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">GA4 Conversions</div>
+      <div class="kpi-value">20</div>
+      <div class="kpi-sub">Goal completions tracked</div>
+    </div>
+    <div class="kpi-card danger">
+      <div class="kpi-label">Direct Traffic</div>
+      <div class="kpi-value">67%</div>
+      <div class="kpi-sub">Likely internal / bot visits</div>
+      <div class="kpi-badge badge-down">⚠ Investigate</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Avg Session Duration</div>
+      <div class="kpi-value">9.7m</div>
+      <div class="kpi-sub">580 seconds overall</div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">📡</span> Traffic Channel Distribution (Feb–Apr 2026)</div>
+  <div class="funnel-wrap">
+    <div class="funnel-row">
+      <div class="funnel-label">Direct</div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:100%;background:#475569">330 sessions · 67%</div></div>
+      <div class="funnel-num">330</div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-label">Organic Search</div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:33%;background:#0a7fa5">108 sessions · 22%</div></div>
+      <div class="funnel-num">108</div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-label">Referral</div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:8%;background:#00c2a8">27 · 6%</div></div>
+      <div class="funnel-num">27</div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-label">Organic Social</div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:5%;background:#8b5cf6">17 · 3%</div></div>
+      <div class="funnel-num">17</div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-label">Paid Search</div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:2%;background:#f59e0b">7 · 1%</div></div>
+      <div class="funnel-num">7</div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:24px"><span class="icon">🏆</span> Overall SEO Health Scorecard</div>
+  <div class="insight-grid">
+    <div class="insight-box warn">
+      <h4>⚠ GBP Optimization</h4>
+      <p>GBP listing is active and ranking in the local 3-pack for some leak detection queries. Profile shows strong review sentiment but needs more photos, service descriptions, and consistent posting cadence to compete against established players like TE Certified and American Leak Detection.</p>
+    </div>
+    <div class="insight-box danger">
+      <h4>🚨 Direct Traffic Anomaly</h4>
+      <p>67% direct traffic on a new site indicates significant internal agency/testing traffic inflating numbers. Organic sessions (108 in 2.5 months) are the true performance signal. GA4 internal IP filtering should be implemented immediately.</p>
+    </div>
+    <div class="insight-box">
+      <h4>📈 Organic Trending Up</h4>
+      <p>Organic sessions grew Feb→Mar despite slight Apr dip. Google is beginning to index and rank city-service pages (Athens emergency service: 46 views; Grayson slab leak: 28 views). The keyword expansion strategy is working early.</p>
+    </div>
+    <div class="insight-box success">
+      <h4>✅ Plumbing Page Created</h4>
+      <p>A new /plumbing/ page was created to expand beyond leak detection topical authority. This is the correct strategic move to capture broader plumbing intent queries in Snellville and Gwinnett County. Needs schema markup and internal linking.</p>
+    </div>
+    <div class="insight-box warn">
+      <h4>⚠ 404 Error Pattern</h4>
+      <p>27 pageviews recorded to /not_found and 23 to "/" with Page Not Found title — indicating crawl errors and broken links. These must be audited and resolved to protect crawl budget and user experience.</p>
+    </div>
+    <div class="insight-box">
+      <h4>🔗 Link Authority Building Needed</h4>
+      <p>New domain has minimal backlink authority. Referral traffic comes primarily from tagassistant.google.com (agency tag testing) and Yelp. A local citation and PR strategy is needed to build domain authority quickly.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  TAB 2: CORE UPDATE COMPLIANCE AUDIT                        -->
+<!-- ============================================================ -->
+<div id="tab-coreupdate" class="tab-pane">
+  <div class="alert alert-info">
+    <span class="alert-icon">ℹ️</span>
+    <span>Google released multiple core updates in 2025 and early 2026 that heavily penalized thin, AI-generated, or non-EEAT content. As a new site launching Feb 2026, compliance is critical from day one.</span>
+  </div>
+
+  <div class="section-title"><span class="icon">🛡</span> Google Core Update Compliance — EEAT Assessment</div>
+  <div class="kpi-grid">
+    <div class="kpi-card warn">
+      <div class="kpi-label">Experience</div>
+      <div class="kpi-value">C+</div>
+      <div class="kpi-sub">Technician profiles exist (Ian, Russell) but no authored blog content</div>
+    </div>
+    <div class="kpi-card warn">
+      <div class="kpi-label">Expertise</div>
+      <div class="kpi-value">B</div>
+      <div class="kpi-sub">Licensed/certified claims present; no credential detail pages</div>
+    </div>
+    <div class="kpi-card danger">
+      <div class="kpi-label">Authoritativeness</div>
+      <div class="kpi-value">C</div>
+      <div class="kpi-sub">New domain; few backlinks; not yet cited on major local sites</div>
+    </div>
+    <div class="kpi-card warn">
+      <div class="kpi-label">Trustworthiness</div>
+      <div class="kpi-value">B</div>
+      <div class="kpi-sub">Privacy policy, Terms, Licensing disclaimer pages present</div>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <h3>Core Update Compliance Checklist</h3>
+    <div style="padding: 16px">
+      <ul class="checklist">
+        <li><div class="check-icon check-pass">✓</div><div><strong>Legal/Trust Pages:</strong> Privacy Policy, Terms &amp; Conditions, Licensing &amp; Professional Disclaimer pages are present — strong compliance signal for YMYL (Your Money Your Life) local service sites.</div></li>
+        <li><div class="check-icon check-pass">✓</div><div><strong>Accessibility:</strong> OneTap accessibility toolbar installed. ADA compliance is a positive trust signal.</div></li>
+        <li><div class="check-icon check-pass">✓</div><div><strong>Real Staff Names &amp; Reviews:</strong> Technician names (Ian Price, Russell) mentioned in reviews and on About page. Genuine reviewer testimonials with full names and 5-star ratings.</div></li>
+        <li><div class="check-icon check-pass">✓</div><div><strong>Contact Information:</strong> NAP (Name, Address, Phone) clearly displayed in header, footer, and contact page. 24/7 availability stated.</div></li>
+        <li><div class="check-icon check-warn">!</div><div><strong>Blog Content Thin:</strong> Blog page exists but 48 pageviews in 2.5 months suggests minimal content. Articles must be authored, not generic AI-only, to satisfy Experience signals.</div></li>
+        <li><div class="check-icon check-fail">✗</div><div><strong>Author Bios Missing:</strong> No individual author bio pages for technicians. Google rewards EEAT when content creators have verifiable credentials linked from content.</div></li>
+        <li><div class="check-icon check-fail">✗</div><div><strong>License Numbers Not Displayed:</strong> Licensing disclaimer page exists but actual license numbers not prominently displayed on service pages. This is a trust gap.</div></li>
+        <li><div class="check-icon check-fail">✗</div><div><strong>Schema Markup Incomplete:</strong> LocalBusiness schema needs to include <code>aggregateRating</code>, <code>areaServed</code>, <code>hasCredential</code>, and <code>employee</code> properties for full EEAT compliance.</div></li>
+        <li><div class="check-icon check-fail">✗</div><div><strong>Insurance Documentation:</strong> Homepage mentions "insurance documentation" as a trust badge but no actual proof/document is visible or linked.</div></li>
+        <li><div class="check-icon check-warn">!</div><div><strong>AI Content Risk:</strong> Page copy has a template-heavy feel consistent with RTM/Unify360 platform sites. Differentiate with genuine case studies, local project stories, and staff-authored FAQ content.</div></li>
+        <li><div class="check-icon check-warn">!</div><div><strong>Google Merchant / LSA Verification:</strong> If running Local Service Ads, Google Verified badge adds significant EEAT. Confirm LSA verification status.</div></li>
+        <li><div class="check-icon check-pass">✓</div><div><strong>Coupons &amp; Discounts:</strong> Visible discount offers (Senior 15%, Military 15%, Free Sewer Camera) add trustworthiness and conversion incentive.</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top: 20px"><span class="icon">📰</span> Helpful Content &amp; Spam Policy Compliance</div>
+  <div class="insight-grid">
+    <div class="insight-box warn">
+      <h4>⚠ Doorway Page Risk</h4>
+      <p>The site has many city/service combination pages (e.g., /areas-served/athens-ga/emergency-service/, /areas-served/grayson-ga/slab-leak-repair/). Google's Helpful Content Update targets thin "doorway pages" that exist solely for rankings. Each page must have unique, locally-specific content — not just city name swaps.</p>
+    </div>
+    <div class="insight-box">
+      <h4>📋 Content Differentiation Needed</h4>
+      <p>Prioritize adding genuine local signals: neighborhood names (Norris Lake, Summit Chase, Centerville), local landmarks, specific job stories/case studies, and technician-specific tips. The About page already references these neighborhoods — replicate this throughout service pages.</p>
+    </div>
+    <div class="insight-box success">
+      <h4>✅ Internal Linking Structure</h4>
+      <p>Footer navigation, breadcrumbs, and in-body contextual links (e.g., "deteriorating pipes" linking to /sewer-line-repipe/) show a reasonable internal linking structure. Continue expanding this pattern on new plumbing pages.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  TAB 3: GBP PERFORMANCE                                     -->
+<!-- ============================================================ -->
+<div id="tab-gbp" class="tab-pane">
+  <div class="alert alert-warn">
+    <span class="alert-icon">⚠️</span>
+    <span><strong>Data Pending:</strong> GBP Insights data (calls, direction requests, photo views, search impressions) has not been shared with this report. The analysis below is based on observed listing characteristics, public review data, and search appearance testing. Provide GBP Insights export for complete data.</span>
+  </div>
+
+  <div class="section-title"><span class="icon">📍</span> GBP Listing Overview</div>
+  <div class="kpi-grid">
+    <div class="kpi-card success">
+      <div class="kpi-label">GBP Status</div>
+      <div class="kpi-value">Live</div>
+      <div class="kpi-sub">Verified and active</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Business Category</div>
+      <div class="kpi-value" style="font-size:1rem">Plumber</div>
+      <div class="kpi-sub">Primary + Leak Detection Specialist</div>
+    </div>
+    <div class="kpi-card warn">
+      <div class="kpi-label">Review Count (Yelp)</div>
+      <div class="kpi-value">5+</div>
+      <div class="kpi-sub">5-star reviews cited on site</div>
+    </div>
+    <div class="kpi-card success">
+      <div class="kpi-label">Hours Listed</div>
+      <div class="kpi-value">24/7</div>
+      <div class="kpi-sub">Open Monday–Sunday</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Map Listing</div>
+      <div class="kpi-value" style="font-size:1rem">Active</div>
+      <div class="kpi-sub">2330 Scenic Hwy S, Suite 225</div>
+    </div>
+    <div class="kpi-card danger">
+      <div class="kpi-label">GBP Posts</div>
+      <div class="kpi-value">Unknown</div>
+      <div class="kpi-sub">Posting frequency not confirmed</div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:8px"><span class="icon">⭐</span> Review Analysis — Observed Testimonials</div>
+  <div class="table-card">
+    <h3>Verified Customer Reviews (Displayed on Website)</h3>
+    <table>
+      <thead><tr><th>#</th><th>Reviewer</th><th>Rating</th><th>Technician</th><th>Service</th><th>Key Highlight</th></tr></thead>
+      <tbody>
+        <tr><td><span class="rank-num">1</span></td><td>Harley Whitt</td><td>⭐⭐⭐⭐⭐</td><td>Ian Price</td><td>Slab Leak Detection</td><td>Pinpointed pin-hole leak under 4" concrete + 12" dirt</td></tr>
+        <tr><td><span class="rank-num">2</span></td><td>Susan Cutshall</td><td>⭐⭐⭐⭐⭐</td><td>Russell</td><td>Leak Detection</td><td>Thorough pinpointing; "not as bad as feared"</td></tr>
+        <tr><td><span class="rank-num">3</span></td><td>Nermin Hodzic</td><td>⭐⭐⭐⭐⭐</td><td>Russell</td><td>Slab Leak</td><td>Outstanding customer service; second visit to resolve</td></tr>
+        <tr><td><span class="rank-num">4</span></td><td>John Whitaker</td><td>⭐⭐⭐⭐⭐</td><td>Russell</td><td>General Plumbing</td><td>Professional, courteous, thorough cleanup</td></tr>
+        <tr><td><span class="rank-num">5</span></td><td>Sandra Tanner</td><td>⭐⭐⭐⭐⭐</td><td>Russell</td><td>Leak Detection + Repair</td><td>"Plumber Pros ARE THE BEST!"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="insight-grid">
+    <div class="insight-box warn">
+      <h4>⚠ Review Velocity Concern</h4>
+      <p>Only 5 reviews visible on website; Yelp listing shows limited count. For plumbing/leak detection services where trust is paramount, a Google Business Profile with fewer than 50 reviews is at a competitive disadvantage. Target: 25+ Google reviews within 90 days via post-service SMS/email requests.</p>
+    </div>
+    <div class="insight-box">
+      <h4>📸 Photo Optimization</h4>
+      <p>GBP photos are critical for map pack click-through rate. Recommend 20+ photos: team headshots, equipment in use, before/after slab leak jobs, truck/vehicle branded, office location. Customer-uploaded photos are weighted more heavily — encourage photo reviews.</p>
+    </div>
+    <div class="insight-box success">
+      <h4>✅ Consistent NAP</h4>
+      <p>Name (Leak Detection Service Pros), Address (2330 Scenic Hwy S Suite 225, Snellville, GA 30078), and Phone (678-325-3153) are consistent across website header, footer, and contact page. GBP NAP should match exactly — confirm no phone number variation on GBP vs. site.</p>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:20px"><span class="icon">📋</span> GBP Optimization Checklist</div>
+  <div class="table-card">
+    <div style="padding:16px">
+      <ul class="checklist">
+        <li><div class="check-icon check-pass">✓</div><div><strong>Business Name:</strong> Consistent across web properties</div></li>
+        <li><div class="check-icon check-pass">✓</div><div><strong>Address Verified:</strong> Suite 225, 2330 Scenic Hwy S, Snellville, GA 30078</div></li>
+        <li><div class="check-icon check-pass">✓</div><div><strong>Hours:</strong> 24/7 — competitive advantage clearly communicated</div></li>
+        <li><div class="check-icon check-pass">✓</div><div><strong>Website Link:</strong> Linked to leakdetectionsp.com</div></li>
+        <li><div class="check-icon check-warn">!</div><div><strong>Service Areas:</strong> Confirm GBP service area list includes all 20+ cities listed on site (Athens, Lawrenceville, Loganville, Winder, Monroe, etc.)</div></li>
+        <li><div class="check-icon check-warn">!</div><div><strong>Services Listed:</strong> Add all 12 services from the Services page individually in GBP Services section with descriptions</div></li>
+        <li><div class="check-icon check-fail">✗</div><div><strong>GBP Posts:</strong> No evidence of regular weekly/bi-weekly posts. Posts drive visibility and show the business is active — target 2× per week minimum</div></li>
+        <li><div class="check-icon check-fail">✗</div><div><strong>Q&amp;A Section:</strong> Seed 10 common questions (e.g., "Do you offer same-day slab leak repair?", "Are you licensed in Georgia?") with detailed answers</div></li>
+        <li><div class="check-icon check-fail">✗</div><div><strong>Review Response:</strong> All reviews must have personalized owner responses — this directly impacts GBP ranking</div></li>
+        <li><div class="check-icon check-fail">✗</div><div><strong>Product/Service Descriptions:</strong> Add keyword-rich descriptions for each service type (350 char limit each)</div></li>
+        <li><div class="check-icon check-warn">!</div><div><strong>Appointment Booking:</strong> Link GBP appointment URL to contact form or scheduling tool</div></li>
+        <li><div class="check-icon check-warn">!</div><div><strong>Phone Number Consistency:</strong> Site shows (678) 325-3153 in header but Facebook page shows (678) 238-5414 — NAP inconsistency may hurt local rankings. Verify which number is on GBP.</div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  TAB 4: SEARCH CONSOLE (GSC)                                -->
+<!-- ============================================================ -->
+<div id="tab-gsc" class="tab-pane">
+  <div class="alert alert-warn">
+    <span class="alert-icon">⚠️</span>
+    <span><strong>GSC Access Pending:</strong> Google Search Console data was not available for this report. The analysis below is based on GA4 organic traffic data, site crawl, and competitive keyword research. Share GSC property access (search.google.com/search-console) to include impressions, CTR, and keyword rank data in future reports.</span>
+  </div>
+
+  <div class="section-title"><span class="icon">🔎</span> Inferred Organic Performance (via GA4)</div>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Organic Sessions (Feb)</div>
+      <div class="kpi-value">37</div>
+      <div class="kpi-sub">Month 1 post-launch</div>
+    </div>
+    <div class="kpi-card accent">
+      <div class="kpi-label">Organic Sessions (Mar)</div>
+      <div class="kpi-value">42</div>
+      <div class="kpi-sub">+14% MoM growth</div>
+      <div class="kpi-badge badge-up">▲ +14%</div>
+    </div>
+    <div class="kpi-card warn">
+      <div class="kpi-label">Organic Sessions (Apr)</div>
+      <div class="kpi-value">29</div>
+      <div class="kpi-sub">-31% MoM — investigate</div>
+      <div class="kpi-badge badge-down">▼ -31%</div>
+    </div>
+    <div class="kpi-card success">
+      <div class="kpi-label">Organic Engagement Rate</div>
+      <div class="kpi-value">74%</div>
+      <div class="kpi-sub">vs. 40% overall — high intent</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Organic Conversions</div>
+      <div class="kpi-value">11</div>
+      <div class="kpi-sub">of 20 total (55% share)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Bing Organic</div>
+      <div class="kpi-value">1</div>
+      <div class="kpi-sub">1 session + 1 conversion</div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:8px"><span class="icon">🎯</span> Target Keyword Opportunities (Research-Based)</div>
+  <div class="table-card">
+    <h3>High-Priority Keywords — Snellville &amp; Gwinnett County Market</h3>
+    <table>
+      <thead><tr><th>Keyword</th><th>Intent</th><th>Competition</th><th>Priority</th><th>Target Page</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>leak detection snellville ga</td>
+          <td><span class="pill pill-blue">Transactional</span></td>
+          <td><span class="pill pill-orange">Medium</span></td>
+          <td><span class="pill pill-green">Critical</span></td>
+          <td>/leak-detection/</td>
+        </tr>
+        <tr>
+          <td>plumber snellville ga</td>
+          <td><span class="pill pill-blue">Transactional</span></td>
+          <td><span class="pill pill-red">High</span></td>
+          <td><span class="pill pill-green">Critical</span></td>
+          <td>/plumbing/</td>
+        </tr>
+        <tr>
+          <td>slab leak repair snellville</td>
+          <td><span class="pill pill-blue">Transactional</span></td>
+          <td><span class="pill pill-orange">Medium</span></td>
+          <td><span class="pill pill-green">Critical</span></td>
+          <td>/slab-leak-repair/</td>
+        </tr>
+        <tr>
+          <td>emergency plumber snellville</td>
+          <td><span class="pill pill-red">Urgent</span></td>
+          <td><span class="pill pill-orange">Medium</span></td>
+          <td><span class="pill pill-green">Critical</span></td>
+          <td>/emergency-service/</td>
+        </tr>
+        <tr>
+          <td>slab leak detection gwinnett county</td>
+          <td><span class="pill pill-blue">Transactional</span></td>
+          <td><span class="pill pill-orange">Medium</span></td>
+          <td><span class="pill pill-orange">High</span></td>
+          <td>/areas-served/gwinnett-county/</td>
+        </tr>
+        <tr>
+          <td>water line repair snellville ga</td>
+          <td><span class="pill pill-blue">Transactional</span></td>
+          <td><span class="pill pill-teal">Low-Med</span></td>
+          <td><span class="pill pill-orange">High</span></td>
+          <td>/water-line-repair/</td>
+        </tr>
+        <tr>
+          <td>leak detection lawrenceville ga</td>
+          <td><span class="pill pill-blue">Transactional</span></td>
+          <td><span class="pill pill-teal">Low-Med</span></td>
+          <td><span class="pill pill-orange">High</span></td>
+          <td>/areas-served/lawrenceville-ga/</td>
+        </tr>
+        <tr>
+          <td>sewer line repair snellville</td>
+          <td><span class="pill pill-blue">Transactional</span></td>
+          <td><span class="pill pill-teal">Low-Med</span></td>
+          <td><span class="pill pill-orange">High</span></td>
+          <td>/sewer-line-leak-repair/</td>
+        </tr>
+        <tr>
+          <td>how to tell if you have a slab leak</td>
+          <td><span class="pill pill-purple">Informational</span></td>
+          <td><span class="pill pill-teal">Low</span></td>
+          <td><span class="pill pill-blue">Medium</span></td>
+          <td>/blog/slab-leak-signs/</td>
+        </tr>
+        <tr>
+          <td>non-invasive leak detection atlanta</td>
+          <td><span class="pill pill-blue">Transactional</span></td>
+          <td><span class="pill pill-orange">Medium</span></td>
+          <td><span class="pill pill-blue">Medium</span></td>
+          <td>Homepage or /leak-detection/</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title" style="margin-top:20px"><span class="icon">📋</span> GSC Setup Recommendations</div>
+  <div class="insight-grid">
+    <div class="insight-box danger">
+      <h4>🚨 GSC Verification Required</h4>
+      <p>Verify ownership of leakdetectionsp.com in Google Search Console immediately. GSC provides impression data that GA4 cannot — including keywords driving impressions but not clicks (CTR optimization opportunities).</p>
+    </div>
+    <div class="insight-box warn">
+      <h4>⚠ Sitemap Submission</h4>
+      <p>A sitemap page exists at /sitemap/ (HTML). Submit an XML sitemap (typically /sitemap.xml or /sitemap_index.xml) directly in GSC to ensure all pages are indexed efficiently.</p>
+    </div>
+    <div class="insight-box">
+      <h4>🔍 Core Web Vitals Monitoring</h4>
+      <p>GSC's Core Web Vitals report will identify LCP, INP (formerly FID), and CLS issues by page. Real Time Marketing + Unify360 platform sites may have JavaScript rendering delays — monitor page experience scores monthly.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  TAB 5: GA4 WEBSITE ANALYTICS                               -->
+<!-- ============================================================ -->
+<div id="tab-ga4" class="tab-pane">
+  <div class="section-title"><span class="icon">📈</span> Monthly Session Trends (Feb–Apr 2026)</div>
+  <div class="kpi-grid" style="margin-bottom:20px">
+    <div class="kpi-card">
+      <div class="kpi-label">February 2026</div>
+      <div class="kpi-value">223</div>
+      <div class="kpi-sub">Sessions · 161 users · 81 engaged</div>
+      <div class="kpi-badge badge-neutral">Launch Month</div>
+    </div>
+    <div class="kpi-card accent">
+      <div class="kpi-label">March 2026</div>
+      <div class="kpi-value">162</div>
+      <div class="kpi-sub">Sessions · 116 users · 69 engaged</div>
+      <div class="kpi-badge badge-down">▼ -27% vs Feb</div>
+    </div>
+    <div class="kpi-card warn">
+      <div class="kpi-label">April 2026</div>
+      <div class="kpi-value">106</div>
+      <div class="kpi-sub">Sessions · 81 users · 47 engaged</div>
+      <div class="kpi-badge badge-down">▼ -35% vs Mar</div>
+    </div>
+    <div class="kpi-card success">
+      <div class="kpi-label">Organic Conv. Rate</div>
+      <div class="kpi-value">10.2%</div>
+      <div class="kpi-sub">11 of 108 organic sessions</div>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Monthly Sessions by Channel</h3>
+      <div class="chart-wrap">
+        <canvas id="channelMonthlyChart"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>Traffic Channel Distribution (Feb–Apr Total)</h3>
+      <div class="chart-wrap">
+        <canvas id="channelPieChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-warn" style="margin-top:4px">
+    <span class="alert-icon">⚠️</span>
+    <span><strong>Session Decline Alert:</strong> Total sessions declined each month (223 → 162 → 106). This is primarily driven by a decline in Direct traffic (151 → 110 → 69), which likely represents internal/agency traffic tapering off. Organic traffic is more stable: 37 → 42 → 29. The April organic dip warrants investigation — check GSC for any indexing or penalty signals.</span>
+  </div>
+
+  <div class="section-title" style="margin-top:24px"><span class="icon">📄</span> Top 10 Pages by Views (Feb–Apr 2026)</div>
+  <div class="table-card">
+    <table>
+      <thead><tr><th>#</th><th>Page</th><th>Views</th><th>Users</th><th>Avg Duration</th><th>Insight</th></tr></thead>
+      <tbody>
+        <tr><td><span class="rank-num">1</span></td><td>/ (Homepage)</td><td>402</td><td>174</td><td>4:01</td><td><span class="pill pill-green">Core landing page</span></td></tr>
+        <tr><td><span class="rank-num">2</span></td><td>/areas-served/</td><td>63</td><td>11</td><td>10:24</td><td><span class="pill pill-blue">High engagement</span></td></tr>
+        <tr><td><span class="rank-num">3</span></td><td>/contact/</td><td>53</td><td>31</td><td>4:11</td><td><span class="pill pill-green">Strong intent</span></td></tr>
+        <tr><td><span class="rank-num">4</span></td><td>/blog/</td><td>48</td><td>14</td><td>1:07</td><td><span class="pill pill-orange">Low time = thin content</span></td></tr>
+        <tr><td><span class="rank-num">5</span></td><td>/areas-served/athens-ga/emergency-service/</td><td>46</td><td>5</td><td>14:00</td><td><span class="pill pill-teal">City page ranking!</span></td></tr>
+        <tr><td><span class="rank-num">6</span></td><td>/leak-detection/</td><td>40</td><td>9</td><td>4:31</td><td><span class="pill pill-green">Core service</span></td></tr>
+        <tr><td><span class="rank-num">7</span></td><td>/services/</td><td>32</td><td>11</td><td>5:46</td><td><span class="pill pill-green">Good browse intent</span></td></tr>
+        <tr><td><span class="rank-num">8</span></td><td>/areas-served/grayson-ga/slab-leak-repair/</td><td>28</td><td>4</td><td>11:21</td><td><span class="pill pill-teal">City page ranking!</span></td></tr>
+        <tr><td><span class="rank-num">9</span></td><td>/water-line-repair/</td><td>28</td><td>13</td><td>1:33</td><td><span class="pill pill-orange">Low engagement</span></td></tr>
+        <tr><td><span class="rank-num">10</span></td><td>/not_found (404 errors)</td><td>27</td><td>9</td><td>2:59</td><td><span class="pill pill-red">Fix broken links!</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Device Category Split</h3>
+      <div class="chart-wrap">
+        <canvas id="deviceChart"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>Engaged vs. Unengaged Sessions by Month</h3>
+      <div class="chart-wrap">
+        <canvas id="engagementChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-danger" style="margin-top:4px">
+    <span class="alert-icon">🚨</span>
+    <span><strong>Mobile Traffic Only 15%:</strong> 424 desktop vs. 74 mobile sessions is extremely unusual for a local plumbing business. Real customers searching for emergency plumbers use mobile phones. This confirms that the bulk of current traffic is internal/testing. As organic traffic grows, expect a mobile-dominant split (60–70% mobile). Ensure site is fully mobile-optimized now.</span>
+  </div>
+
+  <div class="section-title" style="margin-top:24px"><span class="icon">🔗</span> Referral Traffic Sources</div>
+  <div class="table-card">
+    <table>
+      <thead><tr><th>Source</th><th>Sessions</th><th>Type</th><th>Action Needed</th></tr></thead>
+      <tbody>
+        <tr><td>tagassistant.google.com</td><td>24</td><td><span class="pill pill-orange">Internal Testing</span></td><td>Filter this in GA4 to exclude from reports</td></tr>
+        <tr><td>yelp.com + m.yelp.com</td><td>11</td><td><span class="pill pill-green">Business Citation</span></td><td>Optimize Yelp profile; respond to reviews</td></tr>
+        <tr><td>facebook.com + m.facebook.com</td><td>5</td><td><span class="pill pill-blue">Social</span></td><td>Post more consistently; use call-to-action posts</td></tr>
+        <tr><td>angieslist.lightning.force.com</td><td>1</td><td><span class="pill pill-teal">Lead Platform</span></td><td>Verify Angi/HomeAdvisor profile is complete</td></tr>
+        <tr><td>houzz.lightning.force.com</td><td>1</td><td><span class="pill pill-teal">Lead Platform</span></td><td>Complete Houzz contractor profile</td></tr>
+        <tr><td>yelp-sales + Yelp CRM</td><td>1</td><td><span class="pill pill-gray">Sales Tool</span></td><td>Internal — filter from reporting</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  TAB 6: ON-PAGE SEO                                         -->
+<!-- ============================================================ -->
+<div id="tab-onpage" class="tab-pane">
+  <div class="section-title"><span class="icon">📝</span> On-Page SEO Technical Audit</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card warn">
+      <div class="kpi-label">Overall On-Page Score</div>
+      <div class="kpi-value">B-</div>
+      <div class="kpi-sub">Good foundation, key gaps remain</div>
+    </div>
+    <div class="kpi-card success">
+      <div class="kpi-label">Title Tags</div>
+      <div class="kpi-value">Good</div>
+      <div class="kpi-sub">Location-specific, keyword-rich</div>
+    </div>
+    <div class="kpi-card warn">
+      <div class="kpi-label">Schema Markup</div>
+      <div class="kpi-value">Partial</div>
+      <div class="kpi-sub">Basic LocalBusiness; missing reviews/FAQ</div>
+    </div>
+    <div class="kpi-card danger">
+      <div class="kpi-label">404 Errors</div>
+      <div class="kpi-value">27+</div>
+      <div class="kpi-sub">Confirmed in GA4 — fix immediately</div>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <h3>Key Page SEO Analysis</h3>
+    <table>
+      <thead><tr><th>Page</th><th>Title Tag</th><th>H1</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Homepage (/)</td>
+          <td style="font-size:0.78rem">Local Plumber in Snellville, GA | Top Leak Detection Specialist</td>
+          <td style="font-size:0.78rem">Think You Have a Leak? Let the Pros Take a Peek!</td>
+          <td><span class="pill pill-orange">Needs Work</span></td>
+          <td>H1 is catchy but lacks primary keyword "plumber" or "Snellville"</td>
+        </tr>
+        <tr>
+          <td>Services Page</td>
+          <td style="font-size:0.78rem">Plumber in Snellville, GA, You Can Count On | 24/7 Availability</td>
+          <td style="font-size:0.78rem">Grade-A Plumbing Solutions in Snellville, GA</td>
+          <td><span class="pill pill-green">Good</span></td>
+          <td>Strong keyword targeting; 12 services listed</td>
+        </tr>
+        <tr>
+          <td>Plumbing Page (/plumbing/)</td>
+          <td style="font-size:0.78rem">Expert Plumber in Snellville, GA | 24/7 Emergency Repairs</td>
+          <td>New page</td>
+          <td><span class="pill pill-blue">New</span></td>
+          <td>Strong title; needs full optimization pass</td>
+        </tr>
+        <tr>
+          <td>About Us</td>
+          <td style="font-size:0.78rem">About Our Team | Fast and Precise Detection Available</td>
+          <td style="font-size:0.78rem">The Authority on Leak Detection in Snellville, GA</td>
+          <td><span class="pill pill-green">Good</span></td>
+          <td>Strong EEAT signals; real staff names present</td>
+        </tr>
+        <tr>
+          <td>Slab Leak Repair</td>
+          <td style="font-size:0.78rem">Slab Leak Repair in Snellville, GA | Licensed and Certified</td>
+          <td>—</td>
+          <td><span class="pill pill-green">Good</span></td>
+          <td>Title is highly relevant; add FAQ schema</td>
+        </tr>
+        <tr>
+          <td>Areas Served Hub</td>
+          <td style="font-size:0.78rem">Local Plumber in Snellville, GA | Non-Invasive Repair Specialist</td>
+          <td>—</td>
+          <td><span class="pill pill-orange">Needs Work</span></td>
+          <td>10:24 avg session = high value; strengthen this page</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title" style="margin-top:20px"><span class="icon">⚙</span> Technical SEO Issues</div>
+  <div class="table-card">
+    <div style="padding:16px">
+      <ul class="checklist">
+        <li><div class="check-icon check-fail">✗</div><div><strong>404 Error Pages (Critical):</strong> 27+ sessions landing on /not_found. Likely caused by broken internal links, old redirects not set up, or mislinked anchor text. Audit all internal links and set up 301 redirects for any renamed URLs.</div></li>
+        <li><div class="check-icon check-fail">✗</div><div><strong>Beaver Builder Header Indexed (/fl-theme-layout/header/):</strong> This WordPress/Beaver Builder template page received 26 pageviews. It should be blocked from indexing via robots.txt or meta noindex — a meaningless page appearing in search results wastes crawl budget.</div></li>
+        <li><div class="check-icon check-fail">✗</div><div><strong>Internal IP Filter Missing in GA4:</strong> tagassistant.google.com (24 sessions) and high direct traffic indicate agency testing not filtered. Set up Data Filter in GA4 Admin → Property Settings → Data Filters → Internal Traffic.</div></li>
+        <li><div class="check-icon check-fail">✗</div><div><strong>Schema Markup — Missing Types:</strong> Add FAQPage schema to slab leak, emergency service, and slab detection pages. Add HowTo schema to blog articles. Add AggregateRating schema once reviews are pulled from GBP.</div></li>
+        <li><div class="check-icon check-warn">!</div><div><strong>Homepage H1 Optimization:</strong> Current H1 "Think You Have a Leak? Let the Pros Take a Peek!" is catchy but misses primary keyword. Test updating to include "Snellville Plumber" or "Leak Detection Snellville GA" while maintaining brand voice.</div></li>
+        <li><div class="check-icon check-warn">!</div><div><strong>XML Sitemap:</strong> Confirm /sitemap.xml exists and is submitted in GSC. HTML sitemap at /sitemap/ is good for users but XML is required for Google indexing efficiency.</div></li>
+        <li><div class="check-icon check-warn">!</div><div><strong>Page Speed:</strong> Unify360/RTM platform sites can be heavy with multiple third-party scripts (OneTap, analytics, chat). Run PageSpeed Insights on homepage and key service pages — target LCP &lt; 2.5s on mobile.</div></li>
+        <li><div class="check-icon check-pass">✓</div><div><strong>HTTPS:</strong> Site is served over HTTPS — confirmed secure connection.</div></li>
+        <li><div class="check-icon check-pass">✓</div><div><strong>Breadcrumb Navigation:</strong> Breadcrumbs present on interior pages (Home » About Us) — aids Google's understanding of site structure.</div></li>
+        <li><div class="check-icon check-pass">✓</div><div><strong>Internal Linking:</strong> Service pages cross-link to related pages (e.g., About page links to /sewer-line-repipe/, /leak-detection/). Continue this pattern systematically across all pages.</div></li>
+        <li><div class="check-icon check-warn">!</div><div><strong>Image Alt Text:</strong> Review all images for descriptive alt text including location + service keywords (e.g., "slab leak detection Snellville GA technician" instead of "leak-detection-4").</div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  TAB 7: LOCAL SEO                                           -->
+<!-- ============================================================ -->
+<div id="tab-localseо" class="tab-pane">
+  <div class="section-title"><span class="icon">📌</span> Local SEO Strategy Assessment</div>
+  <div class="kpi-grid">
+    <div class="kpi-card warn">
+      <div class="kpi-label">Local SEO Score</div>
+      <div class="kpi-value">C+</div>
+      <div class="kpi-sub">Strong foundation; citation gaps</div>
+    </div>
+    <div class="kpi-card success">
+      <div class="kpi-label">City Pages Built</div>
+      <div class="kpi-value">20+</div>
+      <div class="kpi-sub">Areas served pages active</div>
+    </div>
+    <div class="kpi-card danger">
+      <div class="kpi-label">Phone Consistency</div>
+      <div class="kpi-value">⚠ 2</div>
+      <div class="kpi-sub">Different numbers on site vs FB</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Service Areas Listed</div>
+      <div class="kpi-value">20+</div>
+      <div class="kpi-sub">Snellville, Athens, Lawrenceville...</div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:8px"><span class="icon">📋</span> Citation &amp; Directory Presence</div>
+  <div class="table-card">
+    <table>
+      <thead><tr><th>Directory</th><th>Status</th><th>Priority</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>Google Business Profile</td><td><span class="pill pill-green">Active</span></td><td><span class="pill pill-red">Critical</span></td><td>Optimize (see GBP tab)</td></tr>
+        <tr><td>Yelp</td><td><span class="pill pill-green">Active</span></td><td><span class="pill pill-red">Critical</span></td><td>Respond to reviews; complete profile</td></tr>
+        <tr><td>Facebook Business</td><td><span class="pill pill-green">Active</span></td><td><span class="pill pill-red">Critical</span></td><td>Fix phone number — shows 678.238.5414 vs site 678.325.3153</td></tr>
+        <tr><td>MapQuest</td><td><span class="pill pill-green">Active</span></td><td><span class="pill pill-orange">High</span></td><td>Confirm NAP accuracy</td></tr>
+        <tr><td>BBB (Better Business Bureau)</td><td><span class="pill pill-orange">Unknown</span></td><td><span class="pill pill-orange">High</span></td><td>Submit accreditation application</td></tr>
+        <tr><td>Angi / HomeAdvisor</td><td><span class="pill pill-orange">Partial</span></td><td><span class="pill pill-orange">High</span></td><td>Referral traffic seen; complete profile</td></tr>
+        <tr><td>Houzz</td><td><span class="pill pill-orange">Partial</span></td><td><span class="pill pill-blue">Medium</span></td><td>Referral traffic seen; optimize profile</td></tr>
+        <tr><td>Thumbtack</td><td><span class="pill pill-gray">Unknown</span></td><td><span class="pill pill-orange">High</span></td><td>Create/claim listing</td></tr>
+        <tr><td>Yellow Pages / YP.com</td><td><span class="pill pill-gray">Unknown</span></td><td><span class="pill pill-blue">Medium</span></td><td>Claim and optimize</td></tr>
+        <tr><td>Nextdoor</td><td><span class="pill pill-gray">Unknown</span></td><td><span class="pill pill-orange">High</span></td><td>Excellent for hyper-local Snellville visibility</td></tr>
+        <tr><td>Chamber of Commerce (Snellville)</td><td><span class="pill pill-gray">Unknown</span></td><td><span class="pill pill-orange">High</span></td><td>Join for authoritative local backlink</td></tr>
+        <tr><td>Gwinnett Chamber</td><td><span class="pill pill-gray">Unknown</span></td><td><span class="pill pill-orange">High</span></td><td>High-DA local link opportunity</td></tr>
+        <tr><td>Best Plumbers Seal of Excellence</td><td><span class="pill pill-green">Active</span></td><td><span class="pill pill-orange">High</span></td><td>Badge visible on site; ensure backlink from their directory</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title" style="margin-top:20px"><span class="icon">🏙</span> City/Service Page Expansion Strategy</div>
+  <div class="insight-grid">
+    <div class="insight-box success">
+      <h4>✅ Existing City Pages Performing</h4>
+      <p>Athens, GA emergency service page (46 views, 14-min session) and Grayson, GA slab leak page (28 views, 11-min session) are both ranking and driving engaged traffic. This validates the city/service matrix approach — scale it systematically.</p>
+    </div>
+    <div class="insight-box warn">
+      <h4>⚠ Content Depth Risk</h4>
+      <p>City pages must have genuinely unique content — not just swapped city names. Add: local landmarks (e.g., "serving homes near Lake Norris Estates"), local weather/soil impact on pipes, specific service scenarios for each city, and local contact information.</p>
+    </div>
+    <div class="insight-box">
+      <h4>📍 Priority Cities to Develop</h4>
+      <ul>
+        <li><strong>Lawrenceville, GA</strong> — Large population, high plumbing search volume</li>
+        <li><strong>Loganville, GA</strong> — Listed in footer service areas</li>
+        <li><strong>Covington, GA</strong> — Emergency service page already getting 27 views</li>
+        <li><strong>Conyers, GA</strong> — Footer service area listed</li>
+        <li><strong>Braselton, GA</strong> — 22 pageviews on area page</li>
+      </ul>
+    </div>
+    <div class="insight-box">
+      <h4>🔧 Plumbing Service Expansion</h4>
+      <p>The new /plumbing/ page is a strategic anchor. Build out supporting pages for: drain cleaning, water heater repair/replacement, toilet repair, faucet repair. Each creates a new keyword cluster and expands topical authority beyond leak detection into full plumbing services.</p>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:20px"><span class="icon">🔗</span> Backlink Strategy</div>
+  <div class="table-card">
+    <h3>Backlink Acquisition Priorities</h3>
+    <table>
+      <thead><tr><th>Source Type</th><th>Target</th><th>Approach</th><th>Impact</th></tr></thead>
+      <tbody>
+        <tr><td>Local Chamber</td><td>Snellville/Gwinnett Chamber</td><td>Join as member → directory listing</td><td><span class="pill pill-green">High DA</span></td></tr>
+        <tr><td>Local News / PR</td><td>Gwinnett Daily Post, Atlanta Journal-Constitution</td><td>Press release on business launch or community service</td><td><span class="pill pill-green">High Authority</span></td></tr>
+        <tr><td>Home Service Directories</td><td>Angi, Houzz, Thumbtack, HomeAdvisor</td><td>Complete profiles → backlinks + lead gen</td><td><span class="pill pill-orange">Medium</span></td></tr>
+        <tr><td>Real Estate Partners</td><td>Local Snellville/Gwinnett realtors</td><td>Preferred vendor referral — blog post or resource link</td><td><span class="pill pill-orange">Medium</span></td></tr>
+        <tr><td>Insurance Adjusters</td><td>Local insurance agencies</td><td>Preferred water damage remediation partner page (site has insurance adjuster page)</td><td><span class="pill pill-orange">Medium</span></td></tr>
+        <tr><td>HOA / Neighborhood Sites</td><td>Summit Chase, Norris Lake, Centerville HOAs</td><td>Sponsor newsletter or be listed as preferred vendor</td><td><span class="pill pill-blue">Hyper-local</span></td></tr>
+        <tr><td>Guest Blogging</td><td>Atlanta home improvement / real estate blogs</td><td>"Signs You Have a Slab Leak" authored content</td><td><span class="pill pill-blue">Authority Build</span></td></tr>
+        <tr><td>YouTube</td><td>YouTube channel (linked on site)</td><td>Educational videos → backlinks + brand authority</td><td><span class="pill pill-blue">Authority Build</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title" style="margin-top:20px"><span class="icon">📰</span> Press Release Strategy</div>
+  <div class="insight-grid">
+    <div class="insight-box">
+      <h4>📢 Business Launch Announcement</h4>
+      <p>Distribute a press release announcing Leak Detection Service Pros as a new professional plumbing and leak detection service provider serving Snellville and Gwinnett County. Target: PRWeb, EIN Presswire, and Gwinnett Daily Post. Include: technician credentials, service area, 24/7 availability, and quote from owner.</p>
+    </div>
+    <div class="insight-box">
+      <h4>🏆 Community Involvement PR</h4>
+      <p>Sponsor a local Snellville event, school, or sports team → receive coverage in local news and HOA newsletters. Example: "Leak Detection Service Pros sponsors Snellville Little League" generates backlinks, GBP review opportunities, and brand recognition simultaneously.</p>
+    </div>
+    <div class="insight-box">
+      <h4>⚠ Water Conservation Awareness</h4>
+      <p>Issue seasonal press releases on topics like "Slab Leak Season in Georgia: What Homeowners Need to Know" or "How Hidden Leaks Cost Gwinnett County Homeowners Thousands." Position LDSP as the local expert — ideal for news pickup during spring/summer months.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  TAB 8: COMPETITORS                                         -->
+<!-- ============================================================ -->
+<div id="tab-competitors" class="tab-pane">
+  <div class="section-title"><span class="icon">⚔</span> SERP &amp; Competitor Landscape — Snellville / Gwinnett County</div>
+  <div class="alert alert-info">
+    <span class="alert-icon">ℹ️</span>
+    <span>Competitor analysis based on Google SERP research for "plumber Snellville GA", "leak detection Snellville GA", and "slab leak repair Snellville GA". LDSP currently appears in local 3-pack for some leak detection queries but faces strong competition from national franchises and established local operators.</span>
+  </div>
+
+  <div class="table-card">
+    <h3>Competitor Overview — "Plumber Snellville GA" SERP</h3>
+    <table>
+      <thead><tr><th>Competitor</th><th>Type</th><th>Strengths</th><th>SERP Presence</th><th>Threat Level</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>TE Certified (tecertifiedelectricians.com)</strong></td>
+          <td>Multi-service (Electric/Plumbing/HVAC)</td>
+          <td>571+ Yelp reviews, multi-service, high DA</td>
+          <td>Top 3 organic + Local Pack</td>
+          <td><span class="pill pill-red">Very High</span></td>
+        </tr>
+        <tr>
+          <td><strong>Snell Air (snellair.com)</strong></td>
+          <td>HVAC + Plumbing hybrid</td>
+          <td>Brand name matches city ("Snell" = Snellville), strong local identity</td>
+          <td>Top 5 organic + Local Pack</td>
+          <td><span class="pill pill-red">Very High</span></td>
+        </tr>
+        <tr>
+          <td><strong>Roto-Rooter Snellville (rotorooter.com)</strong></td>
+          <td>National franchise</td>
+          <td>National brand recognition, 24/7, massive DA</td>
+          <td>Top 3 organic</td>
+          <td><span class="pill pill-orange">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>American Leak Detection (americanleakdetection.com)</strong></td>
+          <td>National franchise — leak detection specialist</td>
+          <td>Exact keyword match in brand, national franchise authority</td>
+          <td>Top 5 for leak detection</td>
+          <td><span class="pill pill-orange">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>Aaron Services (chooseaaronservices.com)</strong></td>
+          <td>Local plumbing multi-service</td>
+          <td>Same-day service, strong local presence</td>
+          <td>Page 1 for slab leak</td>
+          <td><span class="pill pill-orange">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>Aventra Plumbing (aventraplumbing.com)</strong></td>
+          <td>Local plumbing</td>
+          <td>24/7 emergency, specific Snellville targeting</td>
+          <td>Page 1 for leak repair</td>
+          <td><span class="pill pill-blue">Medium</span></td>
+        </tr>
+        <tr>
+          <td><strong>Leemook Plumbing (leemookplumbing.com)</strong></td>
+          <td>Local plumbing</td>
+          <td>Strong location page targeting</td>
+          <td>Page 1 for plumber Snellville</td>
+          <td><span class="pill pill-blue">Medium</span></td>
+        </tr>
+        <tr>
+          <td><strong>Leak Detection Service Pros (leakdetectionsp.com)</strong></td>
+          <td>Leak detection + Plumbing (your client)</td>
+          <td>Specialty focus, 24/7, city/service pages</td>
+          <td>Local Pack for leak detection; growing organic</td>
+          <td><span class="pill pill-teal">You</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title" style="margin-top:20px"><span class="icon">📊</span> Competitive Gap Analysis</div>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Competitive Positioning — Leak Detection vs. General Plumbing</h3>
+      <div class="chart-wrap-tall">
+        <canvas id="competitorChart"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>Estimated Domain Authority Comparison</h3>
+      <div class="chart-wrap-tall">
+        <canvas id="daChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-grid" style="margin-top:8px">
+    <div class="insight-box success">
+      <h4>✅ LDSP's Key Differentiator</h4>
+      <p><strong>Specialist positioning:</strong> While TE Certified and Snell Air are HVAC/multi-service hybrids, LDSP's identity as a <em>leak detection specialist</em> is a moat. Lean into this — "the only company in Gwinnett County that exclusively specializes in non-invasive leak detection." No HVAC distraction, pure precision focus.</p>
+    </div>
+    <div class="insight-box warn">
+      <h4>⚠ Review Gap is the Biggest Weakness</h4>
+      <p>TE Certified has 571+ Yelp reviews. LDSP appears to have fewer than 20 total online reviews. This is the single most impactful variable in local pack rankings. A structured, systematic review generation campaign must be the #1 priority — 2 reviews/week = 100 reviews in a year.</p>
+    </div>
+    <div class="insight-box">
+      <h4>🎯 Map Pack Win Strategy</h4>
+      <p>For "slab leak repair Snellville", "leak detection Snellville" and similar high-intent queries, LDSP can win the 3-pack by: (1) Generating 25+ Google reviews, (2) Adding keyword-rich GBP service descriptions, (3) Weekly GBP posts, (4) Building local citations, (5) Getting licensed on LSA (Google Guaranteed badge).</p>
+    </div>
+    <div class="insight-box warn">
+      <h4>⚠ National Franchise Challenge</h4>
+      <p>American Leak Detection and Roto-Rooter have massive domain authority LDSP cannot outrank organically short-term. However, map pack rankings are based heavily on proximity + reviews + relevance — not domain authority. Dominating the 3-pack is achievable within 6 months with the right GBP strategy.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  TAB 9: ACTION PLAN                                         -->
+<!-- ============================================================ -->
+<div id="tab-action" class="tab-pane">
+  <div class="section-title"><span class="icon">🎯</span> Priority Action Plan — Next 90 Days</div>
+
+  <div class="alert alert-success">
+    <span class="alert-icon">✅</span>
+    <span><strong>Quick Wins Available:</strong> Several high-impact items can be completed within 1–2 weeks that will immediately improve GBP rankings, fix data integrity, and eliminate technical errors dragging down organic performance.</span>
+  </div>
+
+  <div class="action-grid">
+    <div class="action-card critical">
+      <div class="action-priority">🚨 Critical — This Week</div>
+      <h4>Fix 404 Errors &amp; Broken Links</h4>
+      <p>27+ sessions hitting /not_found. Audit all internal links site-wide; identify broken URLs; implement 301 redirects. Crawl the site with Screaming Frog or Sitebulb to get a complete list.</p>
+      <div class="action-meta"><span>Technical SEO</span><span>Est: 4-6 hours</span><span>Impact: High</span></div>
+    </div>
+
+    <div class="action-card critical">
+      <div class="action-priority">🚨 Critical — This Week</div>
+      <h4>Fix Phone Number NAP Inconsistency</h4>
+      <p>Facebook page shows (678) 238-5414; website shows (678) 325-3153. NAP inconsistency is a known local ranking factor. Standardize across ALL platforms: GBP, Yelp, Facebook, Angi, Yelp CRM, website.</p>
+      <div class="action-meta"><span>Local SEO</span><span>Est: 2 hours</span><span>Impact: Critical</span></div>
+    </div>
+
+    <div class="action-card critical">
+      <div class="action-priority">🚨 Critical — This Week</div>
+      <h4>Set Up GA4 Internal Traffic Filter</h4>
+      <p>Agency/internal traffic is inflating all metrics. In GA4: Admin → Property → Data Filters → Create "Internal Traffic" filter with your office IP range. This will make all future reporting accurate.</p>
+      <div class="action-meta"><span>Analytics</span><span>Est: 30 min</span><span>Impact: Data Quality</span></div>
+    </div>
+
+    <div class="action-card high">
+      <div class="action-priority">🔴 High — Week 1-2</div>
+      <h4>Launch Review Generation Campaign</h4>
+      <p>After every completed job, send an SMS/email with a direct Google review link. Target: 2 reviews/week minimum. With 5-star service quality evident from existing reviews, this is achievable quickly. 25 reviews unlocks significantly better map pack visibility.</p>
+      <div class="action-meta"><span>GBP / Reviews</span><span>Ongoing</span><span>Impact: Very High</span></div>
+    </div>
+
+    <div class="action-card high">
+      <div class="action-priority">🔴 High — Week 1-2</div>
+      <h4>Optimize GBP Profile Completeness</h4>
+      <p>Add 20+ photos; add all services with descriptions; seed 10 Q&amp;As; respond to all existing reviews with personalized messages; link appointment URL; verify service areas list all 20+ cities.</p>
+      <div class="action-meta"><span>GBP</span><span>Est: 3-4 hours</span><span>Impact: High</span></div>
+    </div>
+
+    <div class="action-card high">
+      <div class="action-priority">🔴 High — Week 1-2</div>
+      <h4>Verify &amp; Submit GSC + XML Sitemap</h4>
+      <p>Claim Google Search Console property. Submit XML sitemap. Set up Search Performance monitoring. Add property to GA4 data streams for integrated reporting. This is foundational for all SEO tracking.</p>
+      <div class="action-meta"><span>Technical SEO</span><span>Est: 1 hour</span><span>Impact: High</span></div>
+    </div>
+
+    <div class="action-card high">
+      <div class="action-priority">🔴 High — Week 2-4</div>
+      <h4>Noindex Beaver Builder System Pages</h4>
+      <p>Add meta robots noindex to /fl-theme-layout/header/ and any other Beaver Builder template pages. Block via robots.txt as a secondary measure. Wasted crawl budget on system pages slows indexing of real content.</p>
+      <div class="action-meta"><span>Technical SEO</span><span>Est: 1 hour</span><span>Impact: Medium</span></div>
+    </div>
+
+    <div class="action-card medium">
+      <div class="action-priority">🔵 Medium — Month 1-2</div>
+      <h4>Add Schema Markup to Key Pages</h4>
+      <p>Implement FAQPage schema on slab leak, emergency service, and leak detection pages. Add AggregateRating schema. Add HowTo schema on blog posts. Schema markup can unlock rich results that increase CTR by 20-30%.</p>
+      <div class="action-meta"><span>On-Page SEO</span><span>Est: 6-8 hours</span><span>Impact: High</span></div>
+    </div>
+
+    <div class="action-card medium">
+      <div class="action-priority">🔵 Medium — Month 1-2</div>
+      <h4>Local Citation Building Campaign</h4>
+      <p>Submit consistent NAP to: BBB, Thumbtack, Yellow Pages, Nextdoor Business, Gwinnett Chamber, Snellville Chamber. Each citation is a local trust signal. Use BrightLocal or Moz Local for batch submission and ongoing monitoring.</p>
+      <div class="action-meta"><span>Local SEO</span><span>Est: 4-6 hours</span><span>Impact: High</span></div>
+    </div>
+
+    <div class="action-card medium">
+      <div class="action-priority">🔵 Medium — Month 2</div>
+      <h4>Optimize /plumbing/ Page for Full Conversions</h4>
+      <p>The new plumbing page is a strategic asset. Optimize H1 to include "Snellville GA plumber", add FAQ section with schema, add LocalBusiness schema, embed Google reviews widget, add before/after job photos, and create supporting blog content.</p>
+      <div class="action-meta"><span>On-Page SEO</span><span>Est: 3-4 hours</span><span>Impact: High</span></div>
+    </div>
+
+    <div class="action-card medium">
+      <div class="action-priority">🔵 Medium — Month 2</div>
+      <h4>Press Release — Business Launch &amp; Community</h4>
+      <p>Distribute press release via PRWeb/EIN Presswire announcing LDSP as Gwinnett County's specialist leak detection and plumbing company. Follow up with local Gwinnett Daily Post pitch. Target: 3+ editorial backlinks from DA 40+ sources.</p>
+      <div class="action-meta"><span>PR / Backlinks</span><span>Est: 4 hours</span><span>Impact: Medium-High</span></div>
+    </div>
+
+    <div class="action-card low">
+      <div class="action-priority">🟢 Low — Month 3</div>
+      <h4>Blog Content Calendar (4 Posts/Month)</h4>
+      <p>Create technician-authored blog posts: "How to Tell if You Have a Slab Leak", "What a Sewer Inspection Shows", "Snellville Home Leak Prevention Guide". Staff-written content satisfies EEAT; informational content captures top-of-funnel searchers.</p>
+      <div class="action-meta"><span>Content / EEAT</span><span>Ongoing</span><span>Impact: Long-term</span></div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:28px"><span class="icon">📅</span> 90-Day Milestone Targets</div>
+  <div class="table-card">
+    <table>
+      <thead><tr><th>Metric</th><th>Current</th><th>30-Day Target</th><th>60-Day Target</th><th>90-Day Target</th></tr></thead>
+      <tbody>
+        <tr><td>Google Reviews</td><td>Unknown (est. &lt;10)</td><td>15+</td><td>25+</td><td>40+</td></tr>
+        <tr><td>Organic Sessions/Month</td><td>29–42</td><td>50+</td><td>80+</td><td>120+</td></tr>
+        <tr><td>GBP Profile Completeness</td><td>~60%</td><td>90%</td><td>95%</td><td>100%</td></tr>
+        <tr><td>Citation Count</td><td>~5 known</td><td>20+</td><td>35+</td><td>50+</td></tr>
+        <tr><td>404 Errors</td><td>27+</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>Blog Posts Published</td><td>Unknown</td><td>4</td><td>8</td><td>12</td></tr>
+        <tr><td>Map Pack Appearances</td><td>Some leak detection</td><td>+2 queries</td><td>+5 queries</td><td>Top 3 for 10 core queries</td></tr>
+        <tr><td>Backlinks (new)</td><td>Minimal</td><td>5+</td><td>15+</td><td>30+</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="report-footer">
+  <strong>Leak Detection Service Pros</strong> · SEO &amp; GBP Performance Report · leakdetectionsp.com · Jan–Apr 2026
+  &nbsp;|&nbsp; Prepared by Real Time Marketing / Unify360 &nbsp;|&nbsp; Data Sources: Google Analytics 4 (Property 525013255), Site Crawl, Google SERP Research
+</div>
+
+<script>
+// Tab navigation
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+const palette = {
+  brand: '#0a7fa5',
+  accent: '#00c2a8',
+  warn: '#f5a623',
+  danger: '#e74c3c',
+  success: '#27ae60',
+  purple: '#8b5cf6',
+  blue: '#3b82f6',
+  gray: '#94a3b8',
+};
+
+// Monthly sessions by channel
+new Chart(document.getElementById('channelMonthlyChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Feb 2026', 'Mar 2026', 'Apr 2026'],
+    datasets: [
+      { label: 'Direct', data: [151, 110, 69], backgroundColor: '#475569' },
+      { label: 'Organic Search', data: [37, 42, 29], backgroundColor: palette.brand },
+      { label: 'Referral', data: [23, 3, 1], backgroundColor: palette.accent },
+      { label: 'Organic Social', data: [11, 5, 1], backgroundColor: palette.purple },
+      { label: 'Paid Search', data: [1, 2, 4], backgroundColor: palette.warn },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } },
+    scales: {
+      x: { stacked: true, grid: { display: false } },
+      y: { stacked: true, beginAtZero: true, grid: { color: '#f0f0f0' } }
+    }
+  }
+});
+
+// Channel pie
+new Chart(document.getElementById('channelPieChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Direct (67%)', 'Organic Search (22%)', 'Referral (6%)', 'Organic Social (3%)', 'Paid Search (1%)'],
+    datasets: [{
+      data: [330, 108, 27, 17, 7],
+      backgroundColor: ['#475569', palette.brand, palette.accent, palette.purple, palette.warn],
+      borderWidth: 2, borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } },
+    cutout: '60%'
+  }
+});
+
+// Device chart
+new Chart(document.getElementById('deviceChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Desktop (86%)', 'Mobile (15%)'],
+    datasets: [{
+      data: [424, 74],
+      backgroundColor: [palette.brand, palette.warn],
+      borderWidth: 2, borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } },
+    cutout: '60%'
+  }
+});
+
+// Engagement chart
+new Chart(document.getElementById('engagementChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Feb 2026', 'Mar 2026', 'Apr 2026'],
+    datasets: [
+      { label: 'Engaged Sessions', data: [81, 69, 47], backgroundColor: palette.success },
+      { label: 'Unengaged Sessions', data: [142, 93, 59], backgroundColor: '#e2e8f0' },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } },
+    scales: {
+      x: { stacked: true, grid: { display: false } },
+      y: { stacked: true, beginAtZero: true, grid: { color: '#f0f0f0' } }
+    }
+  }
+});
+
+// Competitor positioning bubble chart
+new Chart(document.getElementById('competitorChart'), {
+  type: 'bubble',
+  data: {
+    datasets: [
+      { label: 'TE Certified', data: [{ x: 4, y: 7, r: 25 }], backgroundColor: 'rgba(239,68,68,0.6)' },
+      { label: 'Snell Air', data: [{ x: 3, y: 8, r: 20 }], backgroundColor: 'rgba(249,115,22,0.6)' },
+      { label: 'Roto-Rooter', data: [{ x: 5, y: 5, r: 22 }], backgroundColor: 'rgba(107,114,128,0.6)' },
+      { label: 'American Leak Det.', data: [{ x: 9, y: 6, r: 18 }], backgroundColor: 'rgba(245,158,11,0.6)' },
+      { label: 'Aaron Services', data: [{ x: 4, y: 6, r: 15 }], backgroundColor: 'rgba(99,102,241,0.6)' },
+      { label: 'LDSP (You)', data: [{ x: 8, y: 4, r: 14 }], backgroundColor: 'rgba(10,127,165,0.85)' },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+    scales: {
+      x: { title: { display: true, text: 'Leak Detection Specialization →', font: { size: 11 } }, min: 0, max: 10, grid: { color: '#f0f0f0' } },
+      y: { title: { display: true, text: 'GBP/Review Authority →', font: { size: 11 } }, min: 0, max: 10, grid: { color: '#f0f0f0' } }
+    }
+  }
+});
+
+// DA comparison
+new Chart(document.getElementById('daChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Roto-Rooter', 'TE Certified', 'Snell Air', 'Am. Leak Det.', 'Aaron Svc', 'LDSP (You)'],
+    datasets: [{
+      label: 'Estimated Domain Authority',
+      data: [72, 38, 28, 45, 25, 8],
+      backgroundColor: [palette.danger, '#ef4444', '#f97316', palette.warn, palette.blue, palette.brand],
+      borderRadius: 6
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { beginAtZero: true, max: 80, grid: { color: '#f0f0f0' } },
+      y: { grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>
