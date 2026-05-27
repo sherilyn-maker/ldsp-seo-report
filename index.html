@@ -888,6 +888,115 @@
       <p>Position 2.8 means this page is nearly top-3 but getting zero clicks. The title/meta is not compelling searchers to click over the competitor above it. Add power words: "Fast", "Same-Day", "Licensed", phone number in meta description.</p>
     </div>
   </div>
+
+  <!-- APRIL DIP INVESTIGATION -->
+  <div class="section-title" style="margin-top:28px"><span class="icon">🔬</span> April Organic Session Decline — GSC Investigation</div>
+  <div class="alert alert-success">
+    <span class="alert-icon">✅</span>
+    <span><strong>Good News:</strong> GA4 shows organic sessions declined Feb→Mar→Apr (37→42→29). Cross-referencing with GSC reveals this is <em>not</em> a real ranking drop. GSC clicks actually <strong>increased</strong> every month (7→9→13). The discrepancy is a GA4 tracking attribution issue, not an organic performance problem.</span>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card success">
+      <div class="kpi-label">GSC Clicks: Feb</div><div class="kpi-value">7</div><div class="kpi-sub">3,004 impressions</div>
+    </div>
+    <div class="kpi-card success">
+      <div class="kpi-label">GSC Clicks: Mar</div><div class="kpi-value">9</div><div class="kpi-sub">6,394 impressions · +113%</div>
+      <div class="kpi-badge badge-up">▲ +29%</div>
+    </div>
+    <div class="kpi-card accent">
+      <div class="kpi-label">GSC Clicks: Apr</div><div class="kpi-value">13</div><div class="kpi-sub">6,994 impressions · +9%</div>
+      <div class="kpi-badge badge-up">▲ +44%</div>
+    </div>
+    <div class="kpi-card warn">
+      <div class="kpi-label">GA4 Organic Sessions: Apr</div><div class="kpi-value">29</div><div class="kpi-sub">Down from 42 in March</div>
+      <div class="kpi-badge badge-down">Tracking issue</div>
+    </div>
+  </div>
+
+  <div class="table-card" style="margin-top:16px">
+    <h3>March → April Query Changes — What Actually Happened</h3>
+    <table>
+      <thead><tr><th>Query</th><th>Mar Impr</th><th>Apr Impr</th><th>Change</th><th>Mar Pos</th><th>Apr Pos</th><th>Diagnosis</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>water leak detection</strong></td><td>0</td><td>309</td>
+          <td><span class="pill pill-green">+309</span></td><td>—</td><td>1.1</td>
+          <td><span class="pill pill-teal">New #1 ranking appeared</span></td>
+        </tr>
+        <tr>
+          <td>leak detection service</td><td>0</td><td>90</td>
+          <td><span class="pill pill-green">+90</span></td><td>—</td><td>3.9</td>
+          <td><span class="pill pill-teal">New top-5 ranking</span></td>
+        </tr>
+        <tr>
+          <td>commercial leak detection</td><td>210</td><td>196</td>
+          <td><span class="pill pill-blue">-14</span></td><td>20.0</td><td>1.0</td>
+          <td><span class="pill pill-green">Rank jumped to #1!</span></td>
+        </tr>
+        <tr>
+          <td>drain cleaning near me</td><td>—</td><td>103</td>
+          <td><span class="pill pill-green">New</span></td><td>—</td><td>1.4</td>
+          <td><span class="pill pill-green">New #1 ranking — no page!</span></td>
+        </tr>
+        <tr>
+          <td>leak detection company snellville</td><td>0</td><td>41</td>
+          <td><span class="pill pill-green">+41</span></td><td>—</td><td>9.2</td>
+          <td><span class="pill pill-teal">New local ranking</span></td>
+        </tr>
+        <tr style="background:#ffebee">
+          <td><strong>leak detection service pros</strong> (brand)</td><td>47</td><td>0</td>
+          <td><span class="pill pill-red">-47</span></td><td>2.5</td><td>—</td>
+          <td><span class="pill pill-orange">Brand impr disappeared — monitor</span></td>
+        </tr>
+        <tr style="background:#ffebee">
+          <td>infrared leak detection near me</td><td>86</td><td>7</td>
+          <td><span class="pill pill-red">-79</span></td><td>10.4</td><td>4.0</td>
+          <td><span class="pill pill-orange">Impr dropped, rank improved — seasonal</span></td>
+        </tr>
+        <tr style="background:#ffebee">
+          <td>emergency water leak repair</td><td>49</td><td>0</td>
+          <td><span class="pill pill-red">-49</span></td><td>47.0</td><td>—</td>
+          <td><span class="pill pill-orange">Deep ranking lost — low priority</span></td>
+        </tr>
+        <tr style="background:#ffebee">
+          <td>leak detection &amp; repair</td><td>51</td><td>1</td>
+          <td><span class="pill pill-red">-50</span></td><td>41.6</td><td>91</td>
+          <td><span class="pill pill-orange">Broad term lost ranking — expected</span></td>
+        </tr>
+        <tr>
+          <td>leak detection company near me</td><td>—</td><td>71</td>
+          <td><span class="pill pill-green">New</span></td><td>—</td><td>7.0</td>
+          <td><span class="pill pill-teal">New ranking · 4.23% CTR</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="insight-grid" style="margin-top:16px">
+    <div class="insight-box success">
+      <h4>✅ Organic Is Actually Growing</h4>
+      <p>Despite GA4 showing a session dip, GSC confirms clicks increased from 9 to 13 in April (+44%). Impressions grew from 6,394 to 6,994 (+9%). The site is being discovered by MORE searchers, not fewer. The GA4 discrepancy is likely organic sessions being miscounted as Direct due to URL redirect chains or missing referral data.</p>
+    </div>
+    <div class="insight-box warn">
+      <h4>⚠ GA4 vs GSC Attribution Gap</h4>
+      <p>GSC = 13 organic clicks in April · GA4 = 29 organic sessions. The 2× discrepancy suggests organic sessions are being over-counted in GA4 (some Direct traffic being tagged as organic) or under-counted (some organic sessions tagged as Direct due to no referral header). Add UTM parameters to GBP listing URL to isolate channels accurately.</p>
+    </div>
+    <div class="insight-box danger">
+      <h4>🚨 Brand Query Disappeared in April</h4>
+      <p>"leak detection service pros" dropped from 47 impressions in March to 0 in April. This is the most unusual signal in the data. Monitor in May — if brand impressions don't return, investigate: GBP listing status, possible name change on a profile, or Google Knowledge Panel update. Brand queries disappearing can precede broader ranking issues.</p>
+    </div>
+    <div class="insight-box">
+      <h4>🔍 Recommendation: Keyword Rotation Detected</h4>
+      <p>Google is testing LDSP across different query clusters each month. April showed new rankings for broader "water leak detection" and local "leak detection company [city]" terms. This is typical behavior for a new site — Google is still determining which queries to rank it for. Continue publishing content to reinforce specific keyword clusters and stabilize rankings.</p>
+    </div>
+  </div>
+
+  <!-- DRAIN CLEANING ALERT -->
+  <div class="alert alert-danger" style="margin-top:20px">
+    <span class="alert-icon">🚨</span>
+    <span><strong>Critical Missed Opportunity — Drain Cleaning:</strong> "drain cleaning near me" = <strong>241 total impressions at position 1.2</strong>. "drain cleaning snellville ga" appeared in April at <strong>position 1</strong> with 25 impressions. The site is ranking #1 for these queries with ZERO clicks and NO drain cleaning service page. Creating a /drain-cleaning/ page could immediately capture this zero-click-but-top-ranked traffic.</span>
+  </div>
 </div>
 
 <!-- ============================================================ -->
@@ -1092,6 +1201,235 @@
         <li><div class="check-icon check-pass">✓</div><div><strong>Internal Linking:</strong> Service pages cross-link to related pages (e.g., About page links to /sewer-line-repipe/, /leak-detection/). Continue this pattern systematically across all pages.</div></li>
         <li><div class="check-icon check-warn">!</div><div><strong>Image Alt Text:</strong> Review all images for descriptive alt text including location + service keywords (e.g., "slab leak detection Snellville GA technician" instead of "leak-detection-4").</div></li>
       </ul>
+    </div>
+  </div>
+
+  <!-- BLOG CONTENT CALENDAR -->
+  <div class="section-title" style="margin-top:28px"><span class="icon">✍</span> Blog Content Calendar — GSC-Backed Topics</div>
+  <div class="alert alert-info">
+    <span class="alert-icon">📊</span>
+    <span>Every topic below is backed by real GSC impression data — Google is already surfacing leakdetectionsp.com for these searches. Publishing dedicated, staff-authored content on these topics converts existing search impressions into clicks and reinforces EEAT signals. All posts should be authored by Ian Price or Russell.</span>
+  </div>
+
+  <div class="table-card">
+    <h3>🔴 Tier 1 — Publish Immediately (Highest GSC Impression Volume)</h3>
+    <table>
+      <thead><tr><th>#</th><th>Blog Title</th><th>Target Keyword</th><th>GSC Signal</th><th>Word Count</th><th>Schema to Add</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="rank-num">1</span></td>
+          <td>
+            <strong>"Drain Cleaning in Snellville, GA: Signs Your Drains Need Professional Attention"</strong><br>
+            <small>URL: /drain-cleaning/ — create as a full service page + blog hybrid</small>
+          </td>
+          <td>drain cleaning near me<br>drain cleaning snellville ga</td>
+          <td>
+            <span class="pill pill-red">🚨 241 impr at pos 1.2</span><br>
+            April alone: 103 impr pos 1.4 · 0 clicks<br>
+            "drain cleaning snellville ga" = pos 1 in April
+          </td>
+          <td>1,200–1,500</td>
+          <td>FAQPage · HowTo · LocalBusiness</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">2</span></td>
+          <td>
+            <strong>"Gas Leak Detection: What Snellville Homeowners Must Know in 2026"</strong><br>
+            <small>URL: /blog/gas-leak-detection-guide/</small>
+          </td>
+          <td>gas leak inspection<br>gas pipe leak detection</td>
+          <td>
+            <span class="pill pill-red">380 impr · pos 16.9</span><br>
+            "gas leak inspection" is the 5th largest query by volume site-wide<br>
+            "gas line installation" + "gas leak repair near me" also showing
+          </td>
+          <td>1,500–2,000</td>
+          <td>FAQPage · HowTo</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">3</span></td>
+          <td>
+            <strong>"How to Detect a Water Leak in Your Home: 8 Methods Professionals Use"</strong><br>
+            <small>URL: /blog/how-to-detect-water-leak/</small>
+          </td>
+          <td>water leak detection<br>how to detect water leak<br>detecting water leaks</td>
+          <td>
+            <span class="pill pill-red">820 impr · pos 1.1 · 0.12% CTR</span><br>
+            "house water leak detection" pos 2 · "detecting water leaks" pos 2<br>
+            "detect a water leak" pos 2 · multiple variants ranking
+          </td>
+          <td>1,800–2,200</td>
+          <td>FAQPage · HowTo · Article</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">4</span></td>
+          <td>
+            <strong>"Commercial Leak Detection: A Guide for Gwinnett County Business Owners"</strong><br>
+            <small>URL: /blog/commercial-leak-detection-guide/</small>
+          </td>
+          <td>commercial leak detection<br>commercial water leak detection services</td>
+          <td>
+            <span class="pill pill-red">462 impr · pos 9.7 · 0 clicks</span><br>
+            April alone: 196 impr, pos jumped to 1.0 (!) — zero clicks without a page<br>
+            "commercial water leak detection services" 26 impr
+          </td>
+          <td>1,500–2,000</td>
+          <td>FAQPage · Article</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-card" style="margin-top:16px">
+    <h3>🟠 Tier 2 — Publish Within 30 Days (High Intent, Moderate Volume)</h3>
+    <table>
+      <thead><tr><th>#</th><th>Blog Title</th><th>Target Keyword</th><th>GSC Signal</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="rank-num">5</span></td>
+          <td>
+            <strong>"10 Warning Signs You Have a Slab Leak (And What to Do Immediately)"</strong><br>
+            <small>URL: /blog/slab-leak-warning-signs/ — authored by Ian Price</small>
+          </td>
+          <td>concrete slab leak repair<br>slab leak detection</td>
+          <td>"concrete slab leak repair" 12 impr pos 12 · "concrete slab leak" pos 2 · Slab pages are GA4's highest-engagement pages (11–14 min sessions)</td>
+          <td><span class="pill pill-purple">Informational + EEAT</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">6</span></td>
+          <td>
+            <strong>"What to Do When Water Is Leaking Through Your Ceiling"</strong><br>
+            <small>URL: /blog/ceiling-water-leak-emergency/</small>
+          </td>
+          <td>ceiling water leak plumber<br>ceiling leak repair<br>leak in ceiling repair</td>
+          <td>"ceiling water leak plumber" 25 impr pos 7.2 · "ceiling leak repair" 6 impr · "leak in ceiling repair" pos 2 — urgent intent, high conversion potential</td>
+          <td><span class="pill pill-blue">Emergency / Transactional</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">7</span></td>
+          <td>
+            <strong>"Burst Pipe? Here's Exactly What to Do Before the Plumber Arrives"</strong><br>
+            <small>URL: /blog/burst-pipe-emergency-steps/</small>
+          </td>
+          <td>burst pipe repair near me<br>burst pipe repair athens ga</td>
+          <td>"burst pipe repair near me" 39 impr pos 10.8 · April shows 21 impr pos 9.8 — closing in on page 1</td>
+          <td><span class="pill pill-red">Emergency / Urgent</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">8</span></td>
+          <td>
+            <strong>"Infrared Leak Detection: How Thermal Imaging Finds Leaks Without Tearing Walls"</strong><br>
+            <small>URL: /blog/infrared-leak-detection/</small>
+          </td>
+          <td>infrared leak detection near me<br>infrared water leak detection</td>
+          <td>"infrared leak detection near me" had 86 impr in March at pos 10.4 — was top opportunity before April shift. "infrared water leak detection" pos 15. Recapture this traffic with a dedicated explainer.</td>
+          <td><span class="pill pill-blue">Educational / Differentiator</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">9</span></td>
+          <td>
+            <strong>"Pool Leak Detection in Snellville: How We Find Leaks Without Draining Your Pool"</strong><br>
+            <small>URL: /pool-leak-detection/ — service page + blog hybrid</small>
+          </td>
+          <td>pool leak detection company near me<br>pool leak detectors</td>
+          <td>"pool leak detection company near me" → 11.1% CTR at pos 4.6 — already driving clicks with no page. "best pool leak detection company near me" pos 1, 33% CTR. "pool leak detectors" pos 1.</td>
+          <td><span class="pill pill-green">High CTR Already</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">10</span></td>
+          <td>
+            <strong>"Underground Water Leak Detection: How Specialists Pinpoint Buried Pipe Leaks"</strong><br>
+            <small>URL: /blog/underground-leak-detection/ or /underground-leak-detection/</small>
+          </td>
+          <td>underground leak detection near me<br>ground water leak detector</td>
+          <td>"underground leak detection near me" 26 impr · 3.85% CTR · pos 5.8 — already converting without a dedicated page. "ground water leak detector" pos 4.</td>
+          <td><span class="pill pill-teal">Near Page 1, Already Converting</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-card" style="margin-top:16px">
+    <h3>🔵 Tier 3 — Publish Within 60–90 Days (Trust, EEAT &amp; Long-Term Traffic)</h3>
+    <table>
+      <thead><tr><th>#</th><th>Blog Title</th><th>Target Keyword</th><th>Purpose</th><th>Author</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="rank-num">11</span></td>
+          <td><strong>"How Much Does Leak Detection Cost in Georgia? (2026 Pricing Guide)"</strong><br><small>/blog/leak-detection-cost-georgia/</small></td>
+          <td>leak detection free estimate<br>how much does leak detection cost</td>
+          <td>Captures comparison shoppers before they call a competitor. Transparent pricing = trust signal. GSC shows "leak detection free estimate" at pos 9 — pricing content will reinforce this.</td>
+          <td>Ian Price</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">12</span></td>
+          <td><strong>"What Is a Comprehensive Leak Detection Service? (And Why You Need One)"</strong><br><small>/blog/comprehensive-leak-detection/</small></td>
+          <td>comprehensive leak detection services<br>leak detection and repair</td>
+          <td>"comprehensive leak detection services" = 171 impr pos 6.7 with 0 clicks. This exact phrase is being searched 170+ times/month — create content that answers it directly with LDSP as the answer.</td>
+          <td>Russell</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">13</span></td>
+          <td><strong>"Dye Testing for Water Leaks: How It Works and When It's Used"</strong><br><small>/blog/dye-test-water-leak/</small></td>
+          <td>dye test for water leaks<br>leak detection camera</td>
+          <td>Showcases specialist knowledge and equipment expertise. "dye test for water leaks" pos 8. Builds topical authority around leak detection methodology — key EEAT differentiator vs. general plumbers.</td>
+          <td>Ian Price</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">14</span></td>
+          <td><strong>"How a Leaky Toilet Is Silently Costing You Money — And How to Stop It"</strong><br><small>/blog/leaky-toilet-water-waste/</small></td>
+          <td>how many gallons does a leaky toilet use<br>how much water can a leaky flapper waste</td>
+          <td>Both queries appear in GSC (pos 88–90) — highly shareable, top-of-funnel content. High share potential on Nextdoor and neighborhood Facebook groups in Snellville. Drives brand awareness and review opportunities.</td>
+          <td>Russell</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">15</span></td>
+          <td><strong>"Snellville, GA Home Leak Prevention Checklist: What Every Homeowner Should Do Twice a Year"</strong><br><small>/blog/home-leak-prevention-snellville/</small></td>
+          <td>leak inspection<br>home leak detection services</td>
+          <td>"leak inspection" = <strong>822 impr at pos 1</strong> — the single highest-impression query! Zero clicks because there's no content addressing it. This seasonal guide converts that massive impression volume into brand awareness and return visits.</td>
+          <td>Ian Price or Russell</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title" style="margin-top:24px"><span class="icon">📋</span> Blog Publishing Best Practices</div>
+  <div class="insight-grid">
+    <div class="insight-box success">
+      <h4>✅ Every Post Must Have</h4>
+      <ul>
+        <li>Author byline with photo (Ian Price or Russell) — EEAT requirement</li>
+        <li>Published date + "Last Updated" date</li>
+        <li>FAQPage schema (minimum 3–5 Q&amp;As per post)</li>
+        <li>Internal links to relevant service pages (e.g., leak detection blog → /leak-detection/ page)</li>
+        <li>Call-to-action section at bottom with phone + contact form</li>
+        <li>At least 1 original photo (job site, technician, equipment)</li>
+      </ul>
+    </div>
+    <div class="insight-box warn">
+      <h4>⚠ Content Quality Rules</h4>
+      <ul>
+        <li>Do NOT use pure AI-generated content — Google's Helpful Content system penalizes it</li>
+        <li>Include real job details: neighborhood names, specific findings, how problem was resolved</li>
+        <li>Minimum 1,200 words for service pages, 1,500+ for blog posts</li>
+        <li>Use first-person language from the technician's perspective ("In my experience…", "When I arrive at a Snellville home with a suspected slab leak…")</li>
+        <li>Cite specific local references: Gwinnett County, Newton County, Barrow County</li>
+      </ul>
+    </div>
+    <div class="insight-box">
+      <h4>📅 Publishing Cadence</h4>
+      <ul>
+        <li><strong>Week 1:</strong> Drain Cleaning page + Gas Leak Detection guide (highest volume)</li>
+        <li><strong>Week 2:</strong> How to Detect Water Leak + Commercial Leak Detection</li>
+        <li><strong>Week 3–4:</strong> Slab Leak Signs + Ceiling Leak Emergency</li>
+        <li><strong>Month 2:</strong> Burst Pipe, Infrared, Pool Leak Detection</li>
+        <li><strong>Month 3:</strong> Pricing guide, Prevention checklist, Toilet leak waste</li>
+        <li>After each publish: share to Facebook, create a GBP post linking to it</li>
+      </ul>
+    </div>
+    <div class="insight-box danger">
+      <h4>🚨 "Leak Inspection" = 822 Impressions, Pos 1, 0 Clicks</h4>
+      <p>"leak inspection" is the #2 highest-impression query in all of GSC (822 impr, pos 1) and the site gets zero clicks. This exact phrase must appear in a blog post title and H1. The Snellville Home Leak Prevention Checklist (post #15) directly targets this — publish it immediately alongside the Drain Cleaning and Gas Leak posts in Week 1.</p>
     </div>
   </div>
 </div>
