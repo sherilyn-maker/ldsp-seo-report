@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leak Detection Service Pros – SEO Report 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:#f1f5f9;color:#1e293b}
+header{background:linear-gradient(135deg,#0f4c81,#1a8fe3);color:#fff;padding:28px 36px}
+header h1{font-size:1.8rem;font-weight:700}
+header p{font-size:.95rem;opacity:.85;margin-top:4px}
+nav{background:#fff;border-bottom:2px solid #e2e8f0;padding:0 24px;display:flex;flex-wrap:wrap;gap:4px;position:sticky;top:0;z-index:100}
+.tab-btn{padding:14px 16px;border:none;background:none;font-size:.82rem;font-weight:600;color:#64748b;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+.tab-btn.active,.tab-btn:hover{color:#0f4c81;border-bottom-color:#1a8fe3}
+.tab-content{display:none;padding:28px 24px;max-width:1400px;margin:0 auto}
+.tab-content.active{display:block}
+.card{background:#fff;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.08);padding:24px;margin-bottom:20px}
+h2{font-size:1.3rem;color:#0f4c81;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+h3{font-size:1.05rem;color:#1e293b;margin:18px 0 10px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px}
+.metric{background:#fff;border-radius:8px;padding:16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.metric .val{font-size:2rem;font-weight:700;color:#0f4c81}
+.metric .lbl{font-size:.75rem;color:#64748b;margin-top:4px;font-weight:600}
+.metric .sub{font-size:.7rem;color:#94a3b8;margin-top:2px}
+.metric.red .val{color:#dc2626}
+.metric.green .val{color:#16a34a}
+.metric.orange .val{color:#ea580c}
+.alert{border-radius:8px;padding:14px 18px;margin-bottom:14px;font-size:.88rem;line-height:1.6;display:flex;gap:12px;align-items:flex-start}
+.alert.critical{background:#fef2f2;border-left:4px solid #dc2626}
+.alert.warning{background:#fff7ed;border-left:4px solid #ea580c}
+.alert.info{background:#eff6ff;border-left:4px solid #1a8fe3}
+.alert.success{background:#f0fdf4;border-left:4px solid #16a34a}
+.alert-icon{font-weight:700;font-size:1rem;min-width:24px}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th{background:#0f4c81;color:#fff;padding:9px 12px;text-align:left;font-weight:600;font-size:.78rem}
+td{padding:8px 12px;border-bottom:1px solid #f1f5f9;vertical-align:top}
+tr:nth-child(even) td{background:#f8fafc}
+.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:.72rem;font-weight:600}
+.badge.red{background:#fef2f2;color:#dc2626}
+.badge.orange{background:#fff7ed;color:#ea580c}
+.badge.green{background:#f0fdf4;color:#16a34a}
+.badge.blue{background:#eff6ff;color:#1a8fe3}
+.badge.gray{background:#f1f5f9;color:#64748b}
+.chart-wrap{position:relative;height:320px;margin:16px 0}
+.chart-wrap.tall{height:400px}
+.chart-wrap.short{height:240px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.page-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin-bottom:14px}
+.page-card h4{color:#0f4c81;font-size:.92rem;margin-bottom:8px}
+.page-card .page-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.page-card .rec{background:#eff6ff;border-radius:6px;padding:8px 12px;font-size:.82rem;margin-top:8px}
+.kw-tier{margin-bottom:20px}
+.kw-tier h3{background:#f1f5f9;padding:8px 12px;border-radius:6px;font-size:.9rem;margin-bottom:0}
+</style>
+</head>
+<body>
+<header>
+  <h1>Leak Detection Service Pros – SEO Performance Report 2026</h1>
+  <p>leakdetectionsp.com &nbsp;|&nbsp; GA4: 525013255 &nbsp;|&nbsp; GA4 Period: Feb–Jun 2026 (180 days) &nbsp;|&nbsp; GSC: Dec 15, 2025–Jun 13, 2026</p>
+</header>
+<nav>
+  <button class="tab-btn active" onclick="showTab('summary',event)">Executive Summary</button>
+  <button class="tab-btn" onclick="showTab('ga4',event)">GA4 Analytics</button>
+  <button class="tab-btn" onclick="showTab('gsc',event)">Search Console</button>
+  <button class="tab-btn" onclick="showTab('audit',event)">Audit &amp; Content</button>
+  <button class="tab-btn" onclick="showTab('technical',event)">Technical SEO</button>
+  <button class="tab-btn" onclick="showTab('competitors',event)">Competitors</button>
+  <button class="tab-btn" onclick="showTab('ai',event)">AI Search Traffic</button>
+  <button class="tab-btn" onclick="showTab('contentrec',event)">Content Recommendations</button>
+  <button class="tab-btn" onclick="showTab('blogcal',event)">Blog Content Calendar</button>
+</nav>
+<script>
+function showTab(id,event){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  if(event)event.currentTarget.classList.add('active');
+}
+</script>
+
+<!-- TAB: EXECUTIVE SUMMARY -->
+<div id="tab-summary" class="tab-content active">
+<div class="card">
+  <h2>Executive Summary</h2>
+  <div class="alert critical"><span class="alert-icon">🔴</span><div><strong>CRITICAL: Conversion Tracking is Broken.</strong> Direct traffic (562 sessions) shows 532 conversions = 94.7% conversion rate. Siteliner referral (6 sessions) shows 18 conversions = 300%. These numbers are impossible for a service business. A non-conversion event (likely session_start, page_view, or scroll) is marked as a GA4 conversion. Fix in GA4 admin immediately — every decision made on this conversion data is wrong.</div></div>
+  <div class="alert critical"><span class="alert-icon">🔴</span><div><strong>CRITICAL: 4 Keywords Ranking #1 with Zero Clicks.</strong> "drain cleaning snellville ga" (122 impressions, pos 1.0, 0 clicks), "drain cleaning near me" (390 impressions, pos 1.3, 0 clicks), "water leak detection" (1,316 impressions, pos 1.1, 0 clicks), "24 hour plumbing snellville ga" (23 impressions, pos 1.0, 0 clicks). The site ranks #1 for these queries but earns zero clicks — a clear title/meta tag mismatch. Fix titles on the homepage and service pages immediately.</div></div>
+  <div class="alert critical"><span class="alert-icon">🔴</span><div><strong>CRITICAL: 0.21% CTR on 59,934 Impressions.</strong> The site has massive search visibility (59,934 impressions in 6 months) but only 126 clicks — 0.21% average CTR. Industry benchmark for local service businesses is 3-8%. At even 3% CTR this site would have 1,798 clicks instead of 126. Root cause: homepage title tag is the wrong match for many queries (shows "Local Plumber in Snellville, GA" but queries are for leak detection specialists).</div></div>
+  <div class="alert warning"><span class="alert-icon">🟠</span><div><strong>HIGH: /not_found Gets 33+ Sessions Monthly.</strong> The 404 page (/not_found) receives 33 GA4 sessions and /leak-detection-in-athens-ga (missing trailing slash) gets 7 sessions to a 404. These are real visitors being lost. Fix broken internal links and add 301 redirects for all 404 pages identified in crawl.</div></div>
+  <div class="alert warning"><span class="alert-icon">🟠</span><div><strong>HIGH: /fl-theme-layout/header/ is Indexed and Getting Traffic.</strong> This Flatsome theme internal template page (/fl-theme-layout/header/) receives 10 GA4 sessions and 33 page views. Google is indexing WordPress theme layout files. Add noindex to all /fl-theme-layout/ URLs immediately and submit for recrawl.</div></div>
+  <div class="alert warning"><span class="alert-icon">🟠</span><div><strong>HIGH: Zero Google Ads Investment.</strong> Only 20 CPC sessions in 180 days from Google Ads. Competitors in Snellville/Atlanta metro run aggressive CPC campaigns for "leak detection near me" and "slab leak repair atlanta." At current organic levels (195 sessions/6 months), the business cannot grow without either paid or aggressive SEO investment.</div></div>
+</div>
+
+<div class="card">
+  <h2>Performance Snapshot</h2>
+  <div class="metrics">
+    <div class="metric"><div class="val">846</div><div class="lbl">Total Sessions</div><div class="sub">Feb–Jun 2026 (180 days)</div></div>
+    <div class="metric"><div class="val">515</div><div class="lbl">Total Users</div><div class="sub">93.8% new visitors</div></div>
+    <div class="metric"><div class="val">3,392</div><div class="lbl">Page Views</div><div class="sub">4.01 pages/session</div></div>
+    <div class="metric orange"><div class="val">49%</div><div class="lbl">Engagement Rate</div><div class="sub">Target: 65%+</div></div>
+    <div class="metric"><div class="val">126</div><div class="lbl">GSC Organic Clicks</div><div class="sub">Dec 2025 – Jun 2026</div></div>
+    <div class="metric red"><div class="val">0.21%</div><div class="lbl">GSC Avg CTR</div><div class="sub">Target: 3–5%</div></div>
+    <div class="metric"><div class="val">59,934</div><div class="lbl">GSC Impressions</div><div class="sub">Massive untapped visibility</div></div>
+    <div class="metric red"><div class="val">22.0</div><div class="lbl">GSC Avg Position</div><div class="sub">Target: under 10</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Priority Actions — Ranked by Impact</h2>
+  <table>
+    <tr><th>#</th><th>Action</th><th>Impact</th><th>Effort</th><th>Timeline</th></tr>
+    <tr><td>1</td><td>Fix GA4 conversion tracking — identify which event is incorrectly marked as a conversion (likely session_start or page_view). Unmark it and set up proper form-submit or call tracking events.</td><td><span class="badge red">Critical</span></td><td>1 hr</td><td>Today</td></tr>
+    <tr><td>2</td><td>Fix homepage title tag: change to "Leak Detection Specialists in Snellville, GA | Non-Invasive | 24/7" — currently "Local Plumber" mismatches most impression-driving queries</td><td><span class="badge red">Critical</span></td><td>15 min</td><td>Today</td></tr>
+    <tr><td>3</td><td>Fix meta tags on drain cleaning page to match "drain cleaning snellville ga" and "drain cleaning near me" (390+122 impressions at pos 1, 0 clicks)</td><td><span class="badge red">Critical</span></td><td>30 min</td><td>This week</td></tr>
+    <tr><td>4</td><td>Add noindex to all /fl-theme-layout/ pages (theme template pages being indexed and driving confused traffic)</td><td><span class="badge red">Critical</span></td><td>15 min</td><td>This week</td></tr>
+    <tr><td>5</td><td>Set up 301 redirects: /leak-detection-in-athens-ga → /leak-detection-in-athens-ga/, /contact-us → /contact/, fix all 404 patterns (/not_found getting 33 sessions)</td><td><span class="badge orange">High</span></td><td>30 min</td><td>This week</td></tr>
+    <tr><td>6</td><td>Add FAQPage schema to homepage, /leak-detection/, /slab-leak-repair/, /commercial-leak-detection/ — enables rich results and AI Overview citations</td><td><span class="badge orange">High</span></td><td>2 hrs</td><td>This week</td></tr>
+    <tr><td>7</td><td>Homepage meta description missing or too short — update to 155 chars targeting "leak detection + slab leak + Snellville GA + free estimate"</td><td><span class="badge orange">High</span></td><td>15 min</td><td>This week</td></tr>
+    <tr><td>8</td><td>Launch Google Ads campaign: "leak detection near me" + "slab leak repair" + city modifiers. At $500/month, expect 15-25 qualified leads. Currently 0 paid traffic investment.</td><td><span class="badge orange">High</span></td><td>4 hrs</td><td>Within 2 weeks</td></tr>
+    <tr><td>9</td><td>Rewrite /commercial-leak-detection/ — 784 GSC impressions at pos 6.1 with 0 clicks and 1 click respectively. Fix title to "Commercial Leak Detection in Snellville, GA | Non-Invasive | Free Estimate"</td><td><span class="badge orange">High</span></td><td>2 hrs</td><td>Within 2 weeks</td></tr>
+    <tr><td>10</td><td>Build Lawrenceville, Covington, Athens, Winder dedicated pages — these cities already rank (pos 16–34) but have thin content. Full 1,200-word pages with FAQPage schema could move to top 5.</td><td><span class="badge orange">High</span></td><td>8 hrs</td><td>Within 30 days</td></tr>
+    <tr><td>11</td><td>Add LocalBusiness + AggregateRating schema to homepage — enables star ratings in SERP and could boost CTR from current 0.21% to 1-2% on 35,808 impressions</td><td><span class="badge orange">High</span></td><td>1 hr</td><td>Within 2 weeks</td></tr>
+    <tr><td>12</td><td>Publish 4 blog posts/month per content calendar (Section 9). Each post needs FAQPage schema, local city reference, and 1,200+ words. Current blog gets 63 sessions/6 months.</td><td><span class="badge blue">Medium</span></td><td>Ongoing</td><td>Monthly</td></tr>
+  </table>
+</div>
+</div>
+
+<!-- TAB: GA4 ANALYTICS -->
+<div id="tab-ga4" class="tab-content">
+<div class="card">
+  <h2>Traffic Channel Summary (Feb–Jun 2026, 180 days)</h2>
+  <div class="alert warning"><span class="alert-icon">⚠</span><div><strong>Conversion Data is Unreliable.</strong> Direct traffic shows 532 conversions from 562 sessions (94.7%) — impossible for a service business. A non-conversion event is misconfigured in GA4. Conversion numbers below are shown as-is but should not be used for business decisions until fixed.</div></div>
+  <div class="two-col">
+    <div>
+      <div class="chart-wrap"><canvas id="channelChart"></canvas></div>
+    </div>
+    <div>
+      <table>
+        <tr><th>Channel</th><th>Sessions</th><th>Eng%</th><th>Note</th></tr>
+        <tr><td>Direct</td><td>562 (66%)</td><td>42%</td><td><span class="badge orange">Inflated — UTM tags missing on all outgoing links</span></td></tr>
+        <tr><td>Google Organic</td><td>195 (23%)</td><td>65%</td><td><span class="badge green">Best quality — grow via SEO</span></td></tr>
+        <tr><td>tagassistant referral</td><td>24 (3%)</td><td>79%</td><td><span class="badge gray">Internal testing — filter from GA4</span></td></tr>
+        <tr><td>Google CPC</td><td>20 (2.4%)</td><td>25%</td><td><span class="badge red">Minimal paid spend — scale up</span></td></tr>
+        <tr><td>Yelp referral</td><td>12 (1.4%)</td><td>50%</td><td><span class="badge blue">Good local referral — keep profile updated</span></td></tr>
+        <tr><td>Facebook referral</td><td>7 (0.8%)</td><td>43%</td><td><span class="badge gray">Low volume — awareness only</span></td></tr>
+        <tr><td>ChatGPT / Copilot</td><td>2 (0.2%)</td><td>50%</td><td><span class="badge blue">Early AI citations — add FAQPage schema</span></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Organic Traffic — Monthly Trend (Google + Bing)</h2>
+  <div class="alert critical"><span class="alert-icon">📉</span><div><strong>Organic Baseline is Extremely Low.</strong> 195 organic sessions over 6 months = ~32 sessions/month. A leak detection business in a metro area should target 500-1,000 organic sessions/month. The site has strong impression volume (59,934 GSC impressions) but near-zero CTR — fixing title tags and adding schema is the fastest path to unlocking existing traffic.</div></div>
+  <div class="chart-wrap short"><canvas id="organicChart"></canvas></div>
+  <h3>Actions to Improve Organic Traffic</h3>
+  <div class="two-col">
+    <div class="alert info"><span class="alert-icon">1</span><div><strong>Fix Homepage Title (Today):</strong> "Local Plumber in Snellville, GA" matches plumber queries, not leak detection queries. 35,808 impressions are lost because the title doesn't match intent. New title: "Leak Detection Specialists in Snellville, GA | 24/7 Non-Invasive | Free Estimate." Expected CTR lift: 0.21% → 1.5-3%. That's 536-1,074 new organic visits/month from existing impressions.</div></div>
+    <div class="alert info"><span class="alert-icon">2</span><div><strong>Add FAQPage Schema to All Service Pages:</strong> None of the 15+ service pages have FAQ schema. FAQPage schema enables rich results in Google and is the #1 signal for AI Overview citations. Add to homepage, /leak-detection/, /slab-leak-repair/, /commercial-leak-detection/, /emergency-service/ this week. Expected CTR improvement: +15-30% on query-matched pages.</div></div>
+    <div class="alert info"><span class="alert-icon">3</span><div><strong>Rewrite Commercial Leak Detection Page:</strong> "commercial leak detection" has 784 GSC impressions at pos 6.1 with 0 clicks. Title says "Fast &amp; Reliable Service" instead of the keyword. New title: "Commercial Leak Detection in Snellville, GA | Certified | Non-Invasive | Call Now." Expected new clicks: 20-40/month.</div></div>
+    <div class="alert info"><span class="alert-icon">4</span><div><strong>Build Out City Pages (Covington, Athens, Lawrenceville, Winder):</strong> These cities have hundreds of GSC impressions in positions 16-44 — near page 2. Full 1,200-word pages with LocalBusiness schema + FAQPage schema per city could push them to top 5 within 60-90 days. Estimated combined new clicks: 30-80/month.</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>AI Referral Traffic</h2>
+  <div class="chart-wrap short"><canvas id="aiChart"></canvas></div>
+  <div class="alert info"><span class="alert-icon">🤖</span><div><strong>AI Traffic is Emerging But Minimal.</strong> ChatGPT (1 session) and Copilot (1 session) are already sending early traffic. For a local service business, AI traffic will grow as more users ask "find a leak detection company near me" in ChatGPT. FAQPage schema is the primary way to earn AI Overview citations and be recommended by AI assistants. Register in Bing Webmaster Tools (free, 15 minutes) to improve Microsoft Copilot visibility.</div></div>
+</div>
+
+<div class="card">
+  <h2>Top Pages by Sessions (Feb–Jun 2026)</h2>
+  <table>
+    <tr><th>Page</th><th>Sessions</th><th>Engaged</th><th>Eng%</th><th>Avg Duration</th><th>Conversions*</th><th>Assessment</th></tr>
+    <tr><td>/ Homepage</td><td>557</td><td>348</td><td>62%</td><td>4:48</td><td>188</td><td><span class="badge red">Title mismatch — fix to "Leak Detection Specialists"</span></td></tr>
+    <tr><td>/contact/</td><td>75</td><td>69</td><td>92%</td><td>4:53</td><td>35</td><td><span class="badge green">92% eng — add LocalBusiness schema</span></td></tr>
+    <tr><td>/blog/</td><td>63</td><td>42</td><td>67%</td><td>1:29</td><td>27</td><td><span class="badge blue">Needs more posts — 4/month target</span></td></tr>
+    <tr><td>/leak-detection/</td><td>44</td><td>37</td><td>84%</td><td>3:59</td><td>13</td><td><span class="badge orange">784 GSC impr at pos 6.1 — fix title, add FAQ schema</span></td></tr>
+    <tr><td>/about-us/</td><td>37</td><td>35</td><td>95%</td><td>4:13</td><td>15</td><td><span class="badge green">Excellent engagement — add team credentials</span></td></tr>
+    <tr><td>/services/</td><td>37</td><td>33</td><td>89%</td><td>4:13</td><td>8</td><td><span class="badge blue">Add internal links to each service page</span></td></tr>
+    <tr><td>/not_found (404)</td><td>33</td><td>30</td><td>91%</td><td>2:25</td><td>4</td><td><span class="badge red">Fix broken links — 33 sessions lost per period</span></td></tr>
+    <tr><td>/areas-served/</td><td>26</td><td>23</td><td>88%</td><td>9:33</td><td>6</td><td><span class="badge green">Highest avg duration — users researching coverage area</span></td></tr>
+    <tr><td>/plumbing/</td><td>26</td><td>19</td><td>73%</td><td>5:31</td><td>18</td><td><span class="badge blue">Add FAQ schema targeting plumbing queries</span></td></tr>
+    <tr><td>/water-line-repair/</td><td>26</td><td>16</td><td>62%</td><td>1:33</td><td>6</td><td><span class="badge orange">Low duration — add cost info, FAQ schema</span></td></tr>
+    <tr><td>/residential-leak-detection/</td><td>25</td><td>22</td><td>88%</td><td>2:12</td><td>3</td><td><span class="badge blue">Add FAQ schema: "how much does residential leak detection cost?"</span></td></tr>
+    <tr><td>/emergency-service/</td><td>21</td><td>19</td><td>90%</td><td>3:13</td><td>3</td><td><span class="badge blue">Strong — add FAQ schema for emergency queries</span></td></tr>
+    <tr><td>/slab-leak-repair/</td><td>21</td><td>17</td><td>81%</td><td>5:04</td><td>5</td><td><span class="badge orange">1,327+ GSC impr on area pages — strengthen main page</span></td></tr>
+    <tr><td>/areas-served/athens-ga/</td><td>19+6=25</td><td>25</td><td>96%</td><td>6:38</td><td>23</td><td><span class="badge orange">1,423 GSC impr at pos 43 — rewrite with more content</span></td></tr>
+    <tr><td>/why-us/</td><td>19</td><td>17</td><td>89%</td><td>1:40</td><td>7</td><td><span class="badge blue">Add case studies and trust signals</span></td></tr>
+    <tr><td>/fl-theme-layout/header/</td><td>10</td><td>10</td><td>100%</td><td>8:14</td><td>4</td><td><span class="badge red">REMOVE — theme template page, add noindex now</span></td></tr>
+  </table>
+  <p style="font-size:.75rem;color:#94a3b8;margin-top:8px">*Conversions are unreliable due to misconfigured GA4 conversion event. Audit before trusting.</p>
+</div>
+</div>
+
+<script>
+// Channel chart
+new Chart(document.getElementById('channelChart'),{
+  type:'doughnut',
+  data:{
+    labels:['Direct','Google Organic','tagassistant','Google CPC','Yelp','Facebook','Other'],
+    datasets:[{data:[562,195,24,20,12,7,26],backgroundColor:['#64748b','#16a34a','#e2e8f0','#1a8fe3','#dc2626','#3b82f6','#94a3b8']}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{font:{size:11}}}}}
+});
+// Organic monthly
+new Chart(document.getElementById('organicChart'),{
+  type:'bar',
+  data:{
+    labels:['Feb 2026','Mar 2026','Apr 2026','May 2026','Jun 2026 (partial)'],
+    datasets:[{label:'Organic Sessions',data:[37,42,29,58,30],backgroundColor:['#16a34a','#16a34a','#dc2626','#1a8fe3','#1a8fe3'],borderRadius:4}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,title:{display:true,text:'Sessions'}}}}
+});
+// AI chart
+new Chart(document.getElementById('aiChart'),{
+  type:'bar',
+  data:{
+    labels:['Yelp referral','Facebook referral','ChatGPT','Copilot','Other referral'],
+    datasets:[{label:'Sessions',data:[12,7,1,1,5],backgroundColor:'#1a8fe3',borderRadius:4}]
+  },
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true}}}
+});
+</script>
+
+<!-- TAB: SEARCH CONSOLE -->
+<div id="tab-gsc" class="tab-content">
+<div class="card">
+  <h2>Search Console Overview (Dec 15, 2025 – Jun 13, 2026)</h2>
+  <div class="metrics">
+    <div class="metric"><div class="val">126</div><div class="lbl">Total Clicks</div><div class="sub">6-month period</div></div>
+    <div class="metric"><div class="val">59,934</div><div class="lbl">Impressions</div><div class="sub">Massive untapped potential</div></div>
+    <div class="metric red"><div class="val">0.21%</div><div class="lbl">Avg CTR</div><div class="sub">Target: 3-5%</div></div>
+    <div class="metric orange"><div class="val">22.0</div><div class="lbl">Avg Position</div><div class="sub">Page 2-3 average</div></div>
+  </div>
+  <div class="alert critical"><span class="alert-icon">🔴</span><div><strong>Homepage earns 98 of 126 total clicks (77.8%).</strong> Almost all organic clicks go only to the homepage. Inner pages — despite having 35,000+ impressions — earn almost no traffic. This signals thin content, weak title tags, and missing schema across all service pages. Every service page and city page needs a title rewrite + FAQPage schema.</div></div>
+</div>
+
+<div class="card">
+  <h2>Keyword Opportunity Map</h2>
+  <div class="chart-wrap"><canvas id="impChart"></canvas></div>
+</div>
+
+<div class="card kw-tier">
+  <h2>Tier 1 — Ranking #1-5 with Zero Clicks (Fix Immediately)</h2>
+  <div class="alert critical"><span class="alert-icon">🔴</span><div>These keywords rank at or near #1 in Google but earn zero clicks. The site appears at the top but users don't click because the title/description doesn't match their intent. These are the highest-priority fixes — no new content needed, just title + meta rewrites.</div></div>
+  <table>
+    <tr><th>Keyword</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Position</th><th>Fix Required</th></tr>
+    <tr><td>water leak detection</td><td>1</td><td>1,316</td><td>0.08%</td><td>1.1</td><td>Ranking #1 with near-0 clicks. New homepage title must explicitly say "water leak detection." Consider creating a dedicated /water-leak-detection/ service page.</td></tr>
+    <tr><td>drain cleaning near me</td><td>0</td><td>390</td><td>0%</td><td>1.3</td><td>Ranking #1, 0 clicks. Does the site offer drain cleaning? If yes, create /drain-cleaning/ page. If not, ensure no pages accidentally target this query.</td></tr>
+    <tr><td>drain cleaning snellville ga</td><td>0</td><td>122</td><td>0%</td><td>1.0</td><td>Ranking #1 in Snellville for drain cleaning with 0 clicks. High-intent local query. Create dedicated drain cleaning page if service is offered.</td></tr>
+    <tr><td>24 hour plumbing snellville ga</td><td>0</td><td>23</td><td>0%</td><td>1.0</td><td>Ranking #1. Title must prominently say "24/7" and "Snellville, GA." Add: "Available 24/7, no overtime charges."</td></tr>
+    <tr><td>best leak detection services near me for emergency gas leak</td><td>0</td><td>37</td><td>0%</td><td>1.3</td><td>Ranking #1. Create dedicated /gas-leak-detection/ page or strengthen existing /gas-line-repair/ content.</td></tr>
+    <tr><td>drain cleaning</td><td>0</td><td>48</td><td>0%</td><td>4.5</td><td>Position 4-5. Add drain cleaning as a named service on the homepage and create a dedicated page.</td></tr>
+    <tr><td>concrete slab leak detection</td><td>0</td><td>14</td><td>0%</td><td>1.9</td><td>Ranking #2 — update slab leak repair page title to include "detection" and "concrete slab."</td></tr>
+    <tr><td>backflow services near me</td><td>0</td><td>1</td><td>0%</td><td>1.0</td><td>Ranking #1 — if backflow service offered, create dedicated page and add to services menu.</td></tr>
+    <tr><td>clogged drain near me</td><td>0</td><td>2</td><td>0%</td><td>1.0</td><td>Ranking #1 — confirms drain cleaning content is needed as a standalone service page.</td></tr>
+    <tr><td>drain cleaning snellville</td><td>0</td><td>16</td><td>0%</td><td>1.0</td><td>Ranking #1 — same issue as above. Drain cleaning page needed urgently.</td></tr>
+  </table>
+</div>
+
+<div class="card kw-tier">
+  <h2>Tier 2 — Positions 5-20 (High-Volume Near-Page-1)</h2>
+  <div class="alert warning"><span class="alert-icon">⚡</span><div>These keywords have high impression volume and are close to page 1. Each can reach top 5 with a targeted page rewrite + FAQPage schema + LocalBusiness schema. This is the fastest path to doubling organic traffic.</div></div>
+  <table>
+    <tr><th>Keyword</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Position</th><th>Recommended Action</th></tr>
+    <tr><td>leak detection services</td><td>1</td><td>707</td><td>0.14%</td><td>5.6</td><td>707 impressions at pos 5.6 — this should be earning 30-50 clicks/month. Homepage title must say "Leak Detection Services." Also create /leak-detection-services/ landing page.</td></tr>
+    <tr><td>commercial leak detection</td><td>1</td><td>784</td><td>0.13%</td><td>6.1</td><td>784 impressions, 1 click at pos 6. Fix /commercial-leak-detection/ title to: "Commercial Leak Detection in Snellville, GA | Certified Non-Invasive | Call 24/7."</td></tr>
+    <tr><td>comprehensive leak detection services</td><td>0</td><td>194</td><td>0%</td><td>7.2</td><td>Position 7, 194 impressions, 0 clicks. Add FAQPage schema to the /leak-detection/ page targeting this phrase.</td></tr>
+    <tr><td>electronic leak detection</td><td>0</td><td>27</td><td>0%</td><td>7.7</td><td>Create content explaining electronic/acoustic leak detection technology used on the /leak-detection/ page. Great FAQ topic.</td></tr>
+    <tr><td>atlanta leak detection</td><td>1</td><td>1</td><td>100%</td><td>6.0</td><td>Create an /atlanta/ area-served page. Atlanta metro is a major opportunity currently unaddressed.</td></tr>
+    <tr><td>commercial water leak detection</td><td>0</td><td>4</td><td>0%</td><td>3.5</td><td>Ranking pos 3.5 — add this exact phrase to /commercial-leak-detection/ H1 and FAQ schema.</td></tr>
+    <tr><td>leak detection service near me</td><td>1</td><td>49</td><td>2%</td><td>13.1</td><td>Position 13 — add LocalBusiness schema with areaServed to push to page 1.</td></tr>
+    <tr><td>pool leak detection company near me</td><td>4</td><td>55</td><td>7.27%</td><td>4.2</td><td>BEST CTR in the dataset (7.27%). If pool leak detection is offered, create /pool-leak-detection/ page to capture more volume.</td></tr>
+    <tr><td>24 hour leak detection</td><td>0</td><td>61</td><td>0%</td><td>36.1</td><td>Position 36 — create /24-hour-leak-detection/ page targeting this emergency query. High commercial intent.</td></tr>
+    <tr><td>leak detection company near me</td><td>8</td><td>229</td><td>3.49%</td><td>8.2</td><td>BEST volume (8 clicks). Add "near me" optimization: LocalBusiness schema, Google Business Profile optimization, city-specific content on homepage.</td></tr>
+  </table>
+</div>
+
+<div class="card kw-tier">
+  <h2>Tier 3 — High Impression, Low CTR (Content Investment)</h2>
+  <table>
+    <tr><th>Keyword</th><th>Clicks</th><th>Impressions</th><th>Position</th><th>Action</th></tr>
+    <tr><td>leak detection covington</td><td>2</td><td>279</td><td>16.6</td><td>Full Covington page rewrite — 1,200+ words, LocalBusiness schema, FAQ schema. Currently pos 16.</td></tr>
+    <tr><td>leak detection athens ga</td><td>1</td><td>238</td><td>33.7</td><td>Rewrite /areas-served/athens-ga/ with 1,500+ words. Athens is a major market. Currently pos 34.</td></tr>
+    <tr><td>electrical leak detection athens ga</td><td>0</td><td>175</td><td>21.7</td><td>If electrical leak detection offered — create dedicated page or blog post targeting Athens.</td></tr>
+    <tr><td>leak detection snellville</td><td>1</td><td>296</td><td>7.4</td><td>Homepage is ranking for this but losing clicks. Homepage title fix + LocalBusiness schema should unlock these clicks.</td></tr>
+    <tr><td>about-us/reviews page</td><td>0</td><td>141</td><td>20.1</td><td>141 impressions at pos 20 for reviews page — add AggregateRating schema to show star ratings in SERP.</td></tr>
+    <tr><td>covington slab leak repair (area page)</td><td>0</td><td>1,327</td><td>63.9</td><td>Highest impression city page. Rewrite with 1,200 words + FAQ schema. Could reach page 2-3 in 90 days.</td></tr>
+    <tr><td>areas-served/athens-ga/ slab leak</td><td>0</td><td>449</td><td>61.9</td><td>Rewrite Athens slab leak page with 1,200+ words, FAQ schema, local statistics.</td></tr>
+    <tr><td>conyers slab leak repair</td><td>0</td><td>942</td><td>66.5</td><td>Very high impressions but deep ranking. Full content rewrite needed for Conyers.</td></tr>
+    <tr><td>burst pipe repair near me</td><td>0</td><td>44</td><td>10.5</td><td>Position 10 — add burst pipe FAQ to emergency service page + homepage schema.</td></tr>
+    <tr><td>ceiling water leak plumber</td><td>0</td><td>29</td><td>7.5</td><td>Position 7 — create blog post: "What to Do When Your Ceiling is Leaking (Snellville, GA Guide)."</td></tr>
+  </table>
+</div>
+
+<div class="card kw-tier">
+  <h2>Tier 4 — Branded Keywords</h2>
+  <table>
+    <tr><th>Keyword</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Position</th><th>Note</th></tr>
+    <tr><td>leak detection service pros</td><td>9</td><td>250</td><td>3.6%</td><td>3.5</td><td>Branded — 3.6% CTR at pos 3.5 is below expected 15-30% for branded at top 3. Suggests some branded queries are going to competitors. Strengthen GBP to take position 1.</td></tr>
+    <tr><td>leak detection pros</td><td>2</td><td>61</td><td>3.28%</td><td>19.9</td><td>Branded variant at position 20 — optimize GBP and homepage title to bring this to top 5.</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>GSC Pages Performance — All Tracked Pages</h2>
+  <table>
+    <tr><th>Page</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Avg Pos</th><th>Action</th></tr>
+    <tr><td>Homepage (/)</td><td>98</td><td>35,808</td><td>0.27%</td><td>7.4</td><td><span class="badge red">Title mismatch — fix to "Leak Detection Specialists" not "Local Plumber"</span></td></tr>
+    <tr><td>/contact/</td><td>3</td><td>1,066</td><td>0.28%</td><td>32.1</td><td>Add LocalBusiness schema to help contact page rank for "[city] leak detection contact"</td></tr>
+    <tr><td>/leak-detection-in-cumming-ga/</td><td>2</td><td>72</td><td>2.78%</td><td>15.6</td><td>Good CTR — build out to 1,200+ words with FAQ schema to reach top 5</td></tr>
+    <tr><td>/why-us/</td><td>2</td><td>776</td><td>0.26%</td><td>28.7</td><td>776 impressions at pos 28 — rewrite to target "why choose leak detection company" queries</td></tr>
+    <tr><td>/commercial-leak-detection/</td><td>1</td><td>632</td><td>0.16%</td><td>40.8</td><td>632 impressions, 1 click at pos 40 — full rewrite needed for commercial queries</td></tr>
+    <tr><td>/leak-detection-in-winder-ga/</td><td>1</td><td>1,290</td><td>0.08%</td><td>22.3</td><td>1,290 impressions, 1 click — full Winder page rewrite with 1,500 words + FAQ schema</td></tr>
+    <tr><td>/leak-detection-in-lawrenceville-ga/</td><td>1</td><td>1,322</td><td>0.08%</td><td>26.7</td><td>1,322 impressions, 1 click — Lawrenceville is a top market. Full rewrite needed urgently.</td></tr>
+    <tr><td>/leak-detection/</td><td>1</td><td>1,029</td><td>0.1%</td><td>48.7</td><td>1,029 impressions at pos 49 — this should be a top-5 page. Full rewrite with FAQ schema.</td></tr>
+    <tr><td>/water-line-repair/</td><td>1</td><td>622</td><td>0.16%</td><td>45.4</td><td>622 impressions — build out "water line repair cost in Georgia" content</td></tr>
+    <tr><td>/areas-served/covington-ga/</td><td>1</td><td>1,137</td><td>0.09%</td><td>42.2</td><td>1,137 impressions at pos 42 — major Covington hub rewrite needed</td></tr>
+    <tr><td>/areas-served/athens-ga/</td><td>0</td><td>1,423</td><td>0%</td><td>43.1</td><td>Highest city impressions, 0 clicks — Athens hub page full rewrite</td></tr>
+    <tr><td>/areas-served/covington-ga/slab-leak-repair/</td><td>0</td><td>1,327</td><td>0%</td><td>63.9</td><td>Massive impression opportunity — full Covington slab leak page rewrite</td></tr>
+    <tr><td>/areas-served/covington-ga/emergency-service/</td><td>0</td><td>983</td><td>0%</td><td>40.2</td><td>Full Covington emergency page rewrite needed</td></tr>
+    <tr><td>/areas-served/conyers-ga/slab-leak-repair/</td><td>0</td><td>942</td><td>0%</td><td>66.5</td><td>Rewrite Conyers slab leak page</td></tr>
+    <tr><td>/areas-served/conyers-ga/</td><td>0</td><td>936</td><td>0%</td><td>27.0</td><td>Conyers hub at pos 27 — near page 3. Full rewrite to push to page 1.</td></tr>
+  </table>
+</div>
+</div>
+
+<script>
+new Chart(document.getElementById('impChart'),{
+  type:'bar',
+  data:{
+    labels:['water leak detection','commercial leak detection','leak detection services','drain cleaning near me','leak detection snellville','leak detection covington','leak detection athens ga','comprehensive leak detection','areas-served/athens-ga','leak detection/service page'],
+    datasets:[{label:'Impressions',data:[1316,784,707,390,296,279,238,194,1423,1029],backgroundColor:'#0f4c81',borderRadius:4}]
+  },
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,title:{display:true,text:'Impressions'}}}}
+});
+</script>
+
+<!-- TAB: AUDIT & CONTENT -->
+<div id="tab-audit" class="tab-content">
+<div class="card">
+  <h2>Audit Overview</h2>
+  <p style="color:#64748b;font-size:.88rem;margin-bottom:12px">All pages audited using GA4 sessions data (Feb–Jun 2026) and GSC impressions/clicks data (Dec 2025–Jun 2026). Pages with 0 GSC impressions are not yet indexed or have no matching queries.</p>
+  <div class="alert warning"><span class="alert-icon">⚠</span><div><strong>Duplicate Homepage Title.</strong> GA4 shows two versions of the homepage title: "Local Plumber in Snellville, GA | Top Leak Detection Specialist" (446 sessions) and "24/7 Local Plumber in Snellville, GA | Top Leak Detection Specialist" (111 sessions). This title flip suggests A/B testing or a CMS update mid-period. Standardize to a single optimized title.</div></div>
+</div>
+
+<div class="card">
+  <h2>Core Service Pages</h2>
+
+  <div class="page-card">
+    <h4>/ Homepage</h4>
+    <div class="page-meta">
+      <span class="badge blue">GA4: 557 sessions | 62% eng | 4:48 avg duration</span>
+      <span class="badge red">GSC: 98 clicks | 35,808 impressions | 0.27% CTR | pos 7.4</span>
+    </div>
+    <div class="alert critical" style="margin-top:8px"><span class="alert-icon">🔴</span><div><strong>Critical: Title Mismatch is Costing ~1,000+ Clicks/Month.</strong> Current title "Local Plumber in Snellville, GA" attracts plumber searches. But 35,808 impressions come from leak detection queries. A 3% CTR (industry baseline) would yield 1,074 clicks vs. the current 98. Fix: "Leak Detection Specialists in Snellville, GA | Slab Leak | Water Leak | 24/7 | Free Estimate."</div></div>
+    <div class="rec"><strong>Required fixes:</strong> (1) Title rewrite. (2) Add FAQPage schema with 5+ Q&amp;As. (3) Add LocalBusiness schema with full NAP, areaServed (Snellville, Lawrenceville, Athens, Covington, Winder), and hours. (4) Add AggregateRating schema from /about-us/reviews/ data. (5) Add "drain cleaning" to services list if offered. (6) Remove title inconsistency (A/B test or CMS issue).</div>
+  </div>
+
+  <div class="page-card">
+    <h4>/leak-detection/ — Leak Detection Service Page</h4>
+    <div class="page-meta">
+      <span class="badge blue">GA4: 44 sessions | 84% eng | 3:59</span>
+      <span class="badge orange">GSC: 1 click | 1,029 impressions | 0.10% | pos 48.7</span>
+    </div>
+    <div class="rec"><strong>Action:</strong> This should be the #1 converting page. 1,029 GSC impressions at pos 49 means the page exists but has weak content. Rewrite to 1,200+ words. Add: How leak detection works (acoustic, thermal, video), cost range, what to expect, service guarantee, FAQPage schema (6+ Qs), and a visible quote CTA above the fold.</div>
+  </div>
+
+  <div class="page-card">
+    <h4>/slab-leak-repair/ — Slab Leak Repair</h4>
+    <div class="page-meta">
+      <span class="badge blue">GA4: 21 sessions | 81% eng | 5:04</span>
+      <span class="badge orange">GSC: area pages have 1,327–942 impressions each | main page limited data</span>
+    </div>
+    <div class="rec"><strong>Action:</strong> Slab leak queries are high-value (avg repair cost $500-$4,000+). Build out the main page to 1,500+ words. Add: slab leak signs, detection process, repair methods (epoxy, rerouting, tunneling), Georgia-specific content, FAQPage schema, cost table. Area pages (Covington, Conyers, Athens) all have 449-1,327 impressions and need individual rewrites.</div>
+  </div>
+
+  <div class="page-card">
+    <h4>/commercial-leak-detection/ — Commercial Service</h4>
+    <div class="page-meta">
+      <span class="badge blue">GA4: 17 sessions | 76% eng | 2:48</span>
+      <span class="badge red">GSC: 1 click | 784 impressions | 0.13% | pos 6.1</span>
+    </div>
+    <div class="alert warning" style="margin-top:8px"><span class="alert-icon">⚠</span><div>784 impressions at pos 6 with 1 click is a critical missed opportunity. "Commercial leak detection" is a high-value B2B query ($200-$2,000+ service value). Fix title immediately to explicitly state "Commercial Leak Detection" and city.</div></div>
+    <div class="rec"><strong>Action:</strong> New title: "Commercial Leak Detection in Snellville, GA | Non-Invasive | Certified | 24/7." Add: types of commercial clients (restaurants, office buildings, warehouses), B2B case study, FAQPage schema, ROI section ("a slow leak can cost $10,000+ in water damage before detection").</div>
+  </div>
+
+  <div class="page-card">
+    <h4>/emergency-service/ — Emergency Service</h4>
+    <div class="page-meta">
+      <span class="badge blue">GA4: 21 sessions | 90% eng | 3:13</span>
+      <span class="badge orange">GSC: area emergency pages: 983 impressions (Covington) | main page limited</span>
+    </div>
+    <div class="rec"><strong>Action:</strong> Emergency plumbing is highest-intent and highest-value traffic. Add: response time guarantee, service area map, phone number in H1, FAQPage schema ("How fast can you respond?", "Do you charge extra for nights/weekends?"), and emergency checklist ("What to do before the plumber arrives").</div>
+  </div>
+
+  <div class="page-card">
+    <h4>/plumbing/ — General Plumbing</h4>
+    <div class="page-meta">
+      <span class="badge blue">GA4: 26 sessions | 73% eng | 5:31</span>
+      <span class="badge gray">GSC: limited impression data</span>
+    </div>
+    <div class="rec"><strong>Action:</strong> "24 hour plumbing snellville ga" ranks #1 with 0 clicks (23 impressions). The plumbing page title likely doesn't include "24 hour." Fix title to: "24/7 Emergency Plumber in Snellville, GA | Licensed | Same-Day | No Overtime Charges." Add FAQPage schema.</div>
+  </div>
+
+  <div class="page-card">
+    <h4>/residential-leak-detection/ — Residential Service</h4>
+    <div class="page-meta">
+      <span class="badge blue">GA4: 25 sessions | 88% eng | 2:12</span>
+      <span class="badge gray">GSC: limited data</span>
+    </div>
+    <div class="rec"><strong>Action:</strong> Add FAQPage schema: "How much does residential leak detection cost?", "How long does a home leak inspection take?", "Will leak detection damage my walls?" These are high-intent, zero-competition FAQ queries that can earn featured snippets and AI Overview citations.</div>
+  </div>
+
+  <div class="page-card">
+    <h4>/water-line-repair/ — Water Line Repair</h4>
+    <div class="page-meta">
+      <span class="badge blue">GA4: 26 sessions | 62% eng | 1:33</span>
+      <span class="badge orange">GSC: 1 click | 622 impressions | 0.16% | pos 45.4</span>
+    </div>
+    <div class="rec"><strong>Action:</strong> 622 impressions at pos 45 and 1:33 avg duration (low) both indicate thin content. Rewrite to 1,200+ words: what causes water line damage in Georgia, repair methods, trenchless vs. open-cut, cost range, FAQPage schema. Duration is too low — add visual step-by-step process section.</div>
+  </div>
+
+  <div class="page-card">
+    <h4>/sewer-line-leak-repair/ and /sewer-line-leak-detection/</h4>
+    <div class="page-meta">
+      <span class="badge blue">GA4: 12 + 11 sessions | 92%+91% eng</span>
+      <span class="badge orange">GSC: covington sewer page: 427 impressions pos 34</span>
+    </div>
+    <div class="rec"><strong>Action:</strong> Both pages have excellent engagement (91-92%) but low traffic. This signals good content with weak title/meta. Fix both titles to explicitly include city name + "sewer line leak detection" + "repair." Add FAQ schema. Both pages could rank much higher with title corrections alone.</div>
+  </div>
+
+  <div class="page-card">
+    <h4>/gas-line-repair/ — Gas Line Repair</h4>
+    <div class="page-meta">
+      <span class="badge blue">GA4: 11 sessions | 82% eng | 5:00</span>
+      <span class="badge orange">GSC: "best leak detection for emergency gas leak" — 37 impressions, pos 1.3, 0 clicks</span>
+    </div>
+    <div class="rec"><strong>Action:</strong> Gas leak is a safety emergency with very high urgency. Ranking #1 for gas emergency queries with 0 clicks means the title doesn't convey urgency. New title: "Gas Leak Detection &amp; Repair in Snellville, GA | Emergency 24/7 | Certified | Call Now." Add prominent phone number and FAQ schema.</div>
+  </div>
+
+  <div class="page-card">
+    <h4>/video-pipe-inspection/ — Video Pipe Inspection</h4>
+    <div class="page-meta">
+      <span class="badge blue">GA4: 11 sessions | 82% eng | 3:21</span>
+      <span class="badge gray">GSC: limited data</span>
+    </div>
+    <div class="rec"><strong>Action:</strong> Two blog posts about video inspection ("What Video Pipe Inspections Reveal" and "Think Your Pipes Are Fine") are driving some traffic. Link them both to this service page with strong CTAs. Add FAQ schema: "How much does a video pipe inspection cost?", "What can a camera inspection find?", "How long does it take?"</div>
+  </div>
+
+  <div class="page-card">
+    <h4>/sewer-odor-detection/ — Sewer Odor Detection</h4>
+    <div class="page-meta">
+      <span class="badge blue">GA4: 9 sessions | 78% eng | 1:53</span>
+      <span class="badge gray">GSC: limited data</span>
+    </div>
+    <div class="rec"><strong>Action:</strong> A unique service worth featuring. Add FAQ: "Why does my house smell like sewer?", "Is sewer gas dangerous?", "How do you detect sewer gas leaks?" These are high-intent zero-click queries that can earn AI Overview citations. Link to the blog post about P-trap siphons.</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Areas Served / Location Pages</h2>
+  <table>
+    <tr><th>Location Page</th><th>GA4 Sess.</th><th>GSC Impressions</th><th>GSC Pos.</th><th>Clicks</th><th>Action Required</th></tr>
+    <tr><td>/areas-served/athens-ga/ (hub)</td><td>19+6=25</td><td>1,423</td><td>43.1</td><td>0</td><td><span class="badge red">REWRITE: Highest city impressions, 0 clicks. Full 1,500-word Athens hub page needed.</span></td></tr>
+    <tr><td>/areas-served/covington-ga/</td><td>12</td><td>1,137</td><td>42.2</td><td>1</td><td><span class="badge red">REWRITE: 1,137 impressions, 1 click. Full Covington hub rewrite + slab, sewer, emergency sub-pages.</span></td></tr>
+    <tr><td>/areas-served/covington-ga/slab-leak-repair/</td><td>7</td><td>1,327</td><td>63.9</td><td>0</td><td><span class="badge red">Highest area-page impressions. Full slab leak page for Covington — 1,200 words + FAQ schema.</span></td></tr>
+    <tr><td>/areas-served/covington-ga/emergency-service/</td><td>10</td><td>983</td><td>40.2</td><td>0</td><td><span class="badge orange">Covington emergency page — add response time promise, phone in H1, FAQ schema.</span></td></tr>
+    <tr><td>/areas-served/covington-ga/sewer-line-leak-detection/</td><td>9</td><td>427</td><td>34.2</td><td>1</td><td><span class="badge orange">427 impressions at pos 34 — rewrite with local content.</span></td></tr>
+    <tr><td>/areas-served/conyers-ga/slab-leak-repair/</td><td>5</td><td>942</td><td>66.5</td><td>0</td><td><span class="badge orange">942 impressions deep ranking — Conyers slab leak rewrite priority #3 after Covington and Athens.</span></td></tr>
+    <tr><td>/areas-served/conyers-ga/</td><td>9</td><td>936</td><td>27.0</td><td>0</td><td><span class="badge orange">936 impressions at pos 27. Full Conyers hub rewrite needed.</span></td></tr>
+    <tr><td>/areas-served/athens-ga/slab-leak-repair/</td><td>7</td><td>449</td><td>61.9</td><td>0</td><td><span class="badge orange">449 impressions — rewrite Athens slab leak page.</span></td></tr>
+    <tr><td>/areas-served/athens-ga/sewer-leak-detection/</td><td>11</td><td>275</td><td>49.5</td><td>0</td><td><span class="badge orange">Rewrite Athens sewer page — focus on "sewer leak athens ga."</span></td></tr>
+    <tr><td>/areas-served/conyers-ga/sewer-line-leak-detection/</td><td>6</td><td>263</td><td>23.5</td><td>0</td><td><span class="badge blue">Position 23 — rewrite with local Conyers content.</span></td></tr>
+    <tr><td>/areas-served/dacula-ga/</td><td>10</td><td>476</td><td>29.0</td><td>1</td><td><span class="badge blue">476 impressions at pos 29 — build out Dacula page.</span></td></tr>
+    <tr><td>/areas-served/gainesville-ga/</td><td>14</td><td>1,180</td><td>49.1</td><td>0</td><td><span class="badge orange">1,180 impressions — Gainesville hub page rewrite needed. High priority.</span></td></tr>
+    <tr><td>/areas-served/buford-ga/</td><td>9</td><td>472</td><td>28.1</td><td>0</td><td><span class="badge blue">Buford page at pos 28 — build out with local content.</span></td></tr>
+    <tr><td>/areas-served/snellville-ga/</td><td>12</td><td>85</td><td>32.1</td><td>1</td><td><span class="badge blue">This should be your #1 local page. Build out as the primary Snellville landing page with all services listed.</span></td></tr>
+    <tr><td>/areas-served/fayetteville-ga/</td><td>9</td><td>320</td><td>31.1</td><td>0</td><td><span class="badge blue">320 impressions — full Fayetteville page rewrite.</span></td></tr>
+    <tr><td>/areas-served/braselton-ga/</td><td>10</td><td>262</td><td>47.6</td><td>0</td><td><span class="badge blue">Build out Braselton page with FAQ schema.</span></td></tr>
+    <tr><td>/areas-served/stone-mountain-ga/</td><td>12</td><td>0</td><td>N/A</td><td>0</td><td><span class="badge gray">No GSC impressions — add to sitemap and verify indexing.</span></td></tr>
+    <tr><td>/areas-served/grayson-ga/</td><td>9</td><td>13</td><td>52.8</td><td>0</td><td><span class="badge gray">Build out — very thin content currently.</span></td></tr>
+    <tr><td>Atlanta — Not created yet</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td><span class="badge red">CREATE: Atlanta metro is the biggest untapped market. Create /areas-served/atlanta-ga/ hub page targeting "leak detection atlanta ga."</span></td></tr>
+    <tr><td>Lawrenceville — standalone page</td><td>16</td><td>1,322</td><td>26.7</td><td>1</td><td><span class="badge red">1,322 impressions at pos 26 — full Lawrenceville rewrite is the highest-ROI city page fix.</span></td></tr>
+    <tr><td>Winder — standalone page</td><td>15</td><td>1,290</td><td>22.3</td><td>1</td><td><span class="badge red">1,290 impressions at pos 22 — full Winder rewrite.</span></td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Blog Posts Audit</h2>
+  <table>
+    <tr><th>Blog Post</th><th>GA4 Sess.</th><th>Eng%</th><th>GSC Impr.</th><th>Clicks</th><th>Action</th></tr>
+    <tr><td>Smart Home: Are Automatic Leak Shut-Off Valves Worth It?</td><td>11</td><td>100%</td><td>N/A</td><td>N/A</td><td>Add FAQ schema. Target "automatic water leak shutoff valve" (2 impressions, pos 13-14 in GSC). Add internal link to /water-line-repair/.</td></tr>
+    <tr><td>What Video Pipe Inspections Reveal That Plumbing Checks Miss</td><td>16</td><td>88%</td><td>N/A</td><td>N/A</td><td>Best performing blog post. Add FAQ schema and CTA to /video-pipe-inspection/. Target "what can a video pipe inspection find?"</td></tr>
+    <tr><td>Roots, Rocks, or Rust? Big Three Underground Pipe Killers</td><td>9</td><td>89%</td><td>N/A</td><td>N/A</td><td>Good engagement. Add FAQ schema. Internal link to /sewer-line-leak-detection/ and /video-pipe-inspection/.</td></tr>
+    <tr><td>Chlorine and Copper: Modern Water Treatments Eating Old Pipes</td><td>7</td><td>100%</td><td>N/A</td><td>N/A</td><td>Add FAQ schema. Link to /water-line-repair/ and /water-line-repipe/.</td></tr>
+    <tr><td>Plumbing Risk Audit: Leak Detection Checks Save Business Budgets</td><td>7</td><td>86%</td><td>N/A</td><td>N/A</td><td>Commercial-focused — link to /commercial-leak-detection/ with strong CTA.</td></tr>
+    <tr><td>The Quiet Culprit: Leaky Toilet Flapper Wastes 200 Gallons/Day</td><td>7</td><td>86%</td><td>N/A</td><td>N/A</td><td>Add FAQ schema. Internal link to emergency service page.</td></tr>
+    <tr><td>Think Your Pipes Are Fine? Video Inspection Might Say Otherwise</td><td>7</td><td>100%</td><td>N/A</td><td>N/A</td><td>100% engagement — add FAQ schema and quote form CTA.</td></tr>
+    <tr><td>Water Main vs. Water Meter: Your Responsibility Boundary</td><td>7</td><td>100%</td><td>N/A</td><td>N/A</td><td>100% engagement — add FAQ schema. Link to /water-line-repair/.</td></tr>
+    <tr><td>Commercial vs. Residential Leak Emergencies: Key Differences</td><td>6</td><td>83%</td><td>N/A</td><td>N/A</td><td>Add FAQ schema. Link to both /commercial-leak-detection/ and /emergency-service/.</td></tr>
+    <tr><td>Cost of Wait and See: Why Emergency Service Beats Secondary Damage</td><td>6</td><td>100%</td><td>N/A</td><td>N/A</td><td>100% engagement. Add FAQ schema. Internal link to /emergency-service/ with CTA.</td></tr>
+    <tr><td>Foundation Cracks and Floor Drains: Entry Points for Sewer Gas</td><td>6</td><td>100%</td><td>N/A</td><td>N/A</td><td>100% engagement. Link to /sewer-odor-detection/. Add FAQ schema.</td></tr>
+    <tr><td>High-Velocity Water Hammer: Why Pipes Clunk When Faucet Shuts Off</td><td>6</td><td>83%</td><td>N/A</td><td>N/A</td><td>Add FAQ schema. Link to /plumbing/ page.</td></tr>
+    <tr><td>Common Pipe Damage Causes</td><td>9</td><td>89%</td><td>41</td><td>1</td><td>GSC: 41 impressions, 2.44% CTR — add FAQ schema to push to pos 5-10.</td></tr>
+    <tr><td>5 Things Corrosion Does to Your Plumbing System</td><td>7</td><td>100%</td><td>16</td><td>0</td><td>GSC: 16 impressions, pos 7 — add FAQ schema and target "pipe corrosion repair snellville ga."</td></tr>
+    <tr><td>Save Thousands in Repairs Through Early Leak Detection</td><td>5</td><td>100%</td><td>N/A</td><td>N/A</td><td>100% engagement. Good lead-gen content — add quote form. Link to /leak-detection/.</td></tr>
+    <tr><td>How Seasonal Weather Shifts Trigger Water Leaks</td><td>5</td><td>100%</td><td>N/A</td><td>N/A</td><td>Seasonal content. Add FAQ schema. Update with Georgia-specific weather data.</td></tr>
+    <tr><td>The P-Trap Siphon: Eliminating Mystery Sewer Odors</td><td>5</td><td>80%</td><td>N/A</td><td>N/A</td><td>Link to /sewer-odor-detection/ service page. Add FAQ schema.</td></tr>
+    <tr><td>The Water Hammer Fix: Arrestors Prevent Re-Breaking</td><td>5</td><td>100%</td><td>N/A</td><td>N/A</td><td>100% engagement. Add FAQ schema. Link to /plumbing/.</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Technical/Utility Pages with Issues</h2>
+  <table>
+    <tr><th>Page</th><th>GA4 Sess.</th><th>Issue</th><th>Fix</th></tr>
+    <tr><td>/not_found (404 page)</td><td>33</td><td><span class="badge red">404 page getting significant traffic</span></td><td>Identify all broken links sending traffic here. Add 301 redirects for each pattern.</td></tr>
+    <tr><td>/fl-theme-layout/header/</td><td>10</td><td><span class="badge red">WordPress theme template file indexed</span></td><td>Add noindex tag to all /fl-theme-layout/ pages. Submit for recrawl in Search Console.</td></tr>
+    <tr><td>/tag/leak-detection/ (404)</td><td>9</td><td><span class="badge red">Tag archive 404</span></td><td>Add noindex to all /tag/ pages or 301 redirect /tag/leak-detection/ to /blog/.</td></tr>
+    <tr><td>/leak-detection-in-athens-ga (no slash)</td><td>7</td><td><span class="badge red">Missing trailing slash = 404</span></td><td>301 redirect /leak-detection-in-athens-ga → /leak-detection-in-athens-ga/</td></tr>
+    <tr><td>/tag/plumbing-detectives/ (404)</td><td>7</td><td><span class="badge red">Tag archive 404</span></td><td>Noindex all /tag/ archive pages or redirect to /blog/.</td></tr>
+    <tr><td>/category/blog/ (near-empty)</td><td>17</td><td><span class="badge orange">Category archive with 1% engagement</span></td><td>Either redirect to /blog/ or add proper archive content and noindex.</td></tr>
+    <tr><td>/contact-us (no trailing slash)</td><td>5</td><td><span class="badge orange">Alternate URL hitting 404</span></td><td>301 redirect /contact-us → /contact/ and /contact-us/ → /contact/</td></tr>
+    <tr><td>/about-us/blog/ (duplicate)</td><td>4</td><td><span class="badge orange">Duplicate of /blog/</span></td><td>301 redirect /about-us/blog/ → /blog/</td></tr>
+    <tr><td>/sitemap/ (HTML sitemap)</td><td>11</td><td><span class="badge gray">HTML sitemap getting traffic</span></td><td>Good — ensure all pages are listed. Submit XML sitemap in Search Console.</td></tr>
+    <tr><td>/author/sam-ivey/</td><td>7</td><td><span class="badge blue">Author page getting 783s avg session (highest on site)</span></td><td>Build out author bio with license number, credentials, and link to authored posts. Excellent E-E-A-T signal.</td></tr>
+  </table>
+</div>
+</div>
+
+<!-- TAB: TECHNICAL SEO -->
+<div id="tab-technical" class="tab-content">
+<div class="card">
+  <h2>Technical SEO Priority Matrix</h2>
+  <table>
+    <tr><th>Issue</th><th>Priority</th><th>Fix</th><th>Est. Impact</th></tr>
+    <tr><td>GA4 conversion event misconfigured</td><td><span class="badge red">P1 CRITICAL</span></td><td>GA4 Admin → Events → find event marked as conversion that should not be (likely session_start, page_view, or scroll). Unmark it. Set up proper form-submit or phone-click conversion events via GTM.</td><td>Restore accurate data for all business decisions</td></tr>
+    <tr><td>Homepage title = "Local Plumber" (not "Leak Detection")</td><td><span class="badge red">P1 CRITICAL</span></td><td>CMS/WordPress page title field → change to: "Leak Detection Specialists in Snellville, GA | Slab Leak | Water Leak | 24/7 | Free Estimate"</td><td>+1,000+ organic clicks/month from existing 35,808 impressions at 3% CTR</td></tr>
+    <tr><td>Duplicate homepage title (A/B split or CMS bug)</td><td><span class="badge red">P1 CRITICAL</span></td><td>Two title variants in GA4: "Local Plumber" (446 sess) and "24/7 Local Plumber" (111 sess). Standardize to single title tag. Check for conflicting SEO plugins (Yoast vs. rank math vs. Flatsome theme SEO fields).</td><td>Eliminates Google confusion about which title to show</td></tr>
+    <tr><td>/fl-theme-layout/header/ indexed</td><td><span class="badge red">P1 CRITICAL</span></td><td>Add to robots.txt: Disallow: /fl-theme-layout/ OR add &lt;meta name="robots" content="noindex"&gt; to all /fl-theme-layout/ pages. Submit in Search Console for recrawl.</td><td>Remove confusing/thin pages from index. Stop wasting crawl budget.</td></tr>
+    <tr><td>4 broken URL patterns causing 404s</td><td><span class="badge red">P1 HIGH</span></td><td>301 redirects: /not_found → 404, /contact-us → /contact/, /contact-us/ → /contact/, /leak-detection-in-athens-ga → /leak-detection-in-athens-ga/, /about-us/blog/ → /blog/</td><td>Stop losing 50+ sessions/period to broken links</td></tr>
+    <tr><td>tagassistant.google.com referral (24 sessions)</td><td><span class="badge orange">P2 HIGH</span></td><td>GA4 Admin → Filters → exclude hostname tagassistant.google.com. Also filter out internal traffic by IP address.</td><td>Clean analytics data — removes false referral sessions</td></tr>
+    <tr><td>FAQPage schema — 0 pages have it</td><td><span class="badge orange">P2 HIGH</span></td><td>Add FAQPage schema to: /, /leak-detection/, /slab-leak-repair/, /commercial-leak-detection/, /emergency-service/, /residential-leak-detection/, /gas-line-repair/, /plumbing/ (8 pages minimum). Use Google's Structured Data Markup Helper or add via WordPress SEO plugin.</td><td>Rich results eligibility + AI Overview citations. Expected CTR improvement: +15-30% per page.</td></tr>
+    <tr><td>LocalBusiness schema missing on homepage</td><td><span class="badge orange">P2 HIGH</span></td><td>Add schema with: name, address (Snellville, GA), phone, hours, areaServed (list all cities), priceRange. Include geo coordinates. Add AggregateRating from reviews data.</td><td>Map pack visibility improvement + star ratings in SERP</td></tr>
+    <tr><td>Tag archive pages indexed (/tag/leak-detection/, /tag/plumbing-detectives/)</td><td><span class="badge orange">P2 HIGH</span></td><td>WordPress: Yoast SEO → Archives → Tag archives → set to noindex. Or add noindex meta to all /tag/ URLs.</td><td>Remove thin/duplicate pages from index. Consolidate crawl budget to service pages.</td></tr>
+    <tr><td>Category archive (/category/blog/) getting traffic</td><td><span class="badge orange">P2 HIGH</span></td><td>Either: (a) 301 redirect /category/blog/ → /blog/ or (b) add canonical pointing to /blog/. Currently 17 sessions going to low-engagement archive page.</td><td>Consolidate link equity and redirect traffic to real blog hub</td></tr>
+    <tr><td>Meta descriptions — service pages</td><td><span class="badge orange">P2 HIGH</span></td><td>Audit all 15+ service pages for meta descriptions. Write 150-155 chars for each, including: service name + city + key benefit + call-to-action ("Call for free estimate"). Currently most are auto-generated from content.</td><td>CTR improvement on all service page query matches</td></tr>
+    <tr><td>UTM tracking on all outgoing links</td><td><span class="badge orange">P2 HIGH</span></td><td>562 "Direct" sessions likely include untagged email, SMS, Yelp, and social links. Add UTM parameters to: email signature, Yelp profile link, GBP website link, any print/offline materials.</td><td>Identify true source of 562 direct sessions — critical for knowing what's working</td></tr>
+    <tr><td>Bing Webmaster Tools — not registered</td><td><span class="badge orange">P2 HIGH</span></td><td>Register at bing.com/webmasters (15 minutes). Submit sitemap. Connects to Microsoft Copilot AI and Bing search — already sending some traffic without being registered.</td><td>Direct Copilot/AI visibility improvement at zero cost</td></tr>
+    <tr><td>Page speed — /water-line-repair/ has 1:33 avg duration</td><td><span class="badge blue">P3 MEDIUM</span></td><td>Run Google PageSpeed Insights on this page. If LCP &gt;2.5s or CLS &gt;0.1, optimize images and eliminate render-blocking resources. Low duration + low CTR both point to either slow load or poor content match.</td><td>Improved engagement and ranking signal for water line queries</td></tr>
+    <tr><td>AggregateRating schema — /about-us/reviews/</td><td><span class="badge blue">P3 MEDIUM</span></td><td>Add AggregateRating schema to homepage and reviews page with: ratingValue, reviewCount from actual Google reviews. Shows star ratings in SERP for branded searches.</td><td>+20-35% CTR lift on branded searches ("leak detection service pros snellville")</td></tr>
+    <tr><td>Article schema — all blog posts</td><td><span class="badge blue">P3 MEDIUM</span></td><td>Add Article schema: author (Sam Ivey with credentials), datePublished, headline, image. Builds E-E-A-T credibility for plumbing content. Each post should display Sam Ivey's licensing information.</td><td>AI Overview and featured snippet eligibility for blog content</td></tr>
+    <tr><td>BreadcrumbList schema</td><td><span class="badge blue">P3 MEDIUM</span></td><td>Add BreadcrumbList to all area pages (Home → Areas Served → Covington, GA → Slab Leak Repair). Shows breadcrumbs in SERP and signals site hierarchy to Google.</td><td>Better SERP display and site structure signal for area pages</td></tr>
+    <tr><td>XML sitemap completeness</td><td><span class="badge blue">P3 MEDIUM</span></td><td>Verify sitemap includes all 50+ service pages, all blog posts, and all area pages. Check for excluded pages in Yoast/RankMath settings. Remove /fl-theme-layout/ and /tag/ URLs from sitemap if present.</td><td>Ensures all valuable pages are discovered and crawled</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>FAQPage Schema Example — Slab Leak Repair Page</h2>
+  <p style="font-size:.83rem;color:#64748b;margin-bottom:10px">Copy this template and customize for each service page. Add to &lt;head&gt; or via WordPress SEO plugin JSON-LD field.</p>
+  <pre style="background:#1e293b;color:#e2e8f0;padding:16px;border-radius:8px;font-size:.75rem;overflow-x:auto;white-space:pre-wrap">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I know if I have a slab leak?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Signs of a slab leak include unexplained increases in water bills, hot spots on your floor, the sound of running water when no fixtures are on, cracks in your foundation, and damp or warped flooring. Our technicians in Snellville, GA use non-invasive acoustic and thermal detection equipment to confirm and locate slab leaks without breaking concrete."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does slab leak repair cost in Georgia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Slab leak repair in Georgia typically ranges from $500 to $4,000 depending on the repair method (epoxy pipe coating, pipe rerouting, or tunneling), the location of the leak, and the extent of damage. We provide free estimates for all slab leak assessments in Snellville, Lawrenceville, Athens, Covington, and surrounding areas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does slab leak detection take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our slab leak detection process typically takes 2-4 hours using acoustic listening equipment and thermal imaging cameras. We can pinpoint the exact location of the leak without digging, minimizing disruption to your home. Same-day detection service is available for emergency situations in the greater Snellville, GA area."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will slab leak detection damage my floors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Our detection process is completely non-invasive. We use acoustic leak detection equipment and thermal imaging cameras that locate the leak from above your slab, with no drilling, cutting, or breaking of concrete required during the detection phase."
+      }
+    }
+  ]
+}</pre>
+</div>
+</div>
+
+<!-- TAB: COMPETITORS -->
+<div id="tab-competitors" class="tab-content">
+<div class="card">
+  <h2>Competitor Landscape — Snellville / Atlanta Metro GA</h2>
+  <div class="alert info"><span class="alert-icon">✅</span><div><strong>Competitive Advantage:</strong> Leak Detection Service Pros specializes specifically in non-invasive leak detection using acoustic and thermal technology. This is a technical differentiation most general plumbers cannot match. Lead every page with: "Non-invasive leak detection using acoustic &amp; thermal technology. No guesswork. No unnecessary digging."</div></div>
+  <table>
+    <tr><th>Competitor Type</th><th>Their Weakness</th><th>Your Counter-Position</th></tr>
+    <tr><td>American Leak Detection (franchise)</td><td>Franchise model — generic, impersonal, higher overhead pricing</td><td>"Local Snellville team. No franchise fees passed to you. Direct relationship with your assigned technician."</td></tr>
+    <tr><td>General plumbers (Snellville area)</td><td>No specialized leak detection equipment — use trial-and-error or destructive methods to find leaks</td><td>"Acoustic &amp; thermal detection technology finds the leak before we touch a single wall. No guesswork, no unnecessary holes."</td></tr>
+    <tr><td>HomeAdvisor / Angi lead platforms</td><td>Sends your information to 5+ companies at once. No quality filtering.</td><td>"Call us directly. One call, one visit, one price. No competing bids, no sales pressure."</td></tr>
+    <tr><td>Large metro Atlanta plumbing chains</td><td>Serve a huge area with travel time and higher minimums. Not neighborhood-focused.</td><td>"We serve Snellville, Lawrenceville, Athens, Covington, Winder — your backyard. Faster response, local expertise."</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Keyword Gaps — Where Competitors Outrank Us</h2>
+  <table>
+    <tr><th>Keyword</th><th>Est. Volume</th><th>Our Position</th><th>Action</th></tr>
+    <tr><td>leak detection atlanta ga</td><td>High</td><td>Not ranking meaningfully</td><td>Create /areas-served/atlanta-ga/ hub page targeting "leak detection atlanta" + metro area sub-cities</td></tr>
+    <tr><td>slab leak repair atlanta</td><td>High</td><td>pos 86 (GSC)</td><td>Build dedicated Atlanta slab leak page. Currently appearing but very deep.</td></tr>
+    <tr><td>24 hour leak detection</td><td>Medium</td><td>pos 36</td><td>Create /24-hour-leak-detection/ dedicated page with phone number in H1</td></tr>
+    <tr><td>pool leak detection near me</td><td>Medium</td><td>pos 4.2 (CTR 7.27%!)</td><td>Best CTR on site — build /pool-leak-detection/ if service is offered</td></tr>
+    <tr><td>plumbers snellville ga</td><td>Medium</td><td>pos 40</td><td>Strengthen /plumbing/ page with "Snellville, GA" in title and LocalBusiness schema</td></tr>
+    <tr><td>underground leak detection near me</td><td>Medium</td><td>pos 5.2</td><td>Position 5 with 1 click on 37 impressions — add FAQ schema to push to pos 1-3</td></tr>
+    <tr><td>drain cleaning snellville ga</td><td>Low-medium</td><td>pos 1.0 (0 clicks!)</td><td>Ranking #1 but 0 clicks — create /drain-cleaning/ page if service is offered</td></tr>
+    <tr><td>water line repair near me</td><td>Medium</td><td>pos 45</td><td>Rewrite /water-line-repair/ with full content and FAQ schema</td></tr>
+  </table>
+</div>
+</div>
+
+<!-- TAB: AI SEARCH TRAFFIC -->
+<div id="tab-ai" class="tab-content">
+<div class="card">
+  <h2>AI Search &amp; Alternative Engine Traffic</h2>
+  <div class="metrics">
+    <div class="metric"><div class="val">1</div><div class="lbl">ChatGPT Sessions</div><div class="sub">chatgpt.com referral</div></div>
+    <div class="metric"><div class="val">1</div><div class="lbl">Copilot Sessions</div><div class="sub">copilot.com referral</div></div>
+    <div class="metric"><div class="val">1</div><div class="lbl">Bing Organic</div><div class="sub">100% engagement</div></div>
+    <div class="metric orange"><div class="val">0</div><div class="lbl">AI Conversions</div><div class="sub">All AI channels</div></div>
+  </div>
+  <div class="alert info"><span class="alert-icon">🤖</span><div><strong>AI Traffic is Very Early Stage.</strong> With only 2 AI sessions (ChatGPT + Copilot), this channel is just beginning. For local service businesses, AI assistants increasingly answer "find a leak detection company near me" queries by citing local businesses with rich structured data. FAQPage schema and LocalBusiness schema are the primary on-site signals that enable AI citations. The 4 actions below can increase AI visibility within 60-90 days.</div></div>
+  <div class="chart-wrap short"><canvas id="aiCompChart"></canvas></div>
+</div>
+
+<div class="card">
+  <h2>4-Step AI Visibility Action Plan</h2>
+  <div class="alert success"><span class="alert-icon">1</span><div><strong>FAQPage Schema (Highest Priority — This Week):</strong> Add FAQPage schema to all 8 core service pages. For each page, write 4-6 questions that match "people also ask" results for that service type. FAQ schema is the #1 signal Google AI Overviews use to cite local service businesses. Takes 2-3 hours total using the template in Section 5.</div></div>
+  <div class="alert success"><span class="alert-icon">2</span><div><strong>Bing Webmaster Tools (15 Minutes):</strong> Register at bing.com/webmasters. Submit your XML sitemap. Bing powers Microsoft Copilot AI — which already sent 1 session without registration. After registration, your pages get indexed faster and can appear in Copilot AI responses for local service queries.</div></div>
+  <div class="alert success"><span class="alert-icon">3</span><div><strong>Direct-Answer Content in Blog Posts:</strong> Each blog post should answer the title question in the first 2-3 sentences, then expand. ChatGPT and Google AI Overviews pull the most direct, specific answer from the first 200 words. Current posts often start with marketing language. Remove it and lead with the answer.</div></div>
+  <div class="alert success"><span class="alert-icon">4</span><div><strong>SpeakableSpecification Schema:</strong> Mark the top 3 paragraphs on your homepage and /leak-detection/ page with SpeakableSpecification schema. This tells Google Assistant, Siri, and AI tools which content to read as the authoritative answer for voice queries like "How does leak detection work?" Underused by virtually all local service competitors.</div></div>
+</div>
+</div>
+
+<script>
+new Chart(document.getElementById('aiCompChart'),{
+  type:'bar',
+  data:{
+    labels:['Google Organic','Yelp','Facebook','ChatGPT','Copilot','Bing Organic'],
+    datasets:[
+      {label:'Sessions',data:[195,12,7,1,1,1],backgroundColor:'#0f4c81',borderRadius:4},
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,title:{display:true,text:'Sessions'}}}}
+});
+</script>
+
+<!-- TAB: CONTENT RECOMMENDATIONS -->
+<div id="tab-contentrec" class="tab-content">
+<div class="card">
+  <h2>Content Recommendations &amp; Roadmap</h2>
+  <div class="alert warning"><span class="alert-icon">⚠</span><div><strong>Author Credibility Opportunity.</strong> Sam Ivey's author page gets 783 seconds average session duration — the highest on the entire site. Users are researching him. Build out the author bio with: GA plumbing license number, years of experience, certifications, and photo. This is a major E-E-A-T signal that helps every blog post rank higher.</div></div>
+</div>
+
+<div class="card">
+  <h2>Phase 1 — Critical Fixes (Week 1-2)</h2>
+  <table>
+    <tr><th>Action</th><th>Page Affected</th><th>Expected Outcome</th></tr>
+    <tr><td>Fix GA4 conversion event misconfiguration</td><td>GA4 Admin (not a page fix)</td><td>Accurate conversion data for all future decisions</td></tr>
+    <tr><td>Rewrite homepage title + meta description</td><td>/ Homepage</td><td>Expected CTR: 0.27% → 1.5-3%. +500-1,000 organic clicks/month from existing impressions.</td></tr>
+    <tr><td>Add noindex to /fl-theme-layout/ pages</td><td>/fl-theme-layout/header/, /fl-theme-layout/footer/</td><td>Remove theme pages from index, save crawl budget</td></tr>
+    <tr><td>Add 301 redirects for all 404 patterns</td><td>/contact-us, /about-us/blog/, /tag/* pages</td><td>Stop losing 50+ sessions to broken links</td></tr>
+    <tr><td>Fix /commercial-leak-detection/ title</td><td>/commercial-leak-detection/</td><td>784 GSC impressions at pos 6 — expected new clicks: 20-40/month</td></tr>
+    <tr><td>Fix /plumbing/ title to include "24/7"</td><td>/plumbing/</td><td>Unlock "24 hour plumbing snellville ga" clicks (pos 1, 0 clicks currently)</td></tr>
+    <tr><td>Add FAQPage schema to /faqs/ or homepage</td><td>Homepage or dedicated FAQ page</td><td>Fastest schema win — enables rich results and AI citations</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Phase 2 — Schema &amp; New Pages (Weeks 3-6)</h2>
+  <table>
+    <tr><th>Action</th><th>Priority</th><th>Expected Outcome</th></tr>
+    <tr><td>FAQPage schema — all 8 core service pages</td><td><span class="badge red">P1</span></td><td>Rich results for all service pages. AI Overview eligibility. CTR lift on all service page queries.</td></tr>
+    <tr><td>LocalBusiness + AggregateRating schema — homepage</td><td><span class="badge red">P1</span></td><td>Star ratings in SERP. Map pack eligibility. Improved branded CTR.</td></tr>
+    <tr><td>CREATE: /drain-cleaning/ page (if service offered)</td><td><span class="badge red">P1</span></td><td>"Drain cleaning snellville ga" + "drain cleaning near me" = 512 impressions at pos 1 with 0 clicks. Page would capture all of this immediately.</td></tr>
+    <tr><td>CREATE: /pool-leak-detection/ (if offered)</td><td><span class="badge orange">P2</span></td><td>Best CTR in GSC dataset at 7.27% on 55 impressions — a dedicated page could earn 30+ clicks/month</td></tr>
+    <tr><td>Rewrite /leak-detection/ — 1,200+ words + FAQ schema</td><td><span class="badge orange">P2</span></td><td>1,029 GSC impressions at pos 49 — could reach top 20 within 60 days</td></tr>
+    <tr><td>Build out Sam Ivey author bio with GA license #</td><td><span class="badge orange">P2</span></td><td>E-E-A-T improvement for all blog posts — signals expertise to Google's quality raters</td></tr>
+    <tr><td>Rewrite Lawrenceville page (1,322 GSC impressions)</td><td><span class="badge orange">P2</span></td><td>1,322 impressions at pos 26 — full rewrite to reach top 10. Est. 30-60 new clicks/month.</td></tr>
+    <tr><td>Rewrite Winder page (1,290 GSC impressions)</td><td><span class="badge orange">P2</span></td><td>1,290 impressions at pos 22 — full rewrite to reach top 10. Est. 30-60 new clicks/month.</td></tr>
+    <tr><td>Register in Bing Webmaster Tools</td><td><span class="badge orange">P2</span></td><td>15-minute task. Direct Copilot/AI visibility improvement.</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Phase 3 — City Page Expansion (Weeks 6-12)</h2>
+  <table>
+    <tr><th>City/Page</th><th>GSC Impressions</th><th>Current Pos.</th><th>Target Pos.</th><th>Est. New Clicks/Month</th></tr>
+    <tr><td>Athens hub + all sub-pages (slab, sewer, emergency)</td><td>1,423 hub + 449+275 sub</td><td>43.1 hub</td><td>Top 10</td><td>40-80</td></tr>
+    <tr><td>Covington hub + all sub-pages</td><td>1,137 hub + 1,327+983+427 sub</td><td>42.2 hub</td><td>Top 10</td><td>40-80</td></tr>
+    <tr><td>Gainesville hub</td><td>1,180</td><td>49.1</td><td>Top 15</td><td>20-40</td></tr>
+    <tr><td>Conyers hub + slab leak page</td><td>936 + 942</td><td>27.0 hub</td><td>Top 15</td><td>20-40</td></tr>
+    <tr><td>CREATE: Atlanta hub page</td><td>N/A (not yet targeted)</td><td>Not ranking</td><td>Top 20 initial</td><td>30-60 within 90 days</td></tr>
+    <tr><td>Dacula page build-out</td><td>476</td><td>29.0</td><td>Top 15</td><td>15-30</td></tr>
+    <tr><td>Buford page build-out</td><td>472</td><td>28.1</td><td>Top 15</td><td>15-30</td></tr>
+    <tr><td>Fayetteville page build-out</td><td>320</td><td>31.1</td><td>Top 15</td><td>10-20</td></tr>
+  </table>
+  <div class="alert info" style="margin-top:12px"><span class="alert-icon">📈</span><div>If all city page rewrites are completed in Phase 3, estimated monthly organic traffic gain: +200-450 sessions/month by month 12. This is achievable purely from existing impression volume — no new queries needed.</div></div>
+</div>
+
+<div class="card">
+  <h2>E-E-A-T Requirements for Plumbing/Leak Detection Pages</h2>
+  <table>
+    <tr><th>Checkpoint</th><th>Required Content</th><th>Current Status</th></tr>
+    <tr><td>GA License Number</td><td>Display plumbing contractor license number on every service page footer</td><td><span class="badge red">MISSING — add to all service pages</span></td></tr>
+    <tr><td>Author Credentials</td><td>Sam Ivey bio with license #, photo, and years of experience on all blog posts</td><td><span class="badge orange">PARTIAL — author page exists but lacks credentials</span></td></tr>
+    <tr><td>FAQPage Schema</td><td>4-6 questions per service page and per blog post</td><td><span class="badge red">MISSING on all pages</span></td></tr>
+    <tr><td>Last Updated Date</td><td>Visible "Last updated: [Month Year]" on all service pages and blog posts</td><td><span class="badge red">MISSING — plumbing codes and prices change yearly</span></td></tr>
+    <tr><td>Insurance/Bonding Statement</td><td>"Licensed, bonded, and insured in Georgia" visible on homepage and service pages</td><td><span class="badge orange">Verify presence — critical for trust signals</span></td></tr>
+    <tr><td>Service Area Map</td><td>Visual map showing all covered cities/counties</td><td><span class="badge orange">Areas served hub exists but no visual map</span></td></tr>
+    <tr><td>Real Client Reviews on Service Pages</td><td>1-2 client quotes (first name, city, service type) on each service page</td><td><span class="badge red">Reviews isolated to /about-us/reviews/ — add to each service page</span></td></tr>
+    <tr><td>External Authority Links</td><td>Link to Georgia Consumer Protection, county water authority, or EPA WaterSense on relevant pages</td><td><span class="badge red">MISSING — adds credibility for Google's quality assessment</span></td></tr>
+  </table>
+</div>
+</div>
+
+<!-- TAB: BLOG CONTENT CALENDAR -->
+<div id="tab-blogcal" class="tab-content">
+<div class="card">
+  <h2>Blog Content Calendar — Jul 2026 to Jun 2027</h2>
+  <div class="metrics">
+    <div class="metric"><div class="val">48</div><div class="lbl">Total Posts</div><div class="sub">4 per month</div></div>
+    <div class="metric"><div class="val">1,200+</div><div class="lbl">Words Per Post</div><div class="sub">Minimum for local service</div></div>
+    <div class="metric"><div class="val">All 48</div><div class="lbl">Get FAQ Schema</div><div class="sub">Required on every post</div></div>
+    <div class="metric"><div class="val">Spring</div><div class="lbl">Peak Season</div><div class="sub">Freeze/thaw pipe damage</div></div>
+  </div>
+  <p style="color:#64748b;font-size:.85rem;margin-bottom:16px">Every post must include: FAQPage schema, Sam Ivey author byline with GA license number, last updated date, 1 CTA button linking to the most relevant service page, and 1-2 internal links to other service or city pages. All topics are driven by GSC keyword gaps and Georgia seasonal patterns.</p>
+</div>
+
+<div class="card">
+  <h2>July 2026 — Drain Cleaning + Emergency Service Focus</h2>
+  <table>
+    <tr><th>#</th><th>Blog Post Title</th><th>Target Keyword</th><th>Link To</th></tr>
+    <tr><td>1</td><td>Drain Cleaning in Snellville, GA: What It Costs and When You Need It</td><td>drain cleaning snellville ga</td><td>/drain-cleaning/ (create page)</td></tr>
+    <tr><td>2</td><td>Signs You Have a Hidden Leak in Your Home (And What to Do Next)</td><td>signs of hidden water leak</td><td>/leak-detection/ + /residential-leak-detection/</td></tr>
+    <tr><td>3</td><td>24/7 Emergency Plumber in Snellville: What Qualifies as a Plumbing Emergency?</td><td>24 hour plumber snellville ga</td><td>/emergency-service/</td></tr>
+    <tr><td>4</td><td>How Non-Invasive Leak Detection Works: Acoustic &amp; Thermal Technology Explained</td><td>how does leak detection work</td><td>/leak-detection/</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h2>August 2026 — Slab Leak + Commercial Focus</h2>
+  <table>
+    <tr><th>#</th><th>Blog Post Title</th><th>Target Keyword</th><th>Link To</th></tr>
+    <tr><td>5</td><td>Slab Leak Warning Signs Georgia Homeowners Should Never Ignore</td><td>slab leak signs georgia</td><td>/slab-leak-repair/</td></tr>
+    <tr><td>6</td><td>Commercial Leak Detection: How Businesses in Snellville Protect Their Property</td><td>commercial leak detection snellville</td><td>/commercial-leak-detection/</td></tr>
+    <tr><td>7</td><td>How Much Does Slab Leak Repair Cost in Georgia? 2026 Price Guide</td><td>slab leak repair cost georgia</td><td>/slab-leak-repair/</td></tr>
+    <tr><td>8</td><td>Water Line Repair in Georgia: Trenchless vs. Traditional Methods</td><td>water line repair snellville ga</td><td>/water-line-repair/</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h2>September 2026 — Sewer + City Pages Focus</h2>
+  <table>
+    <tr><th>#</th><th>Blog Post Title</th><th>Target Keyword</th><th>Link To</th></tr>
+    <tr><td>9</td><td>Sewer Line Leak Detection in Lawrenceville, GA: What Every Homeowner Should Know</td><td>sewer line leak detection lawrenceville ga</td><td>/leak-detection-in-lawrenceville-ga/</td></tr>
+    <tr><td>10</td><td>The Real Cost of Ignoring a Sewer Leak in Georgia</td><td>sewer leak repair cost georgia</td><td>/sewer-line-leak-repair/</td></tr>
+    <tr><td>11</td><td>What Does Commercial Leak Detection Include? A Step-by-Step Breakdown</td><td>commercial leak detection services georgia</td><td>/commercial-leak-detection/</td></tr>
+    <tr><td>12</td><td>Gas Line Leak Detection in Snellville, GA: What to Do in an Emergency</td><td>gas leak detection snellville</td><td>/gas-line-repair/</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h2>October 2026 — Pre-Winter Prep + Athens/Covington</h2>
+  <table>
+    <tr><th>#</th><th>Blog Post Title</th><th>Target Keyword</th><th>Link To</th></tr>
+    <tr><td>13</td><td>How Cold Weather Causes Pipe Bursts and Slab Leaks in Georgia Homes</td><td>frozen pipes georgia winter</td><td>/emergency-service/ + /slab-leak-repair/</td></tr>
+    <tr><td>14</td><td>Leak Detection in Athens, GA: Local Guide for Homeowners &amp; Businesses</td><td>leak detection athens ga</td><td>/areas-served/athens-ga/</td></tr>
+    <tr><td>15</td><td>Leak Detection in Covington, GA: What Local Residents Need to Know</td><td>leak detection covington ga</td><td>/areas-served/covington-ga/</td></tr>
+    <tr><td>16</td><td>What Is Electronic Leak Detection and Why Is It Better Than Guessing?</td><td>electronic leak detection georgia</td><td>/leak-detection/</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h2>November 2026 — Winter Emergency + Trust Building</h2>
+  <table>
+    <tr><th>#</th><th>Blog Post Title</th><th>Target Keyword</th><th>Link To</th></tr>
+    <tr><td>17</td><td>What to Do When You Have a Burst Pipe in Georgia (Emergency Checklist)</td><td>burst pipe repair near me georgia</td><td>/emergency-service/</td></tr>
+    <tr><td>18</td><td>How to Choose a Leak Detection Company in Snellville (5 Questions to Ask)</td><td>best leak detection company near me</td><td>/why-us/</td></tr>
+    <tr><td>19</td><td>Residential vs. Commercial Leak Detection: Key Differences in Georgia</td><td>residential commercial leak detection</td><td>/residential-leak-detection/ + /commercial-leak-detection/</td></tr>
+    <tr><td>20</td><td>Slab Leak Repair in Covington, GA: Local Guide</td><td>slab leak repair covington ga</td><td>/areas-served/covington-ga/slab-leak-repair/</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h2>December 2026 — Year-End + Video Inspection</h2>
+  <table>
+    <tr><th>#</th><th>Blog Post Title</th><th>Target Keyword</th><th>Link To</th></tr>
+    <tr><td>21</td><td>Why Every Georgia Homeowner Should Get a Plumbing Inspection Before Year-End</td><td>home plumbing inspection snellville</td><td>/leak-detection/ + /video-pipe-inspection/</td></tr>
+    <tr><td>22</td><td>Video Pipe Inspection Cost in Georgia: What to Expect in 2027</td><td>video pipe inspection cost georgia</td><td>/video-pipe-inspection/</td></tr>
+    <tr><td>23</td><td>Slab Leak Repair in Conyers, GA: What Homeowners Need to Know</td><td>slab leak repair conyers ga</td><td>/areas-served/conyers-ga/slab-leak-repair/</td></tr>
+    <tr><td>24</td><td>Underground Water Leak Detection: When to Call a Professional in Georgia</td><td>underground water leak detection near me</td><td>/leak-detection/</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h2>January–June 2027 (Summary)</h2>
+  <table>
+    <tr><th>Month</th><th>Theme</th><th>Post Topics</th></tr>
+    <tr><td>January 2027</td><td>New Year + Post-Winter Repairs</td><td>Post-freeze pipe inspection guide, Atlanta leak detection guide, water line repair cost 2027, Winder GA local guide</td></tr>
+    <tr><td>February 2027</td><td>Plumbing Education + FAQ Content</td><td>How to read your water meter for leaks, ceiling leak plumber guide, sewer odor causes guide, Gainesville GA local guide</td></tr>
+    <tr><td>March 2027</td><td>Spring Plumbing Prep</td><td>Spring plumbing checklist GA homeowners, pool leak detection guide, Dacula GA local guide, drain cleaning spring prep</td></tr>
+    <tr><td>April 2027</td><td>Commercial + Tech Content</td><td>Commercial water leak detection ROI, how thermal imaging finds leaks, Buford GA guide, water main vs meter responsibility</td></tr>
+    <tr><td>May 2027</td><td>Cost &amp; Comparison Content</td><td>Leak detection insurance claims guide, 24 hour leak detection pricing, Conyers sewer guide, compare leak detection methods</td></tr>
+    <tr><td>June 2027</td><td>Annual Review + Long-tail Content</td><td>Annual plumbing inspection value, best leak detection company guide, Stone Mountain GA guide, sewer gas health risks</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Blog Publishing Requirements</h2>
+  <table>
+    <tr><th>Requirement</th><th>Standard</th><th>Why It Matters</th></tr>
+    <tr><td>Author Byline</td><td>"Written by Sam Ivey, Licensed Plumbing Contractor, GA License #[X]"</td><td>E-E-A-T for plumbing/home service content. Google quality raters check for demonstrated expertise.</td></tr>
+    <tr><td>FAQPage Schema</td><td>5-7 questions per post matching local Georgia search intent</td><td>#1 signal for AI Overview citations and rich results on local service queries.</td></tr>
+    <tr><td>Word Count</td><td>1,200+ words minimum per post</td><td>Thin content (&lt;800 words) is penalized in local service categories by Google's helpful content systems.</td></tr>
+    <tr><td>Internal Links</td><td>Each post links to 1-2 service pages + 1 city/area page</td><td>Builds authority flow from blog to service pages — currently 99% of clicks go only to homepage.</td></tr>
+    <tr><td>CTA Button</td><td>"Get a Free Estimate" button above fold AND at end</td><td>Convert research-phase readers before they leave. Each post should be a lead-gen asset.</td></tr>
+    <tr><td>Last Updated Date</td><td>Visible "Last updated: [Month Year]" on every post</td><td>Plumbing costs and codes change. Outdated content loses Google trust for local service queries.</td></tr>
+    <tr><td>Local Specificity</td><td>Mention Snellville, GA or target city in first 200 words</td><td>Local specificity is the key differentiator vs. national plumbing content. Signals Georgia-relevant expertise.</td></tr>
+    <tr><td>External Link</td><td>Link to Georgia Consumer Protection or EPA WaterSense once per post</td><td>External links to authority sites signal content quality and add credibility for plumbing-related queries.</td></tr>
+  </table>
+</div>
+</div>
+
+</body>
+</html>
