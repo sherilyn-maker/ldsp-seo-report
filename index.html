@@ -70,6 +70,8 @@ tr:nth-child(even) td{background:#f8fafc}
   <button class="tab-btn" onclick="showTab('ai',event)">AI Search Traffic</button>
   <button class="tab-btn" onclick="showTab('contentrec',event)">Content Recommendations</button>
   <button class="tab-btn" onclick="showTab('blogcal',event)">Blog Content Calendar</button>
+
+  <button class="tab-btn" onclick="showTab('backlinks',event)">Link Building</button>
 </nav>
 <script>
 function showTab(id,event){
@@ -839,5 +841,129 @@ new Chart(document.getElementById('aiCompChart'),{
 </div>
 </div>
 
+
+<!-- TAB: LINK BUILDING -->
+<div id="tab-backlinks" class="tab-content">
+<div class="card">
+  <h2>Backlink & Link Building Strategy</h2>
+  <div class="metrics">
+    <div class="metric red"><div class="val">Low</div><div class="lbl">Estimated Domain Authority</div><div class="sub">New site, few referring domains</div></div>
+    <div class="metric"><div class="val">~12</div><div class="lbl">Known Referring Domains</div><div class="sub">Yelp, Facebook, einpresswire, siteliner, incrementors</div></div>
+    <div class="metric orange"><div class="val">0.21%</div><div class="lbl">Current Avg CTR</div><div class="sub">Links will move rankings → more clicks</div></div>
+    <div class="metric green"><div class="val">59,934</div><div class="lbl">GSC Impressions</div><div class="sub">Rankings already exist — links push them up</div></div>
+  </div>
+  <div class="alert info"><span class="alert-icon">📌</span><div><strong>Why Backlinks Matter for This Site.</strong> leakdetectionsp.com already ranks for hundreds of keywords (59,934 impressions) but the average position is 22.0 — page 2-3. In competitive local markets like Atlanta metro, the difference between position 22 and position 5 is almost entirely domain authority and link equity. A focused link building campaign targeting 5-10 quality local links per month can move dozens of keywords from page 2-3 to page 1 within 90-180 days — without changing a single word of content.</div></div>
+</div>
+
+<div class="card">
+  <h2>Tier 1 — Free Local Citations (Do This Week)</h2>
+  <p style="font-size:.85rem;color:#64748b;margin-bottom:12px">These are free directory listings that provide both backlinks and local SEO signals. Each listing also appears in map pack results and "near me" searches. Complete all of these before any paid link building.</p>
+  <table>
+    <tr><th>Directory / Platform</th><th>Link Type</th><th>Priority</th><th>Action</th></tr>
+    <tr><td>Google Business Profile</td><td>No-follow (local pack signal)</td><td><span class="badge red">P1 Critical</span></td><td>Ensure GBP listing is 100% complete: add all services (slab leak, drain cleaning, gas line, video inspection), add 10+ photos, respond to all reviews. GBP is the #1 local ranking signal.</td></tr>
+    <tr><td>Yelp for Business</td><td>No-follow (already sending traffic)</td><td><span class="badge red">P1 Critical</span></td><td>Already driving 12 sessions — make sure listing is complete with all services, photos, and a website link pointing to leakdetectionsp.com. Add "Leak Detection" as a category.</td></tr>
+    <tr><td>Bing Places for Business</td><td>No-follow (Copilot signal)</td><td><span class="badge red">P1 Critical</span></td><td>Register at bingplaces.com. Syncs with Microsoft Copilot AI and Bing search. Free, takes 15 minutes. Currently not registered.</td></tr>
+    <tr><td>Apple Maps (Apple Business Connect)</td><td>No-follow</td><td><span class="badge orange">P1 High</span></td><td>Register at businessconnect.apple.com. iOS users see Apple Maps results. Plumbing and home service searches frequently use Apple Maps on iPhone.</td></tr>
+    <tr><td>Angi (formerly Angie's List)</td><td>Do-follow</td><td><span class="badge orange">P1 High</span></td><td>Free basic listing at angi.com. One of the highest-authority home services directories (DA 89). A link from Angi passes significant authority to leakdetectionsp.com.</td></tr>
+    <tr><td>HomeAdvisor (owned by Angi)</td><td>Do-follow</td><td><span class="badge orange">P1 High</span></td><td>Free basic listing. Appears in "best leak detection company near me" searches. High DA directory with real local ranking power.</td></tr>
+    <tr><td>BBB (Better Business Bureau)</td><td>Do-follow</td><td><span class="badge orange">P1 High</span></td><td>bbb.org listing for Georgia plumbing contractors. Do-follow link from DA 93 domain. Free basic listing. Also a major trust signal for potential customers.</td></tr>
+    <tr><td>Houzz</td><td>Do-follow</td><td><span class="badge orange">P1 High</span></td><td>houzz.lightning.force.com already sent 1 referral session — claim and complete the profile. Houzz (DA 91) is one of the strongest home services directories.</td></tr>
+    <tr><td>Thumbtack</td><td>No-follow (high traffic)</td><td><span class="badge orange">P1 High</span></td><td>High-volume home services platform. Free profile with website link. Ranks in "leak detection near me" searches independently — your Thumbtack profile can capture additional traffic.</td></tr>
+    <tr><td>Nextdoor for Business</td><td>No-follow (geo-targeted)</td><td><span class="badge orange">P2</span></td><td>Create a Nextdoor business page for Snellville, GA. Neighborhood-level platform — when Snellville residents ask "anyone know a good leak detection company?" your business appears. Extremely high-intent local referrals.</td></tr>
+    <tr><td>Facebook Business Page</td><td>No-follow (already sending traffic)</td><td><span class="badge orange">P2</span></td><td>Already driving 7 sessions. Ensure website URL is in bio, add all services, and post before/after photos weekly. Facebook is indexed by Google and appears in branded searches.</td></tr>
+    <tr><td>Chamber of Commerce (Snellville)</td><td>Do-follow</td><td><span class="badge orange">P2</span></td><td>Join the Snellville/Gwinnett Chamber of Commerce. Member directory listing provides a local, geo-relevant do-follow link — one of the strongest local SEO signals available.</td></tr>
+    <tr><td>Gwinnett County local business directory</td><td>Do-follow</td><td><span class="badge orange">P2</span></td><td>Register in the Gwinnett County official business directory (gwinnettcounty.com). Government/municipal links carry exceptional local authority.</td></tr>
+    <tr><td>Yellow Pages / YP.com</td><td>Do-follow</td><td><span class="badge blue">P3</span></td><td>Classic directory with DA 87. Free basic listing. Still indexed by Google for local queries.</td></tr>
+    <tr><td>Foursquare / Factual</td><td>No-follow (data aggregator)</td><td><span class="badge blue">P3</span></td><td>Foursquare feeds citation data to dozens of platforms. One listing creates consistent NAP (name, address, phone) data across the web — a key local ranking signal.</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Tier 2 — Industry-Specific Directories (High Authority)</h2>
+  <table>
+    <tr><th>Directory</th><th>DA</th><th>Cost</th><th>Link Type</th><th>Action</th></tr>
+    <tr><td>contractor.com</td><td>High</td><td>Free</td><td>Do-follow</td><td>List under "Leak Detection" and "Plumbing" categories for Georgia. High-authority contractor directory.</td></tr>
+    <tr><td>porch.com</td><td>DA 78</td><td>Free basic</td><td>Do-follow</td><td>Home improvement directory that appears in local service searches. Add all services and service area cities.</td></tr>
+    <tr><td>fixr.com</td><td>DA 65</td><td>Free</td><td>Do-follow</td><td>Home repair cost guide site. List as a local provider for leak detection cost estimates in Georgia.</td></tr>
+    <tr><td>expertise.com</td><td>DA 67</td><td>Free (application)</td><td>Do-follow</td><td>Apply to be listed as a top leak detection specialist in Snellville/Atlanta. Expertise.com vets listings and ranks for "best [service] in [city]" queries independently.</td></tr>
+    <tr><td>toplocalpros.com</td><td>Medium</td><td>Free</td><td>Do-follow</td><td>Local contractor directory. Ranks for "top leak detection near me" type queries in some markets.</td></tr>
+    <tr><td>gomaterials.com</td><td>Medium</td><td>Free</td><td>Do-follow</td><td>Contractor and home improvement professional directory.</td></tr>
+    <tr><td>National Leak Detection Association (if applicable)</td><td>High</td><td>Membership fee</td><td>Do-follow</td><td>If eligible for membership, an association link is one of the strongest niche-relevant backlinks available for a leak detection specialist.</td></tr>
+    <tr><td>Georgia Plumbing Contractors association</td><td>High</td><td>Membership fee</td><td>Do-follow</td><td>State trade association links are among the highest-trust local signals. If already a member, ensure website is listed in the member directory.</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Tier 3 — Local PR & Earned Links (1–3 Months)</h2>
+  <p style="font-size:.85rem;color:#64748b;margin-bottom:12px">These tactics create editorial backlinks — the highest-value link type. They require outreach and content creation but deliver links that directories cannot match.</p>
+  <table>
+    <tr><th>Tactic</th><th>Target Sources</th><th>How to Execute</th><th>Est. Links</th></tr>
+    <tr><td><strong>Local News / Press Release</strong></td><td>Gwinnett Daily Post, Atlanta Journal-Constitution, Patch.com (Snellville)</td><td>Write a press release about a notable project (e.g., "Leak Detection Service Pros Uses Non-Invasive Acoustic Technology to Save Snellville Homeowner from $40,000 Foundation Damage"). Submit via EIN Presswire (already used — showed 3 GA4 sessions + 2 conversions).</td><td>2-5</td></tr>
+    <tr><td><strong>Neighborhood & HOA Newsletters</strong></td><td>Snellville HOA newsletters, neighborhood Facebook groups, Nextdoor</td><td>Offer to write a 300-word "water leak prevention tips for homeowners" article for local HOA newsletters. Include a link to leakdetectionsp.com. HOAs regularly publish digital newsletters that Google indexes.</td><td>3-8</td></tr>
+    <tr><td><strong>Local Real Estate Agent Partnerships</strong></td><td>Keller Williams Snellville, RE/MAX, local independent agents</td><td>Contact 10-15 local real estate agents. Offer to be their recommended leak detection vendor for pre-listing inspections. Many agents list recommended vendors on their websites — each is a local do-follow link.</td><td>3-10</td></tr>
+    <tr><td><strong>Home Inspector Referral Network</strong></td><td>InterNACHI-certified inspectors in Gwinnett County</td><td>Home inspectors frequently discover leaks they can't fix and need to refer to specialists. Build relationships and ask to be listed on their "recommended vendors" page. This creates a relevant, trusted local backlink.</td><td>2-6</td></tr>
+    <tr><td><strong>Insurance Agency Partnerships</strong></td><td>State Farm, Allstate, and independent agents in Snellville</td><td>Insurance agents handle water damage claims daily. Become their recommended leak detection specialist. Ask to be listed on their referral page or blog as a local expert. High-authority insurance agency links are extremely valuable.</td><td>2-5</td></tr>
+    <tr><td><strong>Property Management Companies</strong></td><td>PMI Gwinnett, Renters Warehouse, local property managers</td><td>Property managers deal with water leaks constantly. Position as their go-to leak detection company. Ask to be listed on their vendor page. Property management company websites often have high local authority.</td></tr>
+    <tr><td><strong>Local Business Sponsor / Community</strong></td><td>Snellville Little League, Gwinnett Chamber events, local charity runs</td><td>Sponsor a local community event or sports team. Most organizations list sponsors on their website with a link. Cost: $200-$1,000 per sponsorship. Links from .org and school domains carry exceptional local authority.</td><td>2-4</td></tr>
+    <tr><td><strong>Google Review Response Campaign</strong></td><td>Your existing customers</td><td>Email or text every customer after service with: "Leave us a Google review and we'll add a $25 credit to your next service." More reviews = higher map pack ranking = more impressions and clicks without any link building needed.</td><td>N/A (reviews not links)</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Tier 4 — Content-Based Link Earning (3–6 Months)</h2>
+  <p style="font-size:.85rem;color:#64748b;margin-bottom:12px">Create content that other sites naturally want to link to. These generate passive, ongoing links without outreach once the content is established.</p>
+  <table>
+    <tr><th>Content Asset</th><th>Target Linking Sites</th><th>How It Works</th></tr>
+    <tr><td><strong>"Georgia Homeowner's Guide to Water Leak Detection"</strong> (2,500+ words, with statistics and infographic)</td><td>Georgia real estate blogs, HOA websites, home improvement sites, local news</td><td>Create the most comprehensive leak detection guide targeting Georgia homeowners. Include local water authority data, Georgia climate factors, costs specific to Atlanta metro. Real estate and home improvement sites will link to it as a resource. Target: 5-15 editorial links within 6 months.</td></tr>
+    <tr><td><strong>"What Does Slab Leak Repair Cost in Georgia?" (with data table)</strong></td><td>fixr.com, homeadvisor editorial, local real estate blogs</td><td>Cost content with real local pricing data earns links from cost aggregator sites. Update annually. Target: 3-8 links. Also ranks independently for "slab leak repair cost georgia" — currently in GSC at pos 11.3.</td></tr>
+    <tr><td><strong>Free "Leak Risk Self-Assessment Tool"</strong> (interactive checklist)</td><td>Real estate agents, home inspectors, insurance agents</td><td>Build a simple interactive checklist: "Does your home have any of these 10 leak risk factors?" Results page says "Based on your answers, your home has [X] risk factors — call for a free inspection." This type of tool earns links naturally from real estate and home improvement sites.</td></tr>
+    <tr><td><strong>Local Water Loss Statistics Page</strong></td><td>Gwinnett County water authority, local news, environmental blogs</td><td>Compile data: "How Much Water Does an Average Snellville Home Waste from Leaks Per Year?" Include local water bill data, county water authority stats. Journalists and local officials link to local data resources.</td></tr>
+    <tr><td><strong>HARO / Connectively (Help a Reporter Out)</strong></td><td>National home improvement publications, local news</td><td>Sign up at connectively.us (free). Respond to journalist queries about plumbing, home maintenance, water damage. Being quoted in an article earns a do-follow link from the publication. Realistically earn 2-4 high-DA editorial links per month with consistent responses.</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Link Building Monthly Action Plan</h2>
+  <table>
+    <tr><th>Month</th><th>Focus</th><th>Actions</th><th>Target Links</th></tr>
+    <tr><td>Month 1</td><td>Citation Cleanup & Foundation</td><td>Complete all Tier 1 free directories (GBP, Yelp, Angi, BBB, HomeAdvisor, Houzz, Thumbtack, Bing Places, Apple Maps, Nextdoor, Chamber). Audit existing citations for NAP consistency — ensure name, address, phone are identical on all platforms.</td><td>10-15 new links</td></tr>
+    <tr><td>Month 2</td><td>Industry Directories + First PR</td><td>Submit to all Tier 2 industry directories. Apply to expertise.com. Write and distribute first press release via EIN Presswire. Begin HARO monitoring and respond to 5+ relevant queries.</td><td>5-8 new links</td></tr>
+    <tr><td>Month 3</td><td>Local Partnership Outreach</td><td>Contact 15 local real estate agents, 10 home inspectors, 5 property managers, 5 insurance agencies. Ask for vendor page listings. Join Gwinnett Chamber and ensure member directory listing is live.</td><td>5-10 new links</td></tr>
+    <tr><td>Month 4</td><td>Content Asset + Community</td><td>Publish "Georgia Homeowner's Guide to Water Leak Detection." Promote to real estate agents and HOAs. Sponsor one local community event. Continue HARO responses. Second press release about seasonal topic.</td><td>4-8 new links</td></tr>
+    <tr><td>Month 5</td><td>Review Campaign + Competitor Gap</td><td>Launch Google review campaign targeting 20+ new reviews. Identify competitor backlinks (use free Ahrefs/Moz trial) and target same directories they use. Continue partnership follow-ups.</td><td>3-6 new links</td></tr>
+    <tr><td>Month 6</td><td>Assessment + Scale What Works</td><td>Review which sources drove ranking improvements using GSC position changes. Scale the top-performing tactics. Submit to any remaining high-DA directories. Measure baseline: if avg position improved from 22 to under 15, the strategy is working.</td><td>3-6 new links</td></tr>
+  </table>
+  <div class="alert success" style="margin-top:12px"><span class="alert-icon">📈</span><div><strong>Expected Outcome at Month 6:</strong> 40-60 new referring domains, domain authority increase of 10-20 points, average GSC position improvement from 22.0 to 10-15, estimated organic click increase from 126/6 months to 400-700/6 months. The 59,934 impressions already exist — links push rankings up to convert those impressions into clicks.</div></div>
+</div>
+
+<div class="card">
+  <h2>NAP Consistency — Critical for All Citations</h2>
+  <div class="alert critical"><span class="alert-icon">🔴</span><div><strong>Before creating any new citations, standardize your NAP.</strong> Every directory listing must use the exact same business name, address, and phone number. Inconsistent NAP (e.g., "Leak Detection Service Pros" vs. "Leak Detection Services Pros" vs. "LDSP") confuses Google and dilutes citation value. Decide on the canonical format below and use it everywhere.</div></div>
+  <table>
+    <tr><th>Field</th><th>Canonical Format to Use on ALL Platforms</th></tr>
+    <tr><td>Business Name</td><td>Leak Detection Service Pros</td></tr>
+    <tr><td>Address</td><td>Use exact street address — same format every time (e.g., "123 Main St, Snellville, GA 30078" — not "123 Main Street" or "Snellville, Georgia")</td></tr>
+    <tr><td>Phone</td><td>Use one consistent format: (XXX) XXX-XXXX — same digits on every platform</td></tr>
+    <tr><td>Website URL</td><td>Always use: https://leakdetectionsp.com/ (with trailing slash, with https)</td></tr>
+    <tr><td>Categories</td><td>Primary: "Leak Detection Service" — Secondary: "Plumber," "Water Damage Restoration," "Slab Leak Repair"</td></tr>
+    <tr><td>Service Area</td><td>List all cities: Snellville, Lawrenceville, Athens, Covington, Winder, Loganville, Monroe, Gainesville, Jefferson, Conyers, Jonesboro, Grayson, Dacula, Buford, Braselton, Cumming, Stone Mountain, Fayetteville</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Backlink Quality vs. Quantity Guide</h2>
+  <table>
+    <tr><th>Link Type</th><th>Value</th><th>Examples</th><th>Priority</th></tr>
+    <tr><td>Local government / .gov domains</td><td><span class="badge green">Highest</span></td><td>Gwinnett County business directory, city of Snellville website, Georgia state licensing board</td><td>Pursue aggressively — any opportunity to get a .gov mention is extremely valuable</td></tr>
+    <tr><td>Local trade association (.org)</td><td><span class="badge green">Very High</span></td><td>Georgia Plumbing Contractors Association, Gwinnett Chamber of Commerce, local BBB chapter</td><td>Join and ensure member directory listing is live</td></tr>
+    <tr><td>High-DA national directories</td><td><span class="badge green">High</span></td><td>Angi (DA 89), BBB (DA 93), Houzz (DA 91), HomeAdvisor (DA 91)</td><td>Complete all free listings first — these pass real authority</td></tr>
+    <tr><td>Local editorial / news links</td><td><span class="badge green">High</span></td><td>Gwinnett Daily Post, Patch Snellville, Atlanta Journal-Constitution</td><td>Pursue via press releases and HARO — highest long-term value</td></tr>
+    <tr><td>Relevant local business sites</td><td><span class="badge blue">Medium-High</span></td><td>Real estate agent "preferred vendors," home inspector referral pages, insurance agency blogs</td><td>Outreach campaign — takes 2-3 months but delivers sustained value</td></tr>
+    <tr><td>General directories</td><td><span class="badge blue">Medium</span></td><td>YellowPages, Foursquare, Yelp, Thumbtack</td><td>Complete for citation consistency even if DA varies</td></tr>
+    <tr><td>Paid/bought links</td><td><span class="badge red">Avoid</span></td><td>Link farms, private blog networks, "guest post" link sellers</td><td>Google penalizes these. Any link seller offering "100 DA 50+ links for $50" is a scam that will hurt rankings.</td></tr>
+    <tr><td>Reciprocal links ("I link to you, you link to me")</td><td><span class="badge orange">Low</span></td><td>Any arrangement where both sites link to each other purely for SEO</td><td>Use sparingly — natural reciprocal links (like a supplier page) are fine, but organized link exchanges are a spam signal.</td></tr>
+  </table>
+</div>
+</div>
 </body>
 </html>
